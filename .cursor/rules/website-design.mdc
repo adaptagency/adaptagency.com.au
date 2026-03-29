@@ -1,0 +1,96 @@
+---
+description: Adapt Agency website design — frontend skill, brand assets, Tailwind, deployment, QA
+alwaysApply: true
+---
+
+# Adapt Agency — website design rules
+
+Source: internal design brief (website-design-rules). Applies to all frontend and static-site work in this repository.
+
+## Always do first
+
+- Apply the **frontend-design** Cursor skill before writing any frontend code, every session, without exception.
+- Check **`brand_assets/`** before designing anything. Use whatever is there — logos, palettes, style guides. Do not invent brand elements if real ones exist.
+
+## Project types
+
+This project may be one of the following — confirm with the user if unclear:
+
+| Mode | Approach |
+|------|----------|
+| **Single `index.html`** | All styles inline; Tailwind via CDN |
+| **Multi-page HTML/CSS** | Shared styles, logical file structure |
+| **Next.js / React** | Components; Tailwind via PostCSS |
+
+**Default:** single `index.html` unless the user specifies otherwise.
+
+## Reference images
+
+- If a reference image is provided: match layout, spacing, typography, and colour exactly. Use placeholder content (`https://placehold.co/WIDTHxHEIGHT`, generic copy). Do **not** improve or extend the design beyond the reference.
+- If no reference image: design from scratch with high craft (see **Anti-generic guardrails**).
+- Screenshot the implementation, compare against the reference, fix mismatches, re-screenshot. Do **at least two** comparison rounds. Stop only when there are no visible differences left or the user says to stop.
+
+## Local server
+
+- Always review and screenshot over **http://localhost** — never rely on `file://` URLs for visual QA.
+- When **`serve.mjs`** exists in the project root, start the dev server with `node serve.mjs` (serves project root at `http://localhost:3000`) in the background before screenshots. If it is already running, do not start a second instance.
+- If **`serve.mjs`** is not present yet, use an equivalent static server (e.g. `npx serve .`) on a known port and use that URL for screenshots.
+- **Linux paths** — do not use Windows-style paths.
+
+## Screenshot workflow
+
+- When **`screenshot.mjs`** exists in the project root: `node screenshot.mjs http://localhost:3000` (adjust port if needed). Screenshots go to `./screenshots/screenshot-N.png` (auto-incremented). Optional label: `node screenshot.mjs http://localhost:3000 label` → `screenshot-N-label.png`.
+- When Puppeteer is available, confirm `which puppeteer` or `node_modules/.bin/` as needed.
+- After capturing, **read the PNG** with the image-capable workflow and compare precisely (e.g. “heading is 32px but reference ~24px”, “card gap 16px vs 24px expected”).
+- Check: spacing/padding, font size/weight/line-height, colours (exact hex), alignment, border-radius, shadows, image sizing, mobile breakpoints.
+
+## Output defaults
+
+- Single `index.html` with inline styles unless the project type says otherwise.
+- Tailwind via CDN: `<script src="https://cdn.tailwindcss.com"></script>`.
+- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`.
+- **Mobile-first**, responsive.
+- **Australian English** in all copy (colour, centre, optimise, etc.).
+
+## Brand assets
+
+- Always check **`brand_assets/`** first.
+- If a logo exists, use it. If a palette is defined, use those exact values — do not invent brand colours.
+- If a style guide exists, follow it strictly.
+- If `brand_assets/` is empty or missing, use high-craft defaults and document colour/font choices for client review.
+
+## Deployment context
+
+- **Target:** Namecheap / cPanel shared hosting.
+- Deliver **static files** only unless explicitly agreed otherwise — deployable via FTP (e.g. FileZilla) or cPanel File Manager.
+- **Relative asset paths** only — no absolute paths to the domain root.
+- Verify behaviour when the site might live in a subdirectory (e.g. `public_html/clientname/`).
+
+## Version control
+
+- Use GitHub; commit logical units with clear messages.
+- Do **not** commit `node_modules/`, build artifacts, or screenshot output folders.
+- Ensure **`.gitignore`** covers those if missing.
+
+## Anti-generic guardrails
+
+- **Colours:** Do not use the default Tailwind “AI slop” palette as primary (e.g. `indigo-500`, `blue-600`). Use client brand colours or a deliberate custom palette.
+- **Shadows:** Avoid flat `shadow-md`. Prefer layered, colour-tinted shadows at low opacity.
+- **Typography:** Do not use one font for both headings and body. Pair display/serif with a clean sans. Tight tracking (`-0.03em`) on large headings; generous body line-height (`1.7`).
+- **Gradients:** Layer multiple radial gradients; add grain/texture (e.g. SVG noise) for depth where appropriate.
+- **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Prefer spring-style easing.
+- **Interactive states:** Every clickable element needs **hover**, **focus-visible**, and **active** states.
+- **Images:** Consider gradient overlay (`bg-gradient-to-t from-black/60`) and colour treatment (`mix-blend-multiply`) where it fits the design.
+- **Spacing:** Use intentional spacing tokens — not random Tailwind steps.
+- **Depth:** Surfaces should read as a system (base → elevated → floating), not one flat plane.
+
+## Hard rules
+
+- Do not add sections, features, or content not in the reference when matching a reference.
+- Do not “improve” a reference design — **match** it.
+- Do not stop after one screenshot pass when a reference exists.
+- Do not use `transition-all`.
+- Do not use default Tailwind blue/indigo as the primary brand colour.
+- Do not use Windows-style paths.
+- Do not use absolute asset paths.
+- Australian English in all generated copy.
