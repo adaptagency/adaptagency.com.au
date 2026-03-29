@@ -19,10 +19,14 @@ Canonical reference for visual identity, voice, and implementation. **Update thi
 
 | Asset | Location | Notes |
 |-------|----------|--------|
-| Primary logo | `brand_assets/logo/` *(add files when available)* | Prefer SVG for web; supply light-on-dark and dark-on-light variants if possible. |
-| Wordmark / icon | TBD | Minimum clear space = height of the “A” in Adapt on all sides. |
+| **Source mark** | `brand_assets/logo/adapt-agency-logo.png` | Original horizontal lockup (icon + wordmark + tagline). |
+| **Web badge** | `brand_assets/logo/adapt-agency-logo-web.png` | Same mark on a **white rounded rectangle** with a **thick blue border** (`#0B7DD8`, 18px stroke at export size). Use this in headers, OG images, and marketing blocks. |
+| **Web badge (SVG)** | `brand_assets/logo/adapt-agency-logo-web.svg` | Vector frame + embedded PNG reference; **deploy next to** `adapt-agency-logo.png` so the `<image href>` resolves. |
+| Alternates | TBD | Light-on-dark variant if needed later. |
 
-**Until logo files exist:** use a typographic wordmark in **display** type (see Typography) — “Adapt Agency” — with no symbol. Do not use generic AI sparkles or stock “robot” icons as a logo substitute.
+**Clear space:** keep padding at least equal to the height of the cap “A” in *Adapt* between the blue frame and any neighbouring text or UI.
+
+**Do not** stretch disproportionally; scale width and height together.
 
 ---
 
@@ -125,7 +129,8 @@ Pair a **display** face for headings with a **neutral sans** for UI and body (pe
 |------|---------|
 | `brand-sheet.md` | This document — strategy and tokens in prose. |
 | `tokens.css` | `:root` CSS custom properties for implementation. |
-| `logo/` | Logo exports (add when ready). |
+| `logo/adapt-agency-logo.png` | Master raster. |
+| `logo/adapt-agency-logo-web.png` / `.svg` | Rounded white plate + thick blue border for the site. |
 
 ---
 
@@ -134,3 +139,4 @@ Pair a **display** face for headings with a **neutral sans** for UI and body (pe
 | Date | Change |
 |------|--------|
 | 2026-03-29 | Initial brand sheet and tokens for web use. |
+| 2026-03-30 | Added web badge logo (rounded white background, thick blue frame) from master PNG. |
