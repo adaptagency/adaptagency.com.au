@@ -49,9 +49,29 @@ If a build step (e.g. a static site generator or bundler) is introduced later, t
 
 ---
 
+## Domain, DNS, and hosting
+
+| Piece | Provider | Role |
+|--------|----------|------|
+| **Domain registration** | GoDaddy | Owns `adaptagency.com.au`; renewal and registrar settings live here. |
+| **DNS** | Cloudflare | Authoritative DNS for the zone. All records (web, mail, verification) are defined here. |
+| **Website hosting** | Namecheap | Static site files are uploaded or synced to Namecheap hosting; the origin that Cloudflare proxies to. |
+| **CDN / proxy** | Cloudflare | Sits in front of Namecheap for caching, SSL/TLS, and performance (typically “proxied” / orange-cloud on the web record). |
+| **Email** | Namecheap | Mailbox hosting; **MX** (and related mail records such as SPF/DKIM per Namecheap’s docs) are added in **Cloudflare**, not at GoDaddy. |
+
+**GoDaddy setup:** Point the domain’s **nameservers** to the pair Cloudflare gives you when you add the site to Cloudflare. DNS is then no longer edited at GoDaddy for day-to-day use.
+
+**Cloudflare setup:** Create DNS records that point web traffic to your Namecheap hosting (A/AAAA to the IP Namecheap provides, or CNAME if they specify a hostname). Enable proxying on that record if you want Cloudflare’s CDN and edge TLS. Add **MX** (and any mail CNAME/TXT records) exactly as Namecheap’s email setup instructions specify, so mail routes to Namecheap while DNS stays on Cloudflare.
+
+---
+
 ## Deployment
 
-The production site is intended to be hosted as static files (e.g. GitHub Pages, Netlify, Cloudflare Pages, or your preferred CDN-backed host). Connect this repository to your host’s “deploy from Git” workflow and point the document root at the built or root output directory once the site structure is finalised.
+1. **Build or prepare** the static output (root of this repo or a `dist/` folder if you add a build step).
+2. **Publish** to Namecheap hosting (FTP/SFTP, File Manager, or any workflow Namecheap supports for your plan).
+3. **Verify** the site loads over HTTPS once Cloudflare SSL mode matches your setup (often *Full* or *Full (strict)* when the origin supports HTTPS).
+
+This repository is not tied to Namecheap’s UI; keep deploy steps in your own checklist or CI if you automate uploads later.
 
 ---
 
