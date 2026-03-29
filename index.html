@@ -607,7 +607,6 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    var AA_LANG_KEY = "adaptagency-lang";
     var I18N = {
       en: {
         skip: "Skip to content",
@@ -800,90 +799,9 @@
         mail_footer: "—\nGửi qua biểu mẫu adaptagency.com.au",
       },
     };
-
-    /** In-memory language for this page; kept in sync with localStorage by applyLang / loadSiteLanguage. */
-    var siteLang = "en";
-
-    function loadSiteLanguage() {
-      try {
-        var s = localStorage.getItem(AA_LANG_KEY);
-        if (s === "vi" || s === "en") return s;
-      } catch (e) {}
-      return "en";
-    }
-
-    function saveSiteLanguage(lang) {
-      try {
-        localStorage.setItem(AA_LANG_KEY, lang);
-      } catch (e) {}
-    }
-
-    function t(key) {
-      var pack = I18N[siteLang] || I18N.en;
-      return pack[key] != null ? pack[key] : I18N.en[key] || key;
-    }
-
-    function applyLang(lang) {
-      if (lang !== "vi" && lang !== "en") lang = "en";
-      siteLang = lang;
-      saveSiteLanguage(lang);
-      document.documentElement.setAttribute("data-aa-lang", lang);
-      document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
-
-      document.querySelectorAll("[data-i18n]").forEach(function (el) {
-        var key = el.getAttribute("data-i18n");
-        if (key && t(key)) el.textContent = t(key);
-      });
-      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
-        var key = el.getAttribute("data-i18n-placeholder");
-        if (key) el.setAttribute("placeholder", t(key));
-      });
-      document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-        var key = el.getAttribute("data-i18n-aria");
-        if (key) el.setAttribute("aria-label", t(key));
-      });
-
-      var titleEl = document.getElementById("doc-title");
-      if (titleEl) titleEl.textContent = t("doc_title");
-      var descEl = document.getElementById("doc-desc");
-      if (descEl) descEl.setAttribute("content", t("doc_desc"));
-
-      var ogTitle = document.getElementById("og-title");
-      if (ogTitle) ogTitle.setAttribute("content", t("doc_title"));
-      var ogDesc = document.getElementById("og-desc");
-      if (ogDesc) ogDesc.setAttribute("content", t("doc_desc"));
-      var twTitle = document.getElementById("tw-title");
-      if (twTitle) twTitle.setAttribute("content", t("doc_title"));
-      var twDesc = document.getElementById("tw-desc");
-      if (twDesc) twDesc.setAttribute("content", t("doc_desc"));
-      var ogLoc = document.querySelector('meta[property="og:locale"]');
-      var ogLocAlt = document.querySelector('meta[property="og:locale:alternate"]');
-      if (ogLoc && ogLocAlt) {
-        if (lang === "vi") {
-          ogLoc.setAttribute("content", "vi_VN");
-          ogLocAlt.setAttribute("content", "en_AU");
-        } else {
-          ogLoc.setAttribute("content", "en_AU");
-          ogLocAlt.setAttribute("content", "vi_VN");
-        }
-      }
-
-      var root = document.getElementById("lang-switch-root");
-      var toggle = document.getElementById("lang-toggle");
-      if (root && toggle) {
-        root.setAttribute("data-lang", lang);
-        if (lang === "en") {
-          root.classList.add("is-en");
-          toggle.setAttribute("aria-checked", "false");
-        } else {
-          root.classList.remove("is-en");
-          toggle.setAttribute("aria-checked", "true");
-        }
-      }
-
-      if (typeof updateLeadSubmitState === "function") updateLeadSubmitState();
-    }
-
+  </script>
+  <script src="js/adaptagency-lang.js"></script>
+  <script>
     function updateLeadSubmitState() {
       var btn = document.getElementById("lead-submit");
       var nameEl = document.getElementById("name");
@@ -898,23 +816,14 @@
       btn.disabled = !(name.length > 0 && emailOk && message.length > 0 && consentEl.checked);
     }
 
-    applyLang(loadSiteLanguage());
-
-    window.addEventListener("pageshow", function () {
-      applyLang(loadSiteLanguage());
+    AdaptAgencyLang.init(I18N, {
+      onAfterApply: function () {
+        if (typeof updateLeadSubmitState === "function") updateLeadSubmitState();
+      },
     });
 
-    window.addEventListener("storage", function (e) {
-      if (e.key !== AA_LANG_KEY || e.newValue == null) return;
-      if (e.newValue !== "vi" && e.newValue !== "en") return;
-      applyLang(e.newValue);
-    });
-
-    var langToggleBtn = document.getElementById("lang-toggle");
-    if (langToggleBtn) {
-      langToggleBtn.addEventListener("click", function () {
-        applyLang(siteLang === "en" ? "vi" : "en");
-      });
+    function t(key) {
+      return AdaptAgencyLang.t(key);
     }
 
     (function randomizeHeroCardEntrance() {
