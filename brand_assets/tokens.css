@@ -1,0 +1,47 @@
+/**
+ * Adapt Agency — design tokens
+ * Canonical definitions: brand_assets/brand-sheet.md
+ * Import or copy these variables into your stylesheet / Tailwind config.
+ */
+
+:root {
+  /* Core */
+  --aa-color-primary: #0f3d3a;
+  --aa-color-primary-mid: #1a6b64;
+  --aa-color-primary-tint: #e8f3f2;
+  --aa-color-accent: #c45c42;
+  --aa-color-accent-soft: #f4e6e2;
+
+  /* Neutrals */
+  --aa-color-text: #141816;
+  --aa-color-text-muted: #5a6562;
+  --aa-color-border: #d4dcda;
+  --aa-color-surface: #fafaf8;
+  --aa-color-surface-elevated: #ffffff;
+
+  /* Semantic */
+  --aa-color-success: #2d6a4f;
+  --aa-color-warning: #b8860b;
+  --aa-color-error: #b00020;
+
+  /* Typography */
+  --aa-font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --aa-font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --aa-tracking-display: -0.03em;
+  --aa-leading-body: 1.7;
+
+  /* Radius */
+  --aa-radius-sm: 6px;
+  --aa-radius-md: 8px;
+  --aa-radius-lg: 12px;
+
+  /* Spacing scale (reference; use multiples in implementation) */
+  --aa-space-1: 0.25rem;
+  --aa-space-2: 0.5rem;
+  --aa-space-3: 0.75rem;
+  --aa-space-4: 1rem;
+  --aa-space-6: 1.5rem;
+  --aa-space-8: 2rem;
+  --aa-space-12: 3rem;
+  --aa-space-16: 4rem;
+}
