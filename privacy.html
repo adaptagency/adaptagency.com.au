@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en-AU" id="top">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -104,6 +104,17 @@
   <footer class="border-t border-aa-border bg-white px-4 py-8 text-center text-sm text-aa-muted sm:px-6">
     <p><a class="text-aa-primary-mid underline underline-offset-2 hover:text-aa-primary" href="index.html">← Back to home</a></p>
     <p class="mt-3">© <span id="y"></span> Adapt Agency · <a class="underline underline-offset-2 hover:text-aa-primary" href="terms.html">Terms of Use</a></p>
+    <div class="mt-6 flex justify-center">
+      <a
+        href="#top"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-emerald-500/45 bg-emerald-500/[0.12] text-emerald-600 transition-colors hover:border-emerald-500 hover:bg-emerald-500/[0.18] hover:text-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-aa-accent focus-visible:ring-offset-2"
+        aria-label="Back to top"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </a>
+    </div>
   </footer>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
