@@ -163,12 +163,13 @@
                 <stop offset="100%" stop-color="#34d399" />
               </linearGradient>
             </defs>
-            <!-- Mirrored so the stroke reads upward (tip at top, energy rising) -->
-            <g transform="translate(32 0) scale(-1 1)">
-              <path fill="url(#logo-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
-            </g>
+            <!-- Apex at y=0: reads as striking upward (narrow tip at top) -->
+            <path
+              fill="url(#logo-bolt-grad)"
+              d="M16 0 5 24h7L7 40l20-24h-8l5-16H16z"
+            />
           </svg>
-          <span class="font-display text-base font-semibold leading-none tracking-tight text-white sm:text-lg md:text-xl">
+          <span class="text-xs font-semibold leading-none tracking-tight text-white sm:text-sm">
             Adapt <span class="text-white/88">Agency</span>
           </span>
         </a>
@@ -315,11 +316,9 @@
             <stop offset="100%" stop-color="#0f3d3a" />
           </linearGradient>
         </defs>
-        <g transform="translate(32 0) scale(-1 1)">
-          <path fill="url(#footer-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
-        </g>
+        <path fill="url(#footer-bolt-grad)" d="M16 0 5 24h7L7 40l20-24h-8l5-16H16z" />
       </svg>
-      <span class="font-display text-base font-semibold tracking-tight">Adapt Agency</span>
+      <span class="text-sm font-semibold tracking-tight">Adapt Agency</span>
     </div>
     <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
   </footer>

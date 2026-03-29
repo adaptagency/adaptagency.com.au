@@ -5,7 +5,5 @@
       <stop offset="100%" stop-color="#34d399"/>
     </linearGradient>
   </defs>
-  <g transform="translate(32 0) scale(-1 1)">
-    <path fill="url(#bolt)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
-  </g>
+  <path fill="url(#bolt)" d="M16 0 5 24h7L7 40l20-24h-8l5-16H16z" />
 </svg>

@@ -19,7 +19,7 @@ Canonical reference for visual identity, voice, and implementation. **Update thi
 
 | Asset | Location | Notes |
 |-------|----------|--------|
-| **Primary (live site)** | Inline in `index.html` + `brand_assets/logo/mark.svg` | **Wordmark:** “Adapt Agency” in **Fraunces**, prefixed by an **upward lightning** SVG. **Dark UI:** bolt uses emerald gradient (`#99f6e4` → `#34d399`). **Light/footer:** bolt uses brand teal gradient (`#1a6b64` → `#0f3d3a`). **Favicon:** `mark.svg`. |
+| **Primary (live site)** | Inline in `index.html` + `brand_assets/logo/mark.svg` | **Wordmark:** “Adapt Agency” in **DM Sans** (same family as nav / primary UI buttons), with an **upward** lightning SVG (apex at top of mark). **Dark UI:** bolt uses emerald gradient (`#99f6e4` → `#34d399`). **Light/footer:** bolt uses brand teal gradient (`#1a6b64` → `#0f3d3a`). **Favicon:** `mark.svg`. |
 | **Legacy raster** | `adapt-agency-logo.png`, `adapt-agency-logo-web.png` / `.svg` | Earlier lockups; **not used** on the current marketing page—keep for reference or print if needed. |
 
 **Clear space:** treat the lightning + wordmark as one lockup—keep clear space ≥ cap height of “A” on all sides.
