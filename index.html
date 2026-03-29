@@ -283,7 +283,7 @@
   <section id="lead" class="border-t border-aa-border bg-white px-5 py-20 md:px-8 md:py-24">
     <div class="mx-auto max-w-lg">
       <h2 class="font-display text-center text-3xl font-semibold text-aa-primary">Start with a short brief</h2>
-      <p class="mt-3 text-center text-aa-muted">We will reply with next steps—or email <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:hello@adaptagency.com.au">hello@adaptagency.com.au</a>.</p>
+      <p class="mt-3 text-center text-aa-muted">We will reply with next steps—or email <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au?subject=Enquiry%20from%20adaptagency.com.au">steve@adaptagency.com.au</a>.</p>
       <form id="lead-form" class="mt-10 space-y-4" novalidate>
         <div>
           <label class="mb-1 block text-sm font-medium text-aa-primary" for="name">Name</label>
@@ -345,6 +345,8 @@
       });
     });
 
+    var contactEmail = "steve@adaptagency.com.au";
+
     document.getElementById("lead-form").addEventListener("submit", function (e) {
       e.preventDefault();
       var fd = new FormData(this);
@@ -353,12 +355,27 @@
       var company = (fd.get("company") || "").toString().trim();
       var message = (fd.get("message") || "").toString().trim();
       if (!name || !email || !message) return;
+
+      var subject = "Website enquiry — " + name + " (Adapt Agency)";
+      var body =
+        "Name: " +
+        name +
+        "\nWork email: " +
+        email +
+        "\nCompany: " +
+        (company || "—") +
+        "\n\nProject details:\n" +
+        message +
+        "\n\n—\nSent via adaptagency.com.au contact form";
+
       document.getElementById("form-hint").textContent = "Opening your email app…";
       window.location.href =
-        "mailto:hello@adaptagency.com.au?subject=" +
-        encodeURIComponent("Website enquiry from " + name) +
+        "mailto:" +
+        contactEmail +
+        "?subject=" +
+        encodeURIComponent(subject) +
         "&body=" +
-        encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nCompany: " + company + "\n\n" + message);
+        encodeURIComponent(body);
     });
   </script>
 </body>
