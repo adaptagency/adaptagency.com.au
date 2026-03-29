@@ -155,7 +155,7 @@
     <header class="relative z-20 border-b border-white/[0.06] bg-black/10 backdrop-blur-md">
       <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 md:flex-nowrap md:gap-4 md:px-8">
         <a href="#" class="order-1 flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" aria-label="Adapt Agency home">
-          <svg class="h-9 w-[1.85rem] shrink-0 sm:h-10 sm:w-8" viewBox="0 0 32 40" aria-hidden="true">
+          <svg class="h-7 w-6 shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
             <defs>
               <linearGradient id="logo-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#99f6e4" />
@@ -163,9 +163,12 @@
                 <stop offset="100%" stop-color="#34d399" />
               </linearGradient>
             </defs>
-            <path fill="url(#logo-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
+            <!-- Mirrored so the stroke reads upward (tip at top, energy rising) -->
+            <g transform="translate(32 0) scale(-1 1)">
+              <path fill="url(#logo-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
+            </g>
           </svg>
-          <span class="font-display text-[1.15rem] font-semibold leading-none tracking-tight text-white sm:text-xl md:text-2xl">
+          <span class="font-display text-base font-semibold leading-none tracking-tight text-white sm:text-lg md:text-xl">
             Adapt <span class="text-white/88">Agency</span>
           </span>
         </a>
@@ -304,17 +307,19 @@
   </section>
 
   <footer class="border-t border-aa-border bg-aa-surface px-5 py-10 text-center text-sm text-aa-muted">
-    <div class="mb-3 flex items-center justify-center gap-2 text-aa-primary">
-      <svg class="h-7 w-6 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
+    <div class="mb-3 flex items-center justify-center gap-1.5 text-aa-primary">
+      <svg class="h-5 w-4 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
         <defs>
           <linearGradient id="footer-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#1a6b64" />
             <stop offset="100%" stop-color="#0f3d3a" />
           </linearGradient>
         </defs>
-        <path fill="url(#footer-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
+        <g transform="translate(32 0) scale(-1 1)">
+          <path fill="url(#footer-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
+        </g>
       </svg>
-      <span class="font-display text-lg font-semibold tracking-tight">Adapt Agency</span>
+      <span class="font-display text-base font-semibold tracking-tight">Adapt Agency</span>
     </div>
     <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
   </footer>
