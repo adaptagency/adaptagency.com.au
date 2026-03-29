@@ -20,17 +20,19 @@ We use AI thoughtfully across discovery, implementation, and quality—always wi
 
 ## Repository layout
 
-The site is **static**: HTML, CSS, and JavaScript (and optional assets). Structure will evolve as pages and sections are added; a typical layout looks like:
+The site is **static**: HTML, [Tailwind CSS](https://tailwindcss.com/) (via CDN), small inline scripts, and assets. There is no build step.
 
 ```
-├── index.html          # Home (or entry via build output)
-├── assets/             # Images, fonts, icons
-├── css/                # Stylesheets
-├── js/                 # Client-side behaviour (minimal by default)
+├── index.html          # Home (marketing, contact form, hero)
+├── privacy.html        # Privacy policy
+├── terms.html          # Terms of use
+├── sitemap.xml         # URL list for crawlers (update lastmod when content changes)
+├── robots.txt          # Crawl rules + sitemap URL
+├── brand_assets/       # Logo, tokens, brand notes
 └── README.md
 ```
 
-If a build step (e.g. a static site generator or bundler) is introduced later, this section can be updated to document `src/`, build commands, and deploy output.
+If a static site generator or bundler is added later, update this section with `src/`, build commands, and deploy output.
 
 ---
 
@@ -46,6 +48,26 @@ If a build step (e.g. a static site generator or bundler) is introduced later, t
    Or open `index.html` directly in the browser for early layout checks (some features may require a local server).
 
 3. Edit files, refresh, and commit changes when ready.
+
+**Language toggle:** English and Vietnamese copy is switched in the browser; the chosen language is stored in `localStorage` under the key `adaptagency-lang` so it stays consistent across `index.html`, `privacy.html`, and `terms.html`.
+
+---
+
+## Responsiveness and accessibility
+
+- Layout uses Tailwind breakpoints (`sm`, `md`, `lg`, etc.), fluid type (e.g. `clamp` on key headings), and `min-h-[48px]` on primary controls where appropriate.
+- Nav and header actions use a **minimum 44×44px** touch target (`.touch-target` on the home page).
+- In-page anchors (`#services`, `#lead`, etc.) use **`scroll-margin-top`** so section titles are not hidden under the **sticky** header.
+- Legal pages use **`overflow-x: clip`**, **`break-words`**, and Vietnamese-friendly **`word-break`** rules so long words and URLs do not blow out the layout.
+
+---
+
+## SEO (checklist)
+
+- **Per page:** `<title>`, meta description, canonical URL, `robots`, `theme-color`, Open Graph and Twitter tags where applicable, JSON-LD on the home page and legal pages.
+- **Home `og:image` / Twitter image:** points at `brand_assets/logo/adapt-agency-logo-web.svg` in this repo. Many networks prefer a **1200×630 PNG or JPG** for rich previews; add one under `brand_assets/` and point the meta tags at it if you need maximum social compatibility.
+- **`sitemap.xml` and `robots.txt`:** deploy at the site root; submit the sitemap in Google Search Console if you use it.
+- **Hreflang:** `alternate` links note en-AU and vi; both locales are served from the same URLs with client-side copy (common for small static sites).
 
 ---
 
