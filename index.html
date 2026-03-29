@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adapt Agency — AI-powered websites, apps &amp; services</title>
-  <meta name="description" content="Adapt Agency helps businesses ship AI-powered websites, apps, and tailored AI services—including multilingual sites and apps and international delivery—with clear scope and human judgment." />
+  <title id="doc-title">Adapt Agency — AI-powered websites, apps &amp; services</title>
+  <meta id="doc-desc" name="description" content="Adapt Agency helps businesses ship AI-powered websites, apps, and tailored AI services—including multilingual sites and apps and international delivery—with clear scope and human judgment." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
@@ -170,10 +170,58 @@
     .nav-link:hover {
       color: rgba(255, 255, 255, 0.95);
     }
+
+    /* Language toggle (VN ↔ EN), Adapt accent + emerald thumb */
+    .lang-switch-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(196, 92, 66, 0.55);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.45rem;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switch-wrap .lang-flag {
+      font-size: 1.125rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .lang-switch-track {
+      display: block;
+      position: relative;
+      width: 2.75rem;
+      height: 1.625rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(196, 92, 66, 0.45);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .lang-switch-track:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .lang-switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 1.125rem;
+      height: 1.125rem;
+      border-radius: 9999px;
+      background: #34d399;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transition: transform 0.22s ease-out;
+      pointer-events: none;
+    }
+    .lang-switch-wrap.is-en .lang-switch-thumb {
+      transform: translateX(1.125rem);
+    }
   </style>
 </head>
 <body class="bg-aa-surface text-aa-text antialiased">
-  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none">Skip to content</a>
+  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
   <!-- Dark hero (layout inspired by brand_assets reference) -->
   <div class="hero-atmos relative min-h-[100dvh] overflow-hidden text-white">
@@ -182,7 +230,7 @@
 
     <header class="relative z-20 border-b border-white/[0.06] bg-black/10 backdrop-blur-md">
       <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 md:flex-nowrap md:gap-4 md:px-8">
-        <a href="#" class="order-1 flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" aria-label="Adapt Agency home">
+        <a href="#" class="order-1 flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" data-i18n-aria="logo_aria">
           <svg class="h-7 w-6 shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
             <defs>
               <linearGradient id="logo-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -201,11 +249,20 @@
             Adapt <span class="text-white/88">Agency</span>
           </span>
         </a>
-        <a href="#lead" class="order-2 rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-sm md:order-3 md:px-5">Start a project</a>
-        <nav class="order-3 flex w-full basis-full items-center justify-center gap-5 border-t border-white/[0.06] pt-3 text-xs font-medium text-white/65 sm:gap-7 sm:text-sm md:order-2 md:w-auto md:basis-auto md:border-t-0 md:pt-0 md:text-sm" aria-label="Primary">
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#capabilities" class="nav-link">Capabilities</a>
-          <a href="#lead" class="nav-link">Contact</a>
+        <div class="order-2 flex items-center gap-2 sm:gap-3 md:order-3">
+          <div id="lang-switch-root" class="lang-switch-wrap is-en" data-lang="en">
+            <span class="lang-flag" aria-hidden="true">🇻🇳</span>
+            <button type="button" id="lang-toggle" class="lang-switch-track" role="switch" aria-checked="false" data-i18n-aria="lang_toggle_aria">
+              <span class="lang-switch-thumb" aria-hidden="true"></span>
+            </button>
+            <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+          </div>
+          <a href="#lead" class="rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-sm md:px-5" data-i18n="cta_start">Start a project</a>
+        </div>
+        <nav class="order-3 flex w-full basis-full items-center justify-center gap-5 border-t border-white/[0.06] pt-3 text-xs font-medium text-white/65 sm:gap-7 sm:text-sm md:order-2 md:w-auto md:basis-auto md:border-t-0 md:pt-0 md:text-sm" data-i18n-aria="nav_aria" aria-label="Primary">
+          <a href="#services" class="nav-link" data-i18n="nav_services">Services</a>
+          <a href="#capabilities" class="nav-link" data-i18n="nav_capabilities">Capabilities</a>
+          <a href="#lead" class="nav-link" data-i18n="nav_contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -215,16 +272,16 @@
       <div class="relative hidden min-h-[320px] md:block" aria-hidden="false">
         <div class="hero-card-enter absolute left-0 top-0 w-[min(100%,280px)]">
           <div class="float-card -rotate-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/12 to-white/[0.04] p-5 shadow-card backdrop-blur-xl">
-            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Delivery</p>
-            <p class="mt-2 font-display text-2xl font-semibold text-white">Weeks to first release</p>
-            <p class="mt-2 text-sm leading-relaxed text-white/55">Structured phases, clear handover—no endless “discovery.”</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90" data-i18n="card_delivery_l">Delivery</p>
+            <p class="mt-2 font-display text-2xl font-semibold text-white" data-i18n="card_delivery_t">Weeks to first release</p>
+            <p class="mt-2 text-sm leading-relaxed text-white/55" data-i18n="card_delivery_d">Structured phases, clear handover—no endless “discovery.”</p>
           </div>
         </div>
         <div class="hero-card-enter absolute left-8 top-32 w-[min(100%,260px)]">
           <div class="float-card rotate-3 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-white/[0.05] p-5 shadow-card backdrop-blur-xl">
-            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Reach</p>
-            <p class="mt-2 font-display text-2xl font-semibold text-white">Multilingual &amp; global</p>
-            <p class="mt-2 text-sm text-white/55">Multilingual sites and apps, locale-aware UX, and collaboration across time zones.</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90" data-i18n="card_reach_l">Reach</p>
+            <p class="mt-2 font-display text-2xl font-semibold text-white" data-i18n="card_reach_t">Multilingual &amp; global</p>
+            <p class="mt-2 text-sm text-white/55" data-i18n="card_reach_d">Multilingual sites and apps, locale-aware UX, and collaboration across time zones.</p>
           </div>
         </div>
         <div class="hero-card-enter absolute left-4 top-[19rem] w-[min(100%,270px)]">
@@ -232,8 +289,8 @@
             <div class="flex items-center gap-2 text-amber-200/90">
               <span class="text-lg leading-none">★★★★★</span>
             </div>
-            <p class="mt-2 font-display text-lg font-medium text-white">Human-led AI delivery</p>
-            <p class="mt-1 text-sm text-white/55">Models and automation where they help—judgement where it matters.</p>
+            <p class="mt-2 font-display text-lg font-medium text-white" data-i18n="card_ai_t">Human-led AI delivery</p>
+            <p class="mt-1 text-sm text-white/55" data-i18n="card_ai_d">Models and automation where they help—judgement where it matters.</p>
           </div>
         </div>
       </div>
@@ -241,15 +298,15 @@
       <!-- Centre column: headline + prompt -->
       <div class="text-center md:text-left">
         <h1 class="font-display mx-auto max-w-3xl text-[2rem] font-medium leading-[1.12] text-white sm:text-4xl md:mx-0 lg:text-[2.75rem]">
-          Build websites, apps, and AI workflows faster with
-          <em class="not-italic text-emerald-200/95">AI-assisted delivery</em>—and a team that still owns the outcome.
+          <span data-i18n="hero_h1_a">Build websites, apps, and AI workflows faster with</span>
+          <em class="not-italic text-emerald-200/95" data-i18n="hero_h1_em">AI-assisted delivery</em><span data-i18n="hero_h1_b">—and a team that still owns the outcome.</span>
         </h1>
-        <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/60 md:mx-0 md:text-lg">
+        <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/60 md:mx-0 md:text-lg" data-i18n="hero_sub">
           Turn briefs into shippable software: marketing sites (including multilingual), apps, internal tools, and bespoke AI services—without sacrificing clarity or quality.
         </p>
 
         <form id="hero-prompt" class="mx-auto mt-10 max-w-2xl md:mx-0" action="#lead" data-scroll>
-          <label class="sr-only" for="prompt-input">Describe your project</label>
+          <label class="sr-only" for="prompt-input" data-i18n="hero_prompt_label">Describe your project</label>
           <div class="flex flex-col gap-3 rounded-2xl border border-white/15 bg-black/40 p-2 shadow-prompt backdrop-blur-xl sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:pl-5 sm:pr-2 sm:py-2">
             <span class="hidden pl-1 text-emerald-300/80 sm:inline" aria-hidden="true">✦</span>
             <input
@@ -257,22 +314,23 @@
               type="text"
               name="prompt"
               autocomplete="off"
+              data-i18n-placeholder="hero_prompt_ph"
               placeholder="Describe what you want to build…"
               class="min-h-[48px] w-full flex-1 bg-transparent px-4 py-3 text-[15px] text-white placeholder:text-white/35 focus:outline-none sm:px-2 sm:py-2"
             />
-            <button type="submit" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-aa-night transition-transform duration-200 hover:bg-emerald-50 sm:rounded-full sm:py-2.5">Continue</button>
+            <button type="submit" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-aa-night transition-transform duration-200 hover:bg-emerald-50 sm:rounded-full sm:py-2.5" data-i18n="hero_continue">Continue</button>
           </div>
         </form>
 
-        <div class="mx-auto mt-5 flex max-w-2xl flex-wrap justify-center gap-2 md:mx-0 md:justify-start" role="group" aria-label="Quick project types">
-          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill>Marketing website</button>
-          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill>Internal app</button>
-          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill>AI automation</button>
-          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill>Strategy session</button>
+        <div class="mx-auto mt-5 flex max-w-2xl flex-wrap justify-center gap-2 md:mx-0 md:justify-start" role="group" data-i18n-aria="pills_aria" aria-label="Quick project types">
+          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill data-i18n="pill_1">Marketing website</button>
+          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill data-i18n="pill_2">Internal app</button>
+          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill data-i18n="pill_3">AI automation</button>
+          <button type="button" class="tag-pill rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm transition-colors hover:border-emerald-400/40 hover:bg-white/10 hover:text-white" data-pill data-i18n="pill_4">Strategy session</button>
         </div>
 
-        <p class="mt-10 text-center text-[11px] font-medium uppercase tracking-[0.25em] text-white/35 md:text-left">Built for local businesses</p>
-        <p class="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-white/60 md:mx-0 md:text-left">
+        <p class="mt-10 text-center text-[11px] font-medium uppercase tracking-[0.25em] text-white/35 md:text-left" data-i18n="trust_eyebrow">Built for local businesses</p>
+        <p class="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-white/60 md:mx-0 md:text-left" data-i18n="trust_body">
           Shops, trades, professional services, and regional teams—we build for people who need websites and software that work in the real world, without corporate theatre.
         </p>
       </div>
@@ -285,26 +343,26 @@
   <!-- Services: what you can buy -->
   <section id="services" class="relative z-10 scroll-mt-24 bg-aa-surface px-5 pb-24 pt-20 md:px-8 md:pb-28 md:pt-28" aria-labelledby="services-heading">
     <div class="mx-auto max-w-6xl">
-      <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left">Services</p>
-      <h2 id="services-heading" class="font-display mx-auto mt-4 max-w-3xl text-center text-3xl font-semibold leading-tight text-aa-primary md:mx-0 md:text-left md:text-4xl lg:text-[2.5rem]">
+      <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_services_l">Services</p>
+      <h2 id="services-heading" class="font-display mx-auto mt-4 max-w-3xl text-center text-3xl font-semibold leading-tight text-aa-primary md:mx-0 md:text-left md:text-4xl lg:text-[2.5rem]" data-i18n="sec_services_h">
         What we build with you
       </h2>
-      <p class="mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-aa-muted md:mx-0 md:text-left">
+      <p class="mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-aa-muted md:mx-0 md:text-left" data-i18n="sec_services_p">
         Multilingual customer-facing sites and apps, operational software, and practical AI—scoped so you always know what you are buying.
       </p>
 
       <div class="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
         <article class="rounded-2xl border border-aa-border/80 bg-white p-8 shadow-[0_2px_24px_-8px_rgba(15,61,58,0.12)] transition-transform duration-300 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-aa-primary">Websites &amp; content</h3>
-          <p class="mt-3 text-sm leading-relaxed text-aa-muted">Fast, accessible marketing sites—including multilingual and localised experiences—with AI speed in production and human polish in brand and UX.</p>
+          <h3 class="font-display text-xl font-semibold text-aa-primary" data-i18n="svc_1_h">Websites &amp; content</h3>
+          <p class="mt-3 text-sm leading-relaxed text-aa-muted" data-i18n="svc_1_p">Fast, accessible marketing sites—including multilingual and localised experiences—with AI speed in production and human polish in brand and UX.</p>
         </article>
         <article class="rounded-2xl border border-aa-border/80 bg-white p-8 shadow-[0_2px_24px_-8px_rgba(15,61,58,0.12)] transition-transform duration-300 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-aa-primary">Apps &amp; integrations</h3>
-          <p class="mt-3 text-sm leading-relaxed text-aa-muted">Internal tools and customer apps wired to your data—including multilingual interfaces and locale-aware flows where you need them—with maintainable code and clear ownership.</p>
+          <h3 class="font-display text-xl font-semibold text-aa-primary" data-i18n="svc_2_h">Apps &amp; integrations</h3>
+          <p class="mt-3 text-sm leading-relaxed text-aa-muted" data-i18n="svc_2_p">Internal tools and customer apps wired to your data—including multilingual interfaces and locale-aware flows where you need them—with maintainable code and clear ownership.</p>
         </article>
         <article class="rounded-2xl border border-aa-border/80 bg-white p-8 shadow-[0_2px_24px_-8px_rgba(15,61,58,0.12)] transition-transform duration-300 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-aa-primary">AI services</h3>
-          <p class="mt-3 text-sm leading-relaxed text-aa-muted">Workflow automation, assistants, and content pipelines—including multilingual content and review workflows—implemented with guardrails you can defend.</p>
+          <h3 class="font-display text-xl font-semibold text-aa-primary" data-i18n="svc_3_h">AI services</h3>
+          <p class="mt-3 text-sm leading-relaxed text-aa-muted" data-i18n="svc_3_p">Workflow automation, assistants, and content pipelines—including multilingual content and review workflows—implemented with guardrails you can defend.</p>
         </article>
       </div>
     </div>
@@ -313,38 +371,38 @@
   <!-- Capabilities: how we work (separate anchor for nav) -->
   <section id="capabilities" class="scroll-mt-24 border-t border-aa-border bg-white px-5 py-24 md:px-8 md:py-32" aria-labelledby="capabilities-heading">
     <div class="mx-auto max-w-6xl">
-      <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left">Capabilities</p>
-      <h2 id="capabilities-heading" class="font-display mx-auto mt-4 max-w-3xl text-center text-3xl font-semibold leading-tight text-aa-primary md:mx-0 md:text-left md:text-4xl lg:text-[2.5rem]">
+      <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_cap_l">Capabilities</p>
+      <h2 id="capabilities-heading" class="font-display mx-auto mt-4 max-w-3xl text-center text-3xl font-semibold leading-tight text-aa-primary md:mx-0 md:text-left md:text-4xl lg:text-[2.5rem]" data-i18n="sec_cap_h">
         How we deliver—without the mystery
       </h2>
-      <p class="mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-aa-muted md:mx-0 md:text-left">
+      <p class="mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-aa-muted md:mx-0 md:text-left" data-i18n="sec_cap_p">
         Process, tooling, and quality bars you can hold us to—whether the engagement is two weeks or two quarters.
       </p>
 
       <ul class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">Scoping &amp; phases</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Written assumptions, milestones, and change control when priorities shift—so “done” stays definable.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_1_h">Scoping &amp; phases</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_1_p">Written assumptions, milestones, and change control when priorities shift—so “done” stays definable.</p>
         </li>
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">AI in the loop</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Faster drafting and refactors with models and agents; human review on architecture, security, and anything customer-facing.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_2_h">AI in the loop</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_2_p">Faster drafting and refactors with models and agents; human review on architecture, security, and anything customer-facing.</p>
         </li>
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">Performance &amp; accessibility</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Baseline checks for speed, semantics, and keyboard use—so launches are not a surprise for real users.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_3_h">Performance &amp; accessibility</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_3_p">Baseline checks for speed, semantics, and keyboard use—so launches are not a surprise for real users.</p>
         </li>
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">Stacks that last</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Plain HTML where it fits, APIs and integrations where they earn their keep—documented for the next person who touches the code.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_4_h">Stacks that last</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_4_p">Plain HTML where it fits, APIs and integrations where they earn their keep—documented for the next person who touches the code.</p>
         </li>
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">International context &amp; multilingual</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Copy, UX, and technical i18n for multiple languages and regions—so translation and locales are part of the product, not an afterthought. We align with your teams and customers across time zones.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_5_h">International context &amp; multilingual</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_5_p">Copy, UX, and technical i18n for multiple languages and regions—so translation and locales are part of the product, not an afterthought. We align with your teams and customers across time zones.</p>
         </li>
         <li class="border-l-2 border-aa-primary-tint pl-5">
-          <h3 class="text-base font-semibold text-aa-primary">Handover you can use</h3>
-          <p class="mt-2 text-sm leading-relaxed text-aa-muted">Repos, deploy notes, and walkthroughs—so you are not locked in when the project ends.</p>
+          <h3 class="text-base font-semibold text-aa-primary" data-i18n="cap_6_h">Handover you can use</h3>
+          <p class="mt-2 text-sm leading-relaxed text-aa-muted" data-i18n="cap_6_p">Repos, deploy notes, and walkthroughs—so you are not locked in when the project ends.</p>
         </li>
       </ul>
     </div>
@@ -353,26 +411,26 @@
   <!-- Lead -->
   <section id="lead" class="border-t border-aa-border bg-white px-5 py-20 md:px-8 md:py-24">
     <div class="mx-auto max-w-lg">
-      <h2 class="font-display text-center text-3xl font-semibold text-aa-primary">Start with a short brief</h2>
-      <p class="mt-3 text-center text-aa-muted">We will reply with next steps—or email <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au?subject=Enquiry%20from%20adaptagency.com.au">steve@adaptagency.com.au</a>.</p>
+      <h2 class="font-display text-center text-3xl font-semibold text-aa-primary" data-i18n="lead_h">Start with a short brief</h2>
+      <p class="mt-3 text-center text-aa-muted"><span data-i18n="lead_intro">We will reply with next steps—or email</span> <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au?subject=Enquiry%20from%20adaptagency.com.au">steve@adaptagency.com.au</a>.</p>
       <form id="lead-form" class="mt-10 space-y-4" novalidate>
         <div>
-          <label class="mb-1 block text-sm font-medium text-aa-primary" for="name">Name</label>
+          <label class="mb-1 block text-sm font-medium text-aa-primary" for="name" data-i18n="form_name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required class="w-full rounded-xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)]" />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-aa-primary" for="email">Work email</label>
+          <label class="mb-1 block text-sm font-medium text-aa-primary" for="email" data-i18n="form_email">Work email</label>
           <input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)]" />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-aa-primary" for="company">Company</label>
+          <label class="mb-1 block text-sm font-medium text-aa-primary" for="company" data-i18n="form_company">Company</label>
           <input id="company" name="company" type="text" autocomplete="organization" class="w-full rounded-xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)]" />
         </div>
         <div>
-          <label class="mb-1 block text-sm font-medium text-aa-primary" for="message">Project details</label>
+          <label class="mb-1 block text-sm font-medium text-aa-primary" for="message" data-i18n="form_message">Project details</label>
           <textarea id="message" name="message" rows="4" required class="w-full resize-y rounded-xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)]"></textarea>
         </div>
-        <button type="submit" class="w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 hover:-translate-y-0.5">Send enquiry</button>
+        <button type="submit" class="w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 hover:-translate-y-0.5" data-i18n="form_submit">Send enquiry</button>
         <p id="form-hint" class="text-center text-xs text-aa-muted" role="status"></p>
       </form>
     </div>
@@ -396,6 +454,246 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    var AA_LANG_KEY = "adaptagency-lang";
+    var I18N = {
+      en: {
+        skip: "Skip to content",
+        logo_aria: "Adapt Agency home",
+        lang_toggle_aria: "Switch language: English or Vietnamese",
+        nav_aria: "Primary",
+        cta_start: "Start a project",
+        nav_services: "Services",
+        nav_capabilities: "Capabilities",
+        nav_contact: "Contact",
+        card_delivery_l: "Delivery",
+        card_delivery_t: "Weeks to first release",
+        card_delivery_d: "Structured phases, clear handover—no endless “discovery.”",
+        card_reach_l: "Reach",
+        card_reach_t: "Multilingual & global",
+        card_reach_d: "Multilingual sites and apps, locale-aware UX, and collaboration across time zones.",
+        card_ai_t: "Human-led AI delivery",
+        card_ai_d: "Models and automation where they help—judgement where it matters.",
+        hero_h1_a: "Build websites, apps, and AI workflows faster with ",
+        hero_h1_em: "AI-assisted delivery",
+        hero_h1_b: "—and a team that still owns the outcome.",
+        hero_sub:
+          "Turn briefs into shippable software: marketing sites (including multilingual), apps, internal tools, and bespoke AI services—without sacrificing clarity or quality.",
+        hero_prompt_label: "Describe your project",
+        hero_prompt_ph: "Describe what you want to build…",
+        hero_continue: "Continue",
+        pills_aria: "Quick project types",
+        pill_1: "Marketing website",
+        pill_2: "Internal app",
+        pill_3: "AI automation",
+        pill_4: "Strategy session",
+        pill_seed: "We need help with: ",
+        trust_eyebrow: "Built for local businesses",
+        trust_body:
+          "Shops, trades, professional services, and regional teams—we build for people who need websites and software that work in the real world, without corporate theatre.",
+        sec_services_l: "Services",
+        sec_services_h: "What we build with you",
+        sec_services_p:
+          "Multilingual customer-facing sites and apps, operational software, and practical AI—scoped so you always know what you are buying.",
+        svc_1_h: "Websites & content",
+        svc_1_p:
+          "Fast, accessible marketing sites—including multilingual and localised experiences—with AI speed in production and human polish in brand and UX.",
+        svc_2_h: "Apps & integrations",
+        svc_2_p:
+          "Internal tools and customer apps wired to your data—including multilingual interfaces and locale-aware flows where you need them—with maintainable code and clear ownership.",
+        svc_3_h: "AI services",
+        svc_3_p:
+          "Workflow automation, assistants, and content pipelines—including multilingual content and review workflows—implemented with guardrails you can defend.",
+        sec_cap_l: "Capabilities",
+        sec_cap_h: "How we deliver—without the mystery",
+        sec_cap_p:
+          "Process, tooling, and quality bars you can hold us to—whether the engagement is two weeks or two quarters.",
+        cap_1_h: "Scoping & phases",
+        cap_1_p:
+          "Written assumptions, milestones, and change control when priorities shift—so “done” stays definable.",
+        cap_2_h: "AI in the loop",
+        cap_2_p:
+          "Faster drafting and refactors with models and agents; human review on architecture, security, and anything customer-facing.",
+        cap_3_h: "Performance & accessibility",
+        cap_3_p:
+          "Baseline checks for speed, semantics, and keyboard use—so launches are not a surprise for real users.",
+        cap_4_h: "Stacks that last",
+        cap_4_p:
+          "Plain HTML where it fits, APIs and integrations where they earn their keep—documented for the next person who touches the code.",
+        cap_5_h: "International context & multilingual",
+        cap_5_p:
+          "Copy, UX, and technical i18n for multiple languages and regions—so translation and locales are part of the product, not an afterthought. We align with your teams and customers across time zones.",
+        cap_6_h: "Handover you can use",
+        cap_6_p: "Repos, deploy notes, and walkthroughs—so you are not locked in when the project ends.",
+        lead_h: "Start with a short brief",
+        lead_intro: "We will reply with next steps—or email",
+        form_name: "Name",
+        form_email: "Work email",
+        form_company: "Company",
+        form_message: "Project details",
+        form_submit: "Send enquiry",
+        form_hint_open: "Opening your email app…",
+        doc_title: "Adapt Agency — AI-powered websites, apps & services",
+        doc_desc:
+          "Adapt Agency helps businesses ship AI-powered websites, apps, and tailored AI services—including multilingual sites and apps and international delivery—with clear scope and human judgment.",
+        mail_subject: "Website enquiry — ",
+        mail_name: "Name: ",
+        mail_email: "Work email: ",
+        mail_company: "Company: ",
+        mail_details: "Project details:",
+        mail_footer: "—\nSent via adaptagency.com.au contact form",
+      },
+      vi: {
+        skip: "Bỏ qua đến nội dung",
+        logo_aria: "Trang chủ Adapt Agency",
+        lang_toggle_aria: "Chuyển ngôn ngữ: Tiếng Việt hoặc tiếng Anh",
+        nav_aria: "Điều hướng chính",
+        cta_start: "Bắt đầu dự án",
+        nav_services: "Dịch vụ",
+        nav_capabilities: "Năng lực",
+        nav_contact: "Liên hệ",
+        card_delivery_l: "Bàn giao",
+        card_delivery_t: "Vài tuần tới bản ra mắt đầu tiên",
+        card_delivery_d: "Các giai đoạn rõ ràng, bàn giao minh bạch—không “khám phá” kéo dài vô hạn.",
+        card_reach_l: "Phạm vi",
+        card_reach_t: "Đa ngôn ngữ & toàn cầu",
+        card_reach_d:
+          "Website và ứng dụng đa ngôn ngữ, UX theo từng locale, và phối hợp xuyên múi giờ.",
+        card_ai_t: "AI có con người dẫn dắt",
+        card_ai_d: "Mô hình và tự động hóa khi phù hợp—phán đoán con người khi quan trọng.",
+        hero_h1_a: "Xây website, ứng dụng và quy trình AI nhanh hơn với ",
+        hero_h1_em: "giao hàng hỗ trợ bởi AI",
+        hero_h1_b: "—cùng đội ngũ vẫn chịu trách nhiệm về kết quả.",
+        hero_sub:
+          "Biến brief thành phần mềm có thể triển khai: website tiếp thị (kể cả đa ngôn ngữ), ứng dụng, công cụ nội bộ và dịch vụ AI tùy chỉnh—vẫn rõ ràng và chất lượng.",
+        hero_prompt_label: "Mô tả dự án của bạn",
+        hero_prompt_ph: "Mô tả điều bạn muốn xây dựng…",
+        hero_continue: "Tiếp tục",
+        pills_aria: "Gợi ý nhanh loại dự án",
+        pill_1: "Website tiếp thị",
+        pill_2: "Ứng dụng nội bộ",
+        pill_3: "Tự động hóa AI",
+        pill_4: "Tư vấn chiến lược",
+        pill_seed: "Chúng tôi cần hỗ trợ: ",
+        trust_eyebrow: "Dành cho doanh nghiệp địa phương",
+        trust_body:
+          "Cửa hàng, dịch vụ thủ công, ngành chuyên nghiệp và đội nhóm khu vực—chúng tôi xây dựng cho người cần website và phần mềm hoạt động ngoài đời thực, không phô trương kiểu doanh nghiệp lớn.",
+        sec_services_l: "Dịch vụ",
+        sec_services_h: "Chúng tôi cùng bạn xây gì",
+        sec_services_p:
+          "Website và app đa ngôn ngữ hướng khách hàng, phần mềm vận hành và AI thực dụng—phạm vi rõ ràng để bạn luôn biết mình đang mua gì.",
+        svc_1_h: "Website & nội dung",
+        svc_1_p:
+          "Website tiếp thị nhanh, dễ tiếp cận—kể cả đa ngôn ngữ và bản địa hóa—tốc độ nhờ AI trong sản xuất, chỉnh chu thương hiệu và UX nhờ con người.",
+        svc_2_h: "Ứng dụng & tích hợp",
+        svc_2_p:
+          "Công cụ nội bộ và app khách hàng kết nối dữ liệu của bạn—giao diện đa ngôn ngữ và luồng theo locale khi cần—mã dễ bảo trì, quyền sở hữu rõ ràng.",
+        svc_3_h: "Dịch vụ AI",
+        svc_3_p:
+          "Tự động hóa quy trình, trợ lý và pipeline nội dung—kể cả nội dung đa ngôn ngữ và quy trình duyệt—triển khai có giới hạn an toàn mà bạn có thể bảo vệ.",
+        sec_cap_l: "Năng lực",
+        sec_cap_h: "Cách chúng tôi giao hàng—không che giấu",
+        sec_cap_p:
+          "Quy trình, công cụ và tiêu chuẩn chất lượng bạn có thể đối chiếu—dù hợp đồng hai tuần hay hai quý.",
+        cap_1_h: "Phạm vi & giai đoạn",
+        cap_1_p:
+          "Giả định bằng văn bản, mốc và kiểm soát thay đổi khi ưu tiên dịch chuyển—để “xong” luôn định nghĩa được.",
+        cap_2_h: "AI trong vòng lặp",
+        cap_2_p:
+          "Soạn thảo và refactor nhanh hơn với mô hình và agent; con người rà soát kiến trúc, bảo mật và mọi thứ hướng khách hàng.",
+        cap_3_h: "Hiệu năng & khả năng tiếp cận",
+        cap_3_p:
+          "Kiểm tra cơ bản về tốc độ, ngữ nghĩa và bàn phím—để ra mắt không gây bất ngờ cho người dùng thật.",
+        cap_4_h: "Stack bền vững",
+        cap_4_p:
+          "HTML thuần khi phù hợp, API và tích hợp khi xứng đáng—có tài liệu cho người tiếp theo chỉnh sửa mã.",
+        cap_5_h: "Bối cảnh quốc tế & đa ngôn ngữ",
+        cap_5_p:
+          "Nội dung, UX và i18n kỹ thuật cho nhiều ngôn ngữ và khu vực—để dịch thuật và locale là một phần sản phẩm, không phải gắn thêm sau. Chúng tôi phối hợp với đội và khách hàng của bạn xuyên múi giờ.",
+        cap_6_h: "Bàn giao bạn dùng được",
+        cap_6_p:
+          "Repo, ghi chú triển khai và walkthrough—để bạn không bị khóa khi dự án kết thúc.",
+        lead_h: "Bắt đầu bằng brief ngắn",
+        lead_intro: "Chúng tôi sẽ trả lời các bước tiếp theo—hoặc email",
+        form_name: "Họ tên",
+        form_email: "Email công việc",
+        form_company: "Công ty",
+        form_message: "Chi tiết dự án",
+        form_submit: "Gửi yêu cầu",
+        form_hint_open: "Đang mở ứng dụng email…",
+        doc_title: "Adapt Agency — Website, ứng dụng & dịch vụ AI",
+        doc_desc:
+          "Adapt Agency giúp doanh nghiệp triển khai website, ứng dụng và dịch vụ AI phù hợp—kể cả đa ngôn ngữ và giao hàng quốc tế—với phạm vi rõ ràng và phán đoán con người.",
+        mail_subject: "Yêu cầu từ website — ",
+        mail_name: "Họ tên: ",
+        mail_email: "Email công việc: ",
+        mail_company: "Công ty: ",
+        mail_details: "Chi tiết dự án:",
+        mail_footer: "—\nGửi qua biểu mẫu adaptagency.com.au",
+      },
+    };
+
+    function getLang() {
+      try {
+        var s = localStorage.getItem(AA_LANG_KEY);
+        if (s === "vi" || s === "en") return s;
+      } catch (e) {}
+      return "en";
+    }
+
+    function t(key) {
+      var lang = getLang();
+      var pack = I18N[lang] || I18N.en;
+      return pack[key] != null ? pack[key] : I18N.en[key] || key;
+    }
+
+    function applyLang(lang) {
+      if (lang !== "vi" && lang !== "en") lang = "en";
+      try {
+        localStorage.setItem(AA_LANG_KEY, lang);
+      } catch (e) {}
+      document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (key && t(key)) el.textContent = t(key);
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        if (key) el.setAttribute("placeholder", t(key));
+      });
+      document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-aria");
+        if (key) el.setAttribute("aria-label", t(key));
+      });
+
+      var titleEl = document.getElementById("doc-title");
+      if (titleEl) titleEl.textContent = t("doc_title");
+      var descEl = document.getElementById("doc-desc");
+      if (descEl) descEl.setAttribute("content", t("doc_desc"));
+
+      var root = document.getElementById("lang-switch-root");
+      var toggle = document.getElementById("lang-toggle");
+      if (root && toggle) {
+        root.setAttribute("data-lang", lang);
+        if (lang === "en") {
+          root.classList.add("is-en");
+          toggle.setAttribute("aria-checked", "false");
+        } else {
+          root.classList.remove("is-en");
+          toggle.setAttribute("aria-checked", "true");
+        }
+      }
+    }
+
+    applyLang(getLang());
+
+    var langToggleBtn = document.getElementById("lang-toggle");
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener("click", function () {
+        applyLang(getLang() === "en" ? "vi" : "en");
+      });
+    }
 
     (function randomizeHeroCardEntrance() {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -432,8 +730,8 @@
 
     document.querySelectorAll("[data-pill]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var t = btn.textContent.trim();
-        promptInput.value = "We need help with: " + t + ". ";
+        var label = btn.textContent.trim();
+        promptInput.value = t("pill_seed") + label + ". ";
         promptInput.focus();
       });
     });
@@ -449,19 +747,24 @@
       var message = (fd.get("message") || "").toString().trim();
       if (!name || !email || !message) return;
 
-      var subject = "Website enquiry — " + name + " (Adapt Agency)";
+      var subject = t("mail_subject") + name + " (Adapt Agency)";
       var body =
-        "Name: " +
+        t("mail_name") +
         name +
-        "\nWork email: " +
+        "\n" +
+        t("mail_email") +
         email +
-        "\nCompany: " +
+        "\n" +
+        t("mail_company") +
         (company || "—") +
-        "\n\nProject details:\n" +
+        "\n\n" +
+        t("mail_details") +
+        "\n" +
         message +
-        "\n\n—\nSent via adaptagency.com.au contact form";
+        "\n\n" +
+        t("mail_footer");
 
-      document.getElementById("form-hint").textContent = "Opening your email app…";
+      document.getElementById("form-hint").textContent = t("form_hint_open");
       window.location.href =
         "mailto:" +
         contactEmail +
