@@ -521,6 +521,18 @@
           <label class="mb-1 block text-sm font-medium text-aa-primary" for="message" data-i18n="form_message">Project details</label>
           <textarea id="message" name="message" rows="4" required class="min-h-[120px] w-full resize-y rounded-xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text text-base transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)]"></textarea>
         </div>
+        <div class="flex items-start gap-3 pt-1">
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            class="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 rounded border-aa-border accent-aa-primary focus:outline-none focus:ring-2 focus:ring-aa-accent focus:ring-offset-2"
+          />
+          <label for="consent" class="text-sm leading-relaxed text-aa-muted">
+            <span data-i18n="form_consent_1">I agree to the </span>
+            <a href="privacy.html" class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" data-i18n="footer_privacy">Privacy Policy</a><span data-i18n="form_consent_2"> and </span><a href="terms.html" class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" data-i18n="footer_terms">Terms of Use</a><span data-i18n="form_consent_3">.</span>
+          </label>
+        </div>
         <button type="submit" class="min-h-[48px] w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 hover:-translate-y-0.5" data-i18n="form_submit">Send enquiry</button>
         <p id="form-hint" class="text-center text-xs text-aa-muted" role="status"></p>
       </form>
@@ -541,6 +553,10 @@
       <span class="text-sm font-semibold tracking-tight">Adapt Agency</span>
     </div>
     <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
+    <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
+      <a href="privacy.html" class="text-aa-muted underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terms.html" class="text-aa-muted underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="footer_terms">Terms of Use</a>
+    </div>
   </footer>
 
   <script>
@@ -623,6 +639,13 @@
         form_company: "Company",
         form_message: "Project details",
         form_submit: "Send enquiry",
+        form_consent_1: "I agree to the ",
+        form_consent_2: " and ",
+        form_consent_3: ".",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Use",
+        form_error_consent: "Please accept the Privacy Policy and Terms of Use to continue.",
+        mail_consent: "Consent: Privacy Policy and Terms of Use accepted.",
         form_hint_open: "Opening your email app…",
         doc_title: "Adapt Agency — AI-powered websites, apps & services",
         doc_desc:
@@ -711,6 +734,13 @@
         form_company: "Công ty",
         form_message: "Chi tiết dự án",
         form_submit: "Gửi yêu cầu",
+        form_consent_1: "Tôi đồng ý với ",
+        form_consent_2: " và ",
+        form_consent_3: ".",
+        footer_privacy: "Chính sách quyền riêng tư",
+        footer_terms: "Điều khoản sử dụng",
+        form_error_consent: "Vui lòng đồng ý Chính sách quyền riêng tư và Điều khoản sử dụng để tiếp tục.",
+        mail_consent: "Đồng ý: đã chấp nhận Chính sách quyền riêng tư và Điều khoản sử dụng.",
         form_hint_open: "Đang mở ứng dụng email…",
         doc_title: "Adapt Agency — Website, ứng dụng & dịch vụ AI",
         doc_desc:
@@ -851,12 +881,20 @@
 
     document.getElementById("lead-form").addEventListener("submit", function (e) {
       e.preventDefault();
+      var hintEl = document.getElementById("form-hint");
+      var consentEl = document.getElementById("consent");
       var fd = new FormData(this);
       var name = (fd.get("name") || "").toString().trim();
       var email = (fd.get("email") || "").toString().trim();
       var company = (fd.get("company") || "").toString().trim();
       var message = (fd.get("message") || "").toString().trim();
       if (!name || !email || !message) return;
+      if (!consentEl || !consentEl.checked) {
+        if (hintEl) hintEl.textContent = t("form_error_consent");
+        if (consentEl) consentEl.focus();
+        return;
+      }
+      if (hintEl) hintEl.textContent = "";
 
       var subject = t("mail_subject") + name + " (Adapt Agency)";
       var body =
@@ -873,9 +911,11 @@
         "\n" +
         message +
         "\n\n" +
+        t("mail_consent") +
+        "\n\n" +
         t("mail_footer");
 
-      document.getElementById("form-hint").textContent = t("form_hint_open");
+      if (hintEl) hintEl.textContent = t("form_hint_open");
       window.location.href =
         "mailto:" +
         contactEmail +
