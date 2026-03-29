@@ -178,6 +178,19 @@
       justify-content: center;
     }
 
+    /* Sticky home header: opaque dark bar so body (light) never shows through */
+    .site-header-home {
+      background-color: rgba(3, 7, 6, 0.94);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+      .site-header-home {
+        background-color: #030706;
+      }
+    }
+
     /* Atmospheric hero (reference: dark canyon / bioluminescent mood) */
     .hero-atmos {
       background:
@@ -327,7 +340,7 @@
 <body class="bg-aa-surface text-aa-text antialiased">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
-  <header class="sticky top-0 z-50 border-b border-white/[0.06] bg-black/10 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.35)] backdrop-blur-md">
+  <header class="site-header-home sticky top-0 z-50 border-b border-white/[0.06] shadow-[0_8px_32px_-12px_rgba(0,0,0,0.35)]">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:gap-3 sm:px-5 sm:py-4 md:flex-nowrap md:gap-4 md:px-8">
         <a href="index.html" class="order-1 flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" data-i18n-aria="logo_aria">
           <svg class="h-7 w-6 shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
