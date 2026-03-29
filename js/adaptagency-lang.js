@@ -1,27 +1,92 @@
 /**
- * Shared site language: one localStorage value (adaptagency-lang), toggle updates it,
- * every page entry re-reads storage and syncs the switch + [data-i18n] DOM.
+ * Shared site language: sessionStorage + session cookie + ?aa_lang= on internal links.
+ * Preference lasts for the browser session only; a new session defaults to English.
+ * file:// pages are separate origins — query + cookie carry choice between HTML files.
  */
 (function (global) {
   "use strict";
 
+  /** sessionStorage key for this browsing session. */
   var STORAGE_KEY = "adaptagency-lang";
+  /** Session cookie (no Max-Age); separate name so old year-long adaptagency-lang cookies can be cleared. */
+  var SESSION_COOKIE_KEY = "aa_lang_sess";
+  /** Query key on index/privacy/terms links so language survives cross-document navigation. */
+  var LANG_QUERY = "aa_lang";
   var siteLang = "en";
   var packs = null;
   var onAfterApply = null;
 
-  function readStorage() {
+  function readLangFromQuery() {
     try {
-      var s = localStorage.getItem(STORAGE_KEY);
+      var q = new URLSearchParams(location.search.slice(1)).get(LANG_QUERY);
+      if (q === "vi" || q === "en") return q;
+    } catch (e) {}
+    return null;
+  }
+
+  function readLangFromCookie() {
+    try {
+      var prefix = SESSION_COOKIE_KEY + "=";
+      var parts = document.cookie.split(";");
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i].trim();
+        if (p.indexOf(prefix) !== 0) continue;
+        var v = decodeURIComponent(p.slice(prefix.length));
+        if (v === "vi" || v === "en") return v;
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function readStorage() {
+    var fromQuery = readLangFromQuery();
+    if (fromQuery) return fromQuery;
+    try {
+      var s = sessionStorage.getItem(STORAGE_KEY);
       if (s === "vi" || s === "en") return s;
     } catch (e) {}
+    var fromCookie = readLangFromCookie();
+    if (fromCookie) return fromCookie;
     return "en";
   }
 
   function writeStorage(lang) {
     try {
-      localStorage.setItem(STORAGE_KEY, lang);
+      sessionStorage.setItem(STORAGE_KEY, lang);
     } catch (e) {}
+    try {
+      var secure = location.protocol === "https:" ? ";Secure" : "";
+      /* Session cookie (no Max-Age) — cleared when the browser session ends. */
+      document.cookie =
+        SESSION_COOKIE_KEY + "=" + encodeURIComponent(lang) + ";path=/;SameSite=Lax" + secure;
+    } catch (e) {}
+  }
+
+  function stripLangQueryFromUrl() {
+    try {
+      if (!location.search) return;
+      var params = new URLSearchParams(location.search.slice(1));
+      if (!params.has(LANG_QUERY)) return;
+      params.delete(LANG_QUERY);
+      var q = params.toString();
+      history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash);
+    } catch (e) {}
+  }
+
+  /** Keep internal .html links carrying current lang (needed when sessionStorage is not shared). */
+  function syncInternalNavLinks(lang) {
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href");
+      if (!href || /^(https?:|\/\/|mailto:|tel:)/i.test(href)) return;
+      var hashIx = href.indexOf("#");
+      var hash = hashIx >= 0 ? href.slice(hashIx) : "";
+      var pathQuery = hashIx >= 0 ? href.slice(0, hashIx) : href;
+      var qIx = pathQuery.indexOf("?");
+      var pathOnly = qIx >= 0 ? pathQuery.slice(0, qIx) : pathQuery;
+      var file = pathOnly.replace(/^\.\//, "");
+      if (file !== "index.html" && file !== "privacy.html" && file !== "terms.html") return;
+      a.setAttribute("href", file + "?" + LANG_QUERY + "=" + lang + hash);
+    });
   }
 
   function translate(key) {
@@ -65,6 +130,7 @@
   function applyDomTranslations() {
     var tr = translate;
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      if (el.querySelector("[data-i18n]")) return;
       var key = el.getAttribute("data-i18n");
       if (!key) return;
       var text = tr(key);
@@ -102,6 +168,7 @@
     syncToggle(lang);
     syncOpenGraphLocale(lang);
     applyDomTranslations();
+    syncInternalNavLinks(lang);
     if (typeof onAfterApply === "function") onAfterApply(lang);
   }
 
@@ -109,14 +176,13 @@
     applyLang(readStorage());
   }
 
-  function onStorage(e) {
-    if (e.key !== STORAGE_KEY || e.newValue == null) return;
-    if (e.newValue !== "vi" && e.newValue !== "en") return;
-    applyLang(e.newValue);
-  }
-
   function onToggleClick() {
     applyLang(siteLang === "en" ? "vi" : "en");
+  }
+
+  function onVisibilityChange() {
+    if (document.visibilityState !== "visible" || !packs) return;
+    applyLang(readStorage());
   }
 
   /** i18nPacks: { en: { key: "..." }, vi: { ... } }; options.onAfterApply(lang) optional (e.g. contact form). */
@@ -125,9 +191,18 @@
     onAfterApply = options && typeof options.onAfterApply === "function" ? options.onAfterApply : null;
 
     applyLang(readStorage());
+    stripLangQueryFromUrl();
+
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+    try {
+      var sec = location.protocol === "https:" ? ";Secure" : "";
+      document.cookie = "adaptagency-lang=;path=/;max-age=0;SameSite=Lax" + sec;
+    } catch (e) {}
 
     global.addEventListener("pageshow", onPageShow);
-    global.addEventListener("storage", onStorage);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     var btn = document.getElementById("lang-toggle");
     if (btn) btn.addEventListener("click", onToggleClick);

@@ -27,7 +27,7 @@ The site is **static**: HTML, [Tailwind CSS](https://tailwindcss.com/) (via CDN)
 ├── privacy.html        # Privacy policy
 ├── terms.html          # Terms of use
 ├── js/
-│   └── adaptagency-lang.js   # Shared language storage, toggle, [data-i18n] apply
+│   └── adaptagency-lang.js   # Shared i18n: session preference, home toggle, [data-i18n] apply
 ├── sitemap.xml         # URL list for crawlers (update lastmod when content changes)
 ├── robots.txt          # Crawl rules + sitemap URL
 ├── brand_assets/       # Logo, tokens, brand notes
@@ -51,16 +51,26 @@ If a static site generator or bundler is added later, update this section with `
 
 3. Edit files, refresh, and commit changes when ready.
 
-**Language toggle:** Implemented in `js/adaptagency-lang.js` and loaded by every page. Logic: read `localStorage` key `adaptagency-lang` on init and on every `pageshow`; write that key when the switch is clicked; sync `#lang-switch-root` / `#lang-toggle` and all `[data-i18n]` elements. Each page passes its string table into `AdaptAgencyLang.init(I18N)`. A full browser data clear removes `localStorage` (expected). Use `npx serve .` locally so `js/adaptagency-lang.js` loads and storage is shared on one origin (avoid `file://` for multi-page tests).
+**Internationalisation (English / Vietnamese):** Implemented in `js/adaptagency-lang.js` and loaded on every page. Each page passes its string table into `AdaptAgencyLang.init(I18N)`; the home page also passes `onAfterApply` to keep the contact form in sync.
+
+- **Home** has the language switch (`#lang-switch-root` / `#lang-toggle`). **Privacy** and **Terms** do not; they follow the same language as the home page for the current browser session.
+- **Preference is session-scoped:** `sessionStorage` key `adaptagency-lang`, plus a session cookie `aa_lang_sess` (`path=/`, no `Max-Age`). A **new browser session defaults to English** until the user switches again.
+- **Resolution order** when applying language: URL query `?aa_lang=en|vi` (then stripped with `history.replaceState` for a clean address bar), then `sessionStorage`, then `aa_lang_sess`. Internal links among `index.html`, `privacy.html`, and `terms.html` are rewritten to include `?aa_lang=…` so navigation stays consistent (needed because `file://` treats each HTML file as a separate origin and does not share `sessionStorage` between them).
+- **Legacy cleanup:** On init, any old persistent `adaptagency-lang` cookie from earlier deploys is cleared (`max-age=0`), and a stale `localStorage` entry with the same name is removed.
+- **`pageshow` and `visibilitychange`** re-read storage so returning via the back-forward cache or refocusing the tab reapplies the correct language.
+
+Use **`npx serve .`** for local multi-page testing over one HTTP origin; `file://` still works for layout checks but relies on the query parameter and cookie path above.
 
 ---
 
 ## Responsiveness and accessibility
 
+- All main pages include **`width=device-width, initial-scale=1`** in the viewport meta tag.
 - Layout uses Tailwind breakpoints (`sm`, `md`, `lg`, etc.), fluid type (e.g. `clamp` on key headings), and `min-h-[48px]` on primary controls where appropriate.
 - Nav and header actions use a **minimum 44×44px** touch target (`.touch-target` on the home page).
-- In-page anchors (`#services`, `#lead`, etc.) use **`scroll-margin-top`** so section titles are not hidden under the **sticky** header.
-- Legal pages use **`overflow-x: clip`**, **`break-words`**, and Vietnamese-friendly **`word-break`** rules so long words and URLs do not blow out the layout.
+- In-page anchors (`#services`, `#lead`, etc.) use **`scroll-margin-top`** so section titles are not hidden under the **sticky** header. Legal pages use **`scroll-mt-28`** on `<main>` for the same reason.
+- **Home:** `max-w-7xl` content, responsive grid for hero (`md:grid-cols-…`), stacked header on small viewports (`flex-wrap` / full-width nav under the bar) and horizontal padding `px-4 sm:px-5 md:px-8`.
+- **Privacy / Terms:** Narrow reading column `max-w-3xl`, horizontal padding `px-4 sm:px-6`, prose sections with `break-words` / `min-w-0`; Terms also use **`overflow-x: clip`** and Vietnamese-friendly **`word-break`** where needed.
 
 ---
 

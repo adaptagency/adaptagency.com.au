@@ -5,10 +5,38 @@
   <script>
     (function () {
       var k = "adaptagency-lang";
+      var ck = "aa_lang_sess";
+      var Q = "aa_lang";
       var lang = "en";
+      function fromCookie() {
+        var prefix = ck + "=";
+        var parts = document.cookie.split(";");
+        for (var i = 0; i < parts.length; i++) {
+          var p = parts[i].trim();
+          if (p.indexOf(prefix) !== 0) continue;
+          try {
+            var v = decodeURIComponent(p.slice(prefix.length));
+            if (v === "vi" || v === "en") return v;
+          } catch (e) {}
+        }
+        return null;
+      }
       try {
-        var s = localStorage.getItem(k);
-        if (s === "vi" || s === "en") lang = s;
+        var sec0 = location.protocol === "https:" ? ";Secure" : "";
+        document.cookie = "adaptagency-lang=;path=/;max-age=0;SameSite=Lax" + sec0;
+      } catch (e) {}
+      try {
+        var params = new URLSearchParams(window.location.search.slice(1));
+        var q = params.get(Q);
+        if (q === "vi" || q === "en") lang = q;
+        else {
+          var s = sessionStorage.getItem(k);
+          if (s === "vi" || s === "en") lang = s;
+          else {
+            var c = fromCookie();
+            if (c) lang = c;
+          }
+        }
       } catch (e) {}
       document.documentElement.setAttribute("data-aa-lang", lang);
       document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
