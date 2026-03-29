@@ -49,7 +49,7 @@ If a static site generator or bundler is added later, update this section with `
 
 3. Edit files, refresh, and commit changes when ready.
 
-**Language toggle:** English and Vietnamese copy is switched in the browser. The active language is read on every page load from `localStorage` key `adaptagency-lang`, with a `path=/` cookie mirror on `http(s):` so the choice stays aligned across pages. When you use the browser **Back** button, the page is re-applied from that stored value (back-forward cache). Opening HTML as `file://` can isolate storage per file in some browsers—use `npx serve .` for local testing.
+**Language toggle:** One shared value in `localStorage` under `adaptagency-lang` (`en` or `vi`). On each page load and on every `pageshow` event, the script reads that value, updates copy, and moves the switch. Toggling writes the same key and updates the in-memory `siteLang` used for strings. A full browser data clear removes `localStorage` (expected). Opening pages as `file://` can use separate storage per file in some browsers—use `npx serve .` to test cross-page behaviour locally.
 
 ---
 

@@ -5,21 +5,11 @@
   <script>
     (function () {
       var k = "adaptagency-lang";
-      function readStoredLang() {
-        try {
-          var s = localStorage.getItem(k);
-          if (s === "vi" || s === "en") return s;
-        } catch (e) {}
-        try {
-          var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + k + "=([^;]*)"));
-          if (m) {
-            var c = decodeURIComponent(m[1].replace(/\+/g, " "));
-            if (c === "vi" || c === "en") return c;
-          }
-        } catch (e2) {}
-        return "en";
-      }
-      var lang = readStoredLang();
+      var lang = "en";
+      try {
+        var s = localStorage.getItem(k);
+        if (s === "vi" || s === "en") lang = s;
+      } catch (e) {}
       document.documentElement.setAttribute("data-aa-lang", lang);
       document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
     })();
@@ -811,45 +801,32 @@
       },
     };
 
-    function readStoredLang() {
+    /** In-memory language for this page; kept in sync with localStorage by applyLang / loadSiteLanguage. */
+    var siteLang = "en";
+
+    function loadSiteLanguage() {
       try {
         var s = localStorage.getItem(AA_LANG_KEY);
         if (s === "vi" || s === "en") return s;
       } catch (e) {}
-      try {
-        var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + AA_LANG_KEY + "=([^;]*)"));
-        if (m) {
-          var c = decodeURIComponent(m[1].replace(/\+/g, " "));
-          if (c === "vi" || c === "en") return c;
-        }
-      } catch (e2) {}
       return "en";
     }
 
-    function getLang() {
-      return readStoredLang();
+    function saveSiteLanguage(lang) {
+      try {
+        localStorage.setItem(AA_LANG_KEY, lang);
+      } catch (e) {}
     }
 
     function t(key) {
-      var lang = getLang();
-      var pack = I18N[lang] || I18N.en;
+      var pack = I18N[siteLang] || I18N.en;
       return pack[key] != null ? pack[key] : I18N.en[key] || key;
     }
 
     function applyLang(lang) {
       if (lang !== "vi" && lang !== "en") lang = "en";
-      try {
-        localStorage.setItem(AA_LANG_KEY, lang);
-      } catch (e) {}
-      try {
-        if (typeof location !== "undefined" && (location.protocol === "https:" || location.protocol === "http:")) {
-          document.cookie =
-            AA_LANG_KEY +
-            "=" +
-            encodeURIComponent(lang) +
-            ";path=/;max-age=31536000;SameSite=Lax";
-        }
-      } catch (e) {}
+      siteLang = lang;
+      saveSiteLanguage(lang);
       document.documentElement.setAttribute("data-aa-lang", lang);
       document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
 
@@ -921,10 +898,10 @@
       btn.disabled = !(name.length > 0 && emailOk && message.length > 0 && consentEl.checked);
     }
 
-    applyLang(getLang());
+    applyLang(loadSiteLanguage());
 
-    window.addEventListener("pageshow", function (ev) {
-      if (ev.persisted) applyLang(getLang());
+    window.addEventListener("pageshow", function () {
+      applyLang(loadSiteLanguage());
     });
 
     window.addEventListener("storage", function (e) {
@@ -936,7 +913,7 @@
     var langToggleBtn = document.getElementById("lang-toggle");
     if (langToggleBtn) {
       langToggleBtn.addEventListener("click", function () {
-        applyLang(getLang() === "en" ? "vi" : "en");
+        applyLang(siteLang === "en" ? "vi" : "en");
       });
     }
 
