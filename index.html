@@ -533,7 +533,15 @@
             <a href="privacy.html" class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" data-i18n="footer_privacy">Privacy Policy</a><span data-i18n="form_consent_2"> and </span><a href="terms.html" class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" data-i18n="footer_terms">Terms of Use</a><span data-i18n="form_consent_3">.</span>
           </label>
         </div>
-        <button type="submit" class="min-h-[48px] w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 hover:-translate-y-0.5" data-i18n="form_submit">Send enquiry</button>
+        <button
+          type="submit"
+          id="lead-submit"
+          disabled
+          class="min-h-[48px] w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
+          data-i18n="form_submit"
+        >
+          Send enquiry
+        </button>
         <p id="form-hint" class="text-center text-xs text-aa-muted" role="status"></p>
       </form>
     </div>
@@ -838,6 +846,22 @@
           toggle.setAttribute("aria-checked", "true");
         }
       }
+
+      if (typeof updateLeadSubmitState === "function") updateLeadSubmitState();
+    }
+
+    function updateLeadSubmitState() {
+      var btn = document.getElementById("lead-submit");
+      var nameEl = document.getElementById("name");
+      var emailEl = document.getElementById("email");
+      var messageEl = document.getElementById("message");
+      var consentEl = document.getElementById("consent");
+      if (!btn || !nameEl || !emailEl || !messageEl || !consentEl) return;
+      var name = (nameEl.value || "").trim();
+      var email = (emailEl.value || "").trim();
+      var message = (messageEl.value || "").trim();
+      var emailOk = email.length > 0 && emailEl.checkValidity();
+      btn.disabled = !(name.length > 0 && emailOk && message.length > 0 && consentEl.checked);
     }
 
     applyLang(getLang());
@@ -878,6 +902,7 @@
       e.preventDefault();
       var v = (promptInput.value || "").trim();
       if (messageField && v) messageField.value = v;
+      updateLeadSubmitState();
       document.getElementById("lead").scrollIntoView({ behavior: "smooth" });
       if (messageField) messageField.focus();
     });
@@ -891,6 +916,24 @@
     });
 
     var contactEmail = "steve@adaptagency.com.au";
+
+    (function bindLeadFormEnable() {
+      var form = document.getElementById("lead-form");
+      if (!form) return;
+      ["input", "change"].forEach(function (evt) {
+        form.addEventListener(evt, function (e) {
+          if (
+            e.target &&
+            (e.target.id === "name" ||
+              e.target.id === "email" ||
+              e.target.id === "message" ||
+              e.target.id === "consent")
+          )
+            updateLeadSubmitState();
+        });
+      });
+      updateLeadSubmitState();
+    })();
 
     document.getElementById("lead-form").addEventListener("submit", function (e) {
       e.preventDefault();
