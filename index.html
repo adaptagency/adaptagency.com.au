@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adapt Agency — AI-powered websites, apps &amp; services for business</title>
+  <meta name="description" content="Adapt Agency helps Australian businesses ship AI-powered websites, apps, and tailored AI services—with clear scope and human judgment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aa: {
+              primary: "#0f3d3a",
+              "primary-mid": "#1a6b64",
+              "primary-tint": "#e8f3f2",
+              accent: "#c45c42",
+              "accent-soft": "#f4e6e2",
+              text: "#141816",
+              muted: "#5a6562",
+              surface: "#fafaf8",
+            },
+          },
+          fontFamily: {
+            display: ['"Fraunces"', "Georgia", "serif"],
+            sans: ['"DM Sans"', "system-ui", "sans-serif"],
+          },
+          boxShadow: {
+            lift: "0 4px 24px -4px rgba(15, 61, 58, 0.12), 0 12px 32px -8px rgba(196, 92, 66, 0.08)",
+            glow: "0 0 0 1px rgba(15, 61, 58, 0.06), 0 20px 50px -20px rgba(15, 61, 58, 0.25)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --aa-primary: #0f3d3a;
+      --aa-accent: #c45c42;
+      --aa-surface: #fafaf8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .reveal,
+      .reveal-delay {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--aa-text, #141816);
+      background-color: var(--aa-surface);
+    }
+
+    .font-display {
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+
+    /* Subtle grain overlay */
+    .grain::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Diagonal hero panels */
+    .hero-slice-teal {
+      clip-path: polygon(0 0, 100% 0, 72% 100%, 0 88%);
+    }
+
+    .hero-slice-warm {
+      clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    @media (max-width: 1023px) {
+      .hero-slice-teal {
+        clip-path: polygon(0 0, 100% 0, 100% 62%, 0 78%);
+      }
+      .hero-slice-warm {
+        clip-path: polygon(0 58%, 100% 42%, 100% 100%, 0 100%);
+      }
+    }
+
+    /* Organic lead panel */
+    .organic-panel {
+      border-radius: 63% 37% 48% 52% / 45% 48% 52% 55%;
+      box-shadow:
+        0 4px 24px -4px rgba(15, 61, 58, 0.14),
+        0 24px 48px -16px rgba(196, 92, 66, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .organic-panel {
+        border-radius: 52% 48% 58% 42% / 42% 55% 45% 58%;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay {
+      transition-delay: 0.08s;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--aa-accent);
+      outline-offset: 3px;
+    }
+
+    .path-dash {
+      stroke-dasharray: 8 10;
+      animation: dash-shift 24s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .path-dash {
+        animation: none;
+      }
+    }
+
+    @keyframes dash-shift {
+      to {
+        stroke-dashoffset: -360;
+      }
+    }
+  </style>
+</head>
+<body class="grain antialiased text-aa-text bg-aa-surface overflow-x-hidden">
+  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-lift focus:left-4 focus:outline-none">Skip to content</a>
+
+  <header class="fixed left-0 right-0 top-0 z-40 flex items-start justify-between gap-4 p-4 md:p-6 pointer-events-none">
+    <a href="#" class="pointer-events-auto inline-flex items-center transition-opacity duration-200 hover:opacity-90 focus-visible:opacity-90">
+      <img src="brand_assets/logo/adapt-agency-logo-web.png" width="220" height="89" alt="Adapt Agency" class="h-14 w-auto md:h-[4.5rem] drop-shadow-sm" />
+    </a>
+    <nav class="pointer-events-auto flex flex-wrap items-center justify-end gap-2 md:gap-3" aria-label="Primary">
+      <a href="#path" class="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-aa-primary shadow-lift backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">What we build</a>
+      <a href="#lead" class="rounded-full bg-aa-accent px-4 py-2 text-sm font-semibold text-white shadow-lift transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero: overlapping diagonal slices, not a rectangle stack -->
+    <section class="relative min-h-[100dvh] overflow-hidden" aria-labelledby="hero-heading">
+      <div class="absolute inset-0 bg-aa-primary-mid hero-slice-teal" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-aa-accent-soft via-aa-surface to-aa-primary-tint hero-slice-warm" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent mix-blend-overlay opacity-60" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-end px-5 pb-16 pt-32 md:flex-row md:items-end md:justify-between md:pb-24 md:pt-28 lg:px-8">
+        <div class="max-w-xl md:max-w-lg">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80">Melbourne · Australia</p>
+          <h1 id="hero-heading" class="font-display text-4xl font-semibold leading-[1.08] text-white md:text-5xl lg:text-6xl">
+            AI-powered websites, apps, and services—built for how your business actually works.
+          </h1>
+        </div>
+        <div class="mt-10 max-w-md md:mt-0 md:ml-8 md:text-right">
+          <p class="text-lg leading-relaxed text-aa-text md:text-aa-muted md:text-white/90">
+            We combine modern AI tooling with sharp product judgement so you get fast delivery, clear scope, and outcomes you can measure—not a slide deck that never ships.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 md:justify-end">
+            <a href="#lead" class="inline-flex items-center justify-center rounded-full bg-aa-accent px-6 py-3 text-sm font-semibold text-white shadow-lift transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">Brief us in</a>
+            <a href="#path" class="inline-flex items-center justify-center rounded-full border-2 border-aa-primary/20 bg-white/95 px-6 py-3 text-sm font-semibold text-aa-primary transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">See the work shapes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curved transition (SVG), not a flat divider -->
+    <div class="relative -mt-px h-24 w-full text-aa-surface" aria-hidden="true">
+      <svg class="absolute bottom-0 left-0 h-full w-full" viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="currentColor" d="M0,80 C360,140 720,0 1080,60 C1260,90 1380,100 1440,85 L1440,120 L0,120 Z" />
+      </svg>
+    </div>
+
+    <!-- Spine path + alternating nodes (unique structure) -->
+    <section id="path" class="relative bg-aa-surface px-5 py-16 md:py-28 lg:px-8" aria-labelledby="path-heading">
+      <div class="mx-auto max-w-6xl">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <h2 id="path-heading" class="font-display text-3xl font-semibold text-aa-primary md:text-4xl">Three ways we help you adapt</h2>
+          <p class="mt-4 text-lg leading-relaxed text-aa-muted">No uniform “feature blocks.” Each engagement follows a different shape—here is how we usually plug in.</p>
+        </div>
+
+        <div class="relative mx-auto mt-16 max-w-4xl md:mt-24">
+          <!-- Central curved spine -->
+          <svg class="absolute left-1/2 top-0 hidden h-full w-24 -translate-x-1/2 md:block" viewBox="0 0 100 800" preserveAspectRatio="none" aria-hidden="true">
+            <path class="path-dash" d="M50,40 Q85,200 50,360 T50,680" fill="none" stroke="#1a6b64" stroke-width="2" stroke-linecap="round" opacity="0.45" />
+            <circle cx="50" cy="120" r="6" fill="#c45c42" />
+            <circle cx="50" cy="400" r="6" fill="#c45c42" />
+            <circle cx="50" cy="640" r="6" fill="#c45c42" />
+          </svg>
+
+          <ol class="relative space-y-16 md:space-y-28">
+            <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-12">
+              <div class="md:col-start-1 md:row-start-1 md:text-right md:pr-8">
+                <span class="inline-block rounded-full bg-aa-primary-tint px-3 py-1 text-xs font-bold uppercase tracking-wider text-aa-primary-mid">Websites</span>
+                <h3 class="mt-3 font-display text-2xl font-semibold text-aa-primary md:text-3xl">Marketing sites that load fast and read clearly</h3>
+                <p class="mt-3 leading-relaxed text-aa-muted">Structured content, accessible markup, and AI-assisted production—so you publish sooner and iterate without a rebuild every time.</p>
+              </div>
+              <div class="mt-6 flex justify-center md:col-start-2 md:row-start-1 md:mt-0 md:justify-start md:pl-8">
+                <div class="relative h-40 w-40 rotate-3 rounded-[40%_60%_55%_45%/45%_55%_45%_55%] bg-gradient-to-br from-aa-primary-tint to-white shadow-lift md:h-48 md:w-48 md:-rotate-2">
+                  <span class="absolute inset-0 flex items-center justify-center font-display text-5xl font-semibold text-aa-primary/25" aria-hidden="true">01</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="reveal reveal-delay relative md:grid md:grid-cols-2 md:items-center md:gap-12">
+              <div class="order-2 mt-6 flex justify-center md:order-1 md:col-start-1 md:mt-0 md:justify-end md:pr-8">
+                <div class="relative h-40 w-40 -rotate-2 rounded-[55%_45%_50%_50%/50%_45%_55%_50%] bg-gradient-to-bl from-aa-accent-soft to-white shadow-lift md:h-48 md:w-48 md:rotate-3">
+                  <span class="absolute inset-0 flex items-center justify-center font-display text-5xl font-semibold text-aa-accent/30" aria-hidden="true">02</span>
+                </div>
+              </div>
+              <div class="order-1 md:order-2 md:col-start-2 md:pl-8">
+                <span class="inline-block rounded-full bg-aa-accent-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-aa-accent">Apps &amp; systems</span>
+                <h3 class="mt-3 font-display text-2xl font-semibold text-aa-primary md:text-3xl">Focused tools your team will actually use</h3>
+                <p class="mt-3 leading-relaxed text-aa-muted">Workflows, internal apps, and customer-facing products—with sensible architecture and AI where it genuinely saves time.</p>
+              </div>
+            </li>
+
+            <li class="reveal relative md:grid md:grid-cols-2 md:items-center md:gap-12">
+              <div class="md:col-start-1 md:row-start-1 md:text-right md:pr-8">
+                <span class="inline-block rounded-full bg-aa-primary-tint px-3 py-1 text-xs font-bold uppercase tracking-wider text-aa-primary-mid">Other AI services</span>
+                <h3 class="mt-3 font-display text-2xl font-semibold text-aa-primary md:text-3xl">Automation, content ops, and bespoke AI support</h3>
+                <p class="mt-3 leading-relaxed text-aa-muted">From document pipelines to bespoke assistants—we scope honestly, prioritise risk, and keep humans in the loop where it matters.</p>
+              </div>
+              <div class="mt-6 flex justify-center md:col-start-2 md:row-start-1 md:mt-0 md:justify-start md:pl-8">
+                <div class="relative h-40 w-40 rotate-1 rounded-[48%_52%_48%_52%/52%_48%_52%_48%] bg-gradient-to-tr from-white to-aa-primary-tint shadow-lift md:h-48 md:w-48 md:-rotate-3">
+                  <span class="absolute inset-0 flex items-center justify-center font-display text-5xl font-semibold text-aa-primary-mid/30" aria-hidden="true">03</span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Angled trust strip (parallelogram feel via skew) -->
+    <section class="relative z-0 overflow-hidden py-20 md:py-28" aria-labelledby="why-heading">
+      <div class="absolute inset-0 -skew-y-2 scale-110 bg-aa-primary md:-skew-y-1" aria-hidden="true"></div>
+      <div class="relative z-10 mx-auto max-w-6xl px-5 skew-y-2 md:skew-y-1 lg:px-8">
+        <div class="reveal grid gap-10 md:grid-cols-3 md:gap-8">
+          <div>
+            <h2 id="why-heading" class="font-display text-2xl font-semibold text-white md:text-3xl">Why teams choose us</h2>
+            <p class="mt-4 text-white/85 leading-relaxed">Australian English, Australian business hours, and copy that sounds like a person—not a press release.</p>
+          </div>
+          <div class="border-l-2 border-white/25 pl-6 md:pl-8">
+            <p class="font-display text-xl font-medium text-white">Clarity first</p>
+            <p class="mt-2 text-sm leading-relaxed text-white/80">Fixed phases where it helps, change control where it does not. You always know what “done” means.</p>
+          </div>
+          <div class="border-l-2 border-white/25 pl-6 md:pl-8">
+            <p class="font-display text-xl font-medium text-white">AI with guardrails</p>
+            <p class="mt-2 text-sm leading-relaxed text-white/80">We use AI to move faster—not to hand you unreviewed code or off-brand content.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead: organic panel -->
+    <section id="lead" class="relative px-5 py-20 md:py-28 lg:px-8" aria-labelledby="lead-heading">
+      <div class="pointer-events-none absolute right-0 top-1/4 h-96 w-96 translate-x-1/3 rounded-full bg-aa-accent-soft/40 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute bottom-0 left-0 h-80 w-80 -translate-x-1/4 rounded-full bg-aa-primary-tint/80 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-3xl">
+        <div class="reveal organic-panel bg-white px-8 py-12 md:px-14 md:py-16">
+          <h2 id="lead-heading" class="font-display text-center text-3xl font-semibold text-aa-primary md:text-4xl">Tell us what you are trying to ship</h2>
+          <p class="mx-auto mt-4 max-w-lg text-center text-aa-muted leading-relaxed">Leave a short brief—we will reply with sensible next steps. Prefer email? Use <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 transition-colors hover:decoration-aa-accent" href="mailto:hello@adaptagency.com.au">hello@adaptagency.com.au</a>.</p>
+
+          <form id="lead-form" class="mx-auto mt-10 max-w-md space-y-5" novalidate>
+            <div>
+              <label class="mb-1.5 block text-sm font-medium text-aa-primary" for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required class="w-full rounded-2xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow duration-200 focus:shadow-[0_0_0_3px_rgba(196,92,66,0.2)]" />
+            </div>
+            <div>
+              <label class="mb-1.5 block text-sm font-medium text-aa-primary" for="email">Work email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow duration-200 focus:shadow-[0_0_0_3px_rgba(196,92,66,0.2)]" />
+            </div>
+            <div>
+              <label class="mb-1.5 block text-sm font-medium text-aa-primary" for="company">Company</label>
+              <input id="company" name="company" type="text" autocomplete="organization" class="w-full rounded-2xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow duration-200 focus:shadow-[0_0_0_3px_rgba(196,92,66,0.2)]" />
+            </div>
+            <div>
+              <label class="mb-1.5 block text-sm font-medium text-aa-primary" for="message">What do you need?</label>
+              <textarea id="message" name="message" rows="4" required class="w-full resize-y rounded-2xl border border-aa-border bg-aa-surface px-4 py-3 text-aa-text transition-shadow duration-200 focus:shadow-[0_0_0_3px_rgba(196,92,66,0.2)]" placeholder="e.g. New marketing site, internal tool, AI workflow…"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-glow transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">Send enquiry</button>
+            <p id="form-hint" class="text-center text-xs text-aa-muted" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-aa-border bg-white px-5 py-10 text-center text-sm text-aa-muted lg:px-8">
+    <p class="font-display text-aa-primary">© <span id="y"></span> Adapt Agency. All rights reserved.</p>
+    <p class="mt-2">adaptagency.com.au · AI-powered delivery for Australian businesses</p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    document.getElementById("lead-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var fd = new FormData(this);
+      var name = (fd.get("name") || "").toString().trim();
+      var email = (fd.get("email") || "").toString().trim();
+      var company = (fd.get("company") || "").toString().trim();
+      var message = (fd.get("message") || "").toString().trim();
+      if (!name || !email || !message) return;
+      var body =
+        "Name: " +
+        name +
+        "\nEmail: " +
+        email +
+        "\nCompany: " +
+        company +
+        "\n\n" +
+        message;
+      var hint = document.getElementById("form-hint");
+      hint.textContent = "Opening your email app…";
+      window.location.href =
+        "mailto:hello@adaptagency.com.au?subject=" +
+        encodeURIComponent("Website enquiry from " + name) +
+        "&body=" +
+        encodeURIComponent(body);
+    });
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      var els = document.querySelectorAll(".reveal");
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) {
+              en.target.classList.add("is-visible");
+              io.unobserve(en.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      );
+      els.forEach(function (el) {
+        io.observe(el);
+      });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    }
+  </script>
+</body>
+</html>
