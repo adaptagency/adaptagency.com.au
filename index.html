@@ -5,11 +5,21 @@
   <script>
     (function () {
       var k = "adaptagency-lang";
-      var lang = "en";
-      try {
-        var s = localStorage.getItem(k);
-        if (s === "vi" || s === "en") lang = s;
-      } catch (e) {}
+      function readStoredLang() {
+        try {
+          var s = localStorage.getItem(k);
+          if (s === "vi" || s === "en") return s;
+        } catch (e) {}
+        try {
+          var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + k + "=([^;]*)"));
+          if (m) {
+            var c = decodeURIComponent(m[1].replace(/\+/g, " "));
+            if (c === "vi" || c === "en") return c;
+          }
+        } catch (e2) {}
+        return "en";
+      }
+      var lang = readStoredLang();
       document.documentElement.setAttribute("data-aa-lang", lang);
       document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
     })();
@@ -801,12 +811,23 @@
       },
     };
 
-    function getLang() {
+    function readStoredLang() {
       try {
         var s = localStorage.getItem(AA_LANG_KEY);
         if (s === "vi" || s === "en") return s;
       } catch (e) {}
+      try {
+        var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + AA_LANG_KEY + "=([^;]*)"));
+        if (m) {
+          var c = decodeURIComponent(m[1].replace(/\+/g, " "));
+          if (c === "vi" || c === "en") return c;
+        }
+      } catch (e2) {}
       return "en";
+    }
+
+    function getLang() {
+      return readStoredLang();
     }
 
     function t(key) {
@@ -819,6 +840,15 @@
       if (lang !== "vi" && lang !== "en") lang = "en";
       try {
         localStorage.setItem(AA_LANG_KEY, lang);
+      } catch (e) {}
+      try {
+        if (typeof location !== "undefined" && (location.protocol === "https:" || location.protocol === "http:")) {
+          document.cookie =
+            AA_LANG_KEY +
+            "=" +
+            encodeURIComponent(lang) +
+            ";path=/;max-age=31536000;SameSite=Lax";
+        }
       } catch (e) {}
       document.documentElement.setAttribute("data-aa-lang", lang);
       document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
@@ -892,6 +922,10 @@
     }
 
     applyLang(getLang());
+
+    window.addEventListener("pageshow", function (ev) {
+      if (ev.persisted) applyLang(getLang());
+    });
 
     window.addEventListener("storage", function (e) {
       if (e.key !== AA_LANG_KEY || e.newValue == null) return;
