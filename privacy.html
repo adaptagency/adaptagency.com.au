@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — Adapt Agency</title>
-  <meta name="description" content="How Adapt Agency (adaptagency.com.au) handles personal information collected through this website and enquiries." />
+  <title id="doc-title">Privacy Policy — Adapt Agency</title>
+  <meta id="doc-desc" name="description" content="How Adapt Agency (adaptagency.com.au) handles personal information collected through this website and enquiries." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0f3d3a" />
   <link rel="canonical" href="https://adaptagency.com.au/privacy.html" />
@@ -37,16 +37,81 @@
       },
     };
   </script>
+  <style>
+    :root {
+      --aa-accent: #c45c42;
+    }
+    html:lang(vi) body {
+      word-break: break-word;
+    }
+    /* Language toggle — light header variant */
+    .lang-switch-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 44px;
+      padding: 0.25rem 0.5rem;
+    }
+    .lang-switch-wrap.lang-switch-legal {
+      border-radius: 9999px;
+      border: 1px solid rgb(15 61 58 / 0.18);
+      background: rgba(232, 243, 242, 0.45);
+    }
+    .lang-switch-wrap .lang-flag {
+      font-size: 1.125rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .lang-switch-track {
+      display: block;
+      position: relative;
+      width: 2.875rem;
+      min-width: 2.875rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      border: 1px solid rgb(213 224 221);
+      background: #fff;
+      padding: 2px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .lang-switch-track:hover {
+      border-color: rgb(26 107 100 / 0.45);
+      background: rgb(250 250 248);
+    }
+    .lang-switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 1.125rem;
+      height: 1.125rem;
+      border-radius: 9999px;
+      background: #34d399;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      transition: transform 0.22s ease-out;
+      pointer-events: none;
+    }
+    .lang-switch-wrap.is-en .lang-switch-thumb {
+      transform: translateX(calc(2.875rem - 1.125rem - 8px));
+    }
+    .lang-switch-track:focus-visible {
+      outline: 2px solid var(--aa-accent);
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body class="bg-aa-surface font-sans text-aa-text antialiased">
+  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="legal_skip">Skip to content</a>
+
   <div class="border-b border-aa-border bg-white">
     <div class="mx-auto max-w-3xl px-4 py-2.5 sm:px-6">
-      <a href="index.html" class="text-sm font-medium text-aa-primary-mid underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary">&lt;---- Back to home page</a>
+      <a href="index.html" class="text-sm font-medium text-aa-primary-mid underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="legal_back_bar">&lt;---- Back to home page</a>
     </div>
   </div>
   <header class="border-b border-aa-border bg-white">
-    <div class="mx-auto flex max-w-3xl items-center px-4 py-4 sm:px-6">
-      <a href="index.html" class="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" aria-label="Adapt Agency home">
+    <div class="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
+      <a href="index.html" class="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" data-i18n-aria="logo_aria">
         <svg class="h-7 w-6 shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
           <defs>
             <linearGradient id="privacy-header-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -60,69 +125,85 @@
           Adapt <span class="text-aa-primary-mid">Agency</span>
         </span>
       </a>
+      <div id="lang-switch-root" class="lang-switch-wrap lang-switch-legal is-en rounded-full" data-lang="en">
+        <span class="lang-flag" aria-hidden="true">🇻🇳</span>
+        <button type="button" id="lang-toggle" class="lang-switch-track" role="switch" aria-checked="false" data-i18n-aria="lang_toggle_aria">
+          <span class="lang-switch-thumb" aria-hidden="true"></span>
+        </button>
+        <span class="lang-flag" aria-hidden="true">🇦🇺</span>
+      </div>
     </div>
   </header>
 
-  <main class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-    <h1 class="font-display text-3xl font-semibold text-aa-primary sm:text-4xl">Privacy Policy</h1>
-    <p class="mt-2 text-sm text-aa-muted">Last updated: March 2026</p>
+  <main id="main" class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+    <h1 class="font-display text-3xl font-semibold text-aa-primary sm:text-4xl" data-i18n="priv_h1">Privacy Policy</h1>
+    <p class="mt-2 text-sm text-aa-muted" data-i18n="legal_updated">Last updated: March 2026</p>
 
     <div class="prose prose-neutral mt-10 max-w-none space-y-6 text-sm leading-relaxed text-aa-text sm:text-base">
-      <p>
-        Adapt Agency (“we”, “us”) operates <strong>adaptagency.com.au</strong>. This policy explains how we handle personal information when you use our website or contact us.
+      <p data-i18n="priv_intro">
+        Adapt Agency (“we”, “us”) operates adaptagency.com.au. This policy explains how we handle personal information when you use our website or contact us.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Who we are</h2>
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_who_h">Who we are</h2>
       <p>
-        You can reach us at <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au">steve@adaptagency.com.au</a>.
+        <span data-i18n="priv_who_p">You can reach us at</span>
+        <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-2 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au">steve@adaptagency.com.au</a>.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">What we collect</h2>
-      <p>Depending on how you interact with us, we may collect:</p>
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_collect_h">What we collect</h2>
+      <p data-i18n="priv_collect_intro">Depending on how you interact with us, we may collect:</p>
       <ul class="list-disc space-y-2 pl-5 text-aa-muted">
-        <li><strong class="text-aa-text">Contact form or email:</strong> name, work email, company (optional), and the content of your message.</li>
-        <li><strong class="text-aa-text">Technical data:</strong> standard server or hosting logs (e.g. approximate location, browser type, pages viewed) as provided by our hosting provider.</li>
+        <li>
+          <strong class="text-aa-text" data-i18n="priv_collect_l1h">Contact form or email:</strong>
+          <span data-i18n="priv_collect_l1b"> name, work email, company (optional), and the content of your message.</span>
+        </li>
+        <li>
+          <strong class="text-aa-text" data-i18n="priv_collect_l2h">Technical data:</strong>
+          <span data-i18n="priv_collect_l2b"> standard server or hosting logs (e.g. approximate location, browser type, pages viewed) as provided by our hosting provider.</span>
+        </li>
       </ul>
-      <p class="text-aa-muted">
+      <p class="text-aa-muted" data-i18n="priv_cookies">
         This site does not use advertising cookies or third-party analytics by default. If that changes, we will update this policy and, where required, ask for consent.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Why we use it</h2>
-      <p>We use personal information to:</p>
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_why_h">Why we use it</h2>
+      <p data-i18n="priv_why_intro">We use personal information to:</p>
       <ul class="list-disc space-y-2 pl-5 text-aa-muted">
-        <li>Respond to enquiries and discuss potential work;</li>
-        <li>Operate and secure the website;</li>
-        <li>Meet legal obligations.</li>
+        <li data-i18n="priv_why_1">Respond to enquiries and discuss potential work;</li>
+        <li data-i18n="priv_why_2">Operate and secure the website;</li>
+        <li data-i18n="priv_why_3">Meet legal obligations.</li>
       </ul>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Disclosure</h2>
-      <p class="text-aa-muted">
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_disclosure_h">Disclosure</h2>
+      <p class="text-aa-muted" data-i18n="priv_disclosure_p">
         We do not sell your personal information. We may share it with service providers who help us run email, hosting, or IT (under confidentiality), or when required by law.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Storage and security</h2>
-      <p class="text-aa-muted">
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_storage_h">Storage and security</h2>
+      <p class="text-aa-muted" data-i18n="priv_storage_p">
         We keep enquiry details only as long as needed to respond, manage the relationship, or meet legal requirements. We use reasonable measures to protect information; no online transmission is completely secure.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Your rights (Australia)</h2>
-      <p class="text-aa-muted">
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_rights_h">Your rights (Australia)</h2>
+      <p class="text-aa-muted" data-i18n="priv_rights_p">
         Under the Australian Privacy Act 1988 and Australian Privacy Principles, you may request access to or correction of personal information we hold about you, and in some cases complain to the OAIC. Contact us first and we will help where we can.
       </p>
 
-      <h2 class="font-display text-xl font-semibold text-aa-primary">Changes</h2>
-      <p class="text-aa-muted">We may update this policy from time to time. The “Last updated” date at the top will change when we do.</p>
+      <h2 class="font-display text-xl font-semibold text-aa-primary" data-i18n="priv_changes_h">Changes</h2>
+      <p class="text-aa-muted" data-i18n="priv_changes_p">We may update this policy from time to time. The “Last updated” date at the top will change when we do.</p>
     </div>
   </main>
 
   <footer class="border-t border-aa-border bg-white px-4 py-8 text-center text-sm text-aa-muted sm:px-6">
-    <p><a class="text-aa-primary-mid underline underline-offset-2 hover:text-aa-primary" href="index.html">← Back to home</a></p>
-    <p class="mt-3">© <span id="y"></span> Adapt Agency · <a class="underline underline-offset-2 hover:text-aa-primary" href="terms.html">Terms of Use</a></p>
+    <p><a class="text-aa-primary-mid underline underline-offset-2 hover:text-aa-primary" href="index.html" data-i18n="legal_footer_home">← Back to home</a></p>
+    <p class="mt-3">
+      <span data-i18n="legal_footer_copy">© </span><span id="y"></span><span data-i18n="legal_footer_agency"> Adapt Agency · </span><a class="underline underline-offset-2 hover:text-aa-primary" href="terms.html" data-i18n="footer_terms">Terms of Use</a>
+    </p>
     <div class="mt-6 flex justify-center">
       <a
         href="#top"
         class="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-emerald-500/45 bg-emerald-500/[0.12] text-emerald-600 transition-colors hover:border-emerald-500 hover:bg-emerald-500/[0.18] hover:text-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-aa-accent focus-visible:ring-offset-2"
-        aria-label="Back to top"
+        data-i18n-aria="footer_top_aria"
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 19V5M5 12l7-7 7 7" />
@@ -132,6 +213,158 @@
   </footer>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    var AA_LANG_KEY = "adaptagency-lang";
+    var I18N = {
+      en: {
+        legal_skip: "Skip to content",
+        legal_back_bar: "<---- Back to home page",
+        logo_aria: "Adapt Agency home",
+        lang_toggle_aria: "Switch language: Australian English or Vietnamese",
+        footer_top_aria: "Back to top",
+        footer_terms: "Terms of Use",
+        doc_title: "Privacy Policy — Adapt Agency",
+        doc_desc:
+          "How Adapt Agency (adaptagency.com.au) handles personal information collected through this website and enquiries.",
+        legal_updated: "Last updated: March 2026",
+        legal_footer_home: "← Back to home",
+        legal_footer_copy: "© ",
+        legal_footer_agency: " Adapt Agency · ",
+        priv_h1: "Privacy Policy",
+        priv_intro:
+          "Adapt Agency (“we”, “us”) operates adaptagency.com.au. This policy explains how we handle personal information when you use our website or contact us.",
+        priv_who_h: "Who we are",
+        priv_who_p: "You can reach us at",
+        priv_collect_h: "What we collect",
+        priv_collect_intro: "Depending on how you interact with us, we may collect:",
+        priv_collect_l1h: "Contact form or email:",
+        priv_collect_l1b: " name, work email, company (optional), and the content of your message.",
+        priv_collect_l2h: "Technical data:",
+        priv_collect_l2b: " standard server or hosting logs (e.g. approximate location, browser type, pages viewed) as provided by our hosting provider.",
+        priv_cookies:
+          "This site does not use advertising cookies or third-party analytics by default. If that changes, we will update this policy and, where required, ask for consent.",
+        priv_why_h: "Why we use it",
+        priv_why_intro: "We use personal information to:",
+        priv_why_1: "Respond to enquiries and discuss potential work;",
+        priv_why_2: "Operate and secure the website;",
+        priv_why_3: "Meet legal obligations.",
+        priv_disclosure_h: "Disclosure",
+        priv_disclosure_p:
+          "We do not sell your personal information. We may share it with service providers who help us run email, hosting, or IT (under confidentiality), or when required by law.",
+        priv_storage_h: "Storage and security",
+        priv_storage_p:
+          "We keep enquiry details only as long as needed to respond, manage the relationship, or meet legal requirements. We use reasonable measures to protect information; no online transmission is completely secure.",
+        priv_rights_h: "Your rights (Australia)",
+        priv_rights_p:
+          "Under the Australian Privacy Act 1988 and Australian Privacy Principles, you may request access to or correction of personal information we hold about you, and in some cases complain to the OAIC. Contact us first and we will help where we can.",
+        priv_changes_h: "Changes",
+        priv_changes_p:
+          "We may update this policy from time to time. The “Last updated” date at the top will change when we do.",
+      },
+      vi: {
+        legal_skip: "Bỏ qua đến nội dung",
+        legal_back_bar: "<---- Về trang chủ",
+        logo_aria: "Trang chủ Adapt Agency",
+        lang_toggle_aria: "Chuyển ngôn ngữ: Tiếng Việt hoặc tiếng Anh Úc",
+        footer_top_aria: "Lên đầu trang",
+        footer_terms: "Điều khoản sử dụng",
+        doc_title: "Chính sách quyền riêng tư — Adapt Agency",
+        doc_desc:
+          "Cách Adapt Agency (adaptagency.com.au) xử lý thông tin cá nhân thu thập qua website và các yêu cầu liên hệ.",
+        legal_updated: "Cập nhật lần cuối: tháng 3 năm 2026",
+        legal_footer_home: "← Về trang chủ",
+        legal_footer_copy: "© ",
+        legal_footer_agency: " Adapt Agency · ",
+        priv_h1: "Chính sách quyền riêng tư",
+        priv_intro:
+          "Adapt Agency (“chúng tôi”) vận hành adaptagency.com.au. Chính sách này giải thích cách chúng tôi xử lý thông tin cá nhân khi bạn sử dụng website hoặc liên hệ với chúng tôi.",
+        priv_who_h: "Chúng tôi là ai",
+        priv_who_p: "Bạn có thể liên hệ tại",
+        priv_collect_h: "Chúng tôi thu thập gì",
+        priv_collect_intro: "Tùy cách bạn tương tác, chúng tôi có thể thu thập:",
+        priv_collect_l1h: "Biểu mẫu liên hệ hoặc email:",
+        priv_collect_l1b: " họ tên, email công việc, công ty (tùy chọn) và nội dung tin nhắn của bạn.",
+        priv_collect_l2h: "Dữ liệu kỹ thuật:",
+        priv_collect_l2b: " nhật ký máy chủ hoặc hosting tiêu chuẩn (ví dụ vị trí gần đúng, loại trình duyệt, trang đã xem) do nhà cung cấp hosting cung cấp.",
+        priv_cookies:
+          "Website này mặc định không dùng cookie quảng cáo hay phân tích bên thứ ba. Nếu thay đổi, chúng tôi sẽ cập nhật chính sách và, khi cần, xin sự đồng ý của bạn.",
+        priv_why_h: "Mục đích sử dụng",
+        priv_why_intro: "Chúng tôi dùng thông tin cá nhân để:",
+        priv_why_1: "Trả lời yêu cầu và trao đổi về công việc tiềm năng;",
+        priv_why_2: "Vận hành và bảo mật website;",
+        priv_why_3: "Tuân thủ nghĩa vụ pháp lý.",
+        priv_disclosure_h: "Tiết lộ",
+        priv_disclosure_p:
+          "Chúng tôi không bán thông tin cá nhân của bạn. Chúng tôi có thể chia sẻ với nhà cung cấp dịch vụ hỗ trợ email, hosting hoặc CNTT (theo cam kết bảo mật), hoặc khi pháp luật yêu cầu.",
+        priv_storage_h: "Lưu trữ và bảo mật",
+        priv_storage_p:
+          "Chúng tôi chỉ giữ chi tiết yêu cầu trong thời gian cần thiết để trả lời, quản lý quan hệ hoặc đáp ứng yêu cầu pháp lý. Chúng tôi áp dụng biện pháp hợp lý để bảo vệ thông tin; không có truyền tải trực tuyến nào hoàn toàn an toàn tuyệt đối.",
+        priv_rights_h: "Quyền của bạn (Úc)",
+        priv_rights_p:
+          "Theo Đạo luật Quyền riêng tư Úc 1988 và các Nguyên tắc quyền riêng tư Úc, bạn có thể yêu cầu truy cập hoặc chỉnh sửa thông tin cá nhân chúng tôi lưu giữ, và trong một số trường hợp khiếu nại với OAIC. Hãy liên hệ chúng tôi trước và chúng tôi sẽ hỗ trợ trong phạm vi có thể.",
+        priv_changes_h: "Thay đổi",
+        priv_changes_p:
+          "Chúng tôi có thể cập nhật chính sách này theo thời gian. Ngày “Cập nhật lần cuối” phía trên sẽ thay đổi khi có cập nhật.",
+      },
+    };
+
+    function getLang() {
+      try {
+        var s = localStorage.getItem(AA_LANG_KEY);
+        if (s === "vi" || s === "en") return s;
+      } catch (e) {}
+      return "en";
+    }
+
+    function t(key) {
+      var lang = getLang();
+      var pack = I18N[lang] || I18N.en;
+      return pack[key] != null ? pack[key] : I18N.en[key] || key;
+    }
+
+    function applyLang(lang) {
+      if (lang !== "vi" && lang !== "en") lang = "en";
+      try {
+        localStorage.setItem(AA_LANG_KEY, lang);
+      } catch (e) {}
+      document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (key && t(key) != null) el.textContent = t(key);
+      });
+      document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-aria");
+        if (key) el.setAttribute("aria-label", t(key));
+      });
+
+      var titleEl = document.getElementById("doc-title");
+      if (titleEl) titleEl.textContent = t("doc_title");
+      var descEl = document.getElementById("doc-desc");
+      if (descEl) descEl.setAttribute("content", t("doc_desc"));
+
+      var root = document.getElementById("lang-switch-root");
+      var toggle = document.getElementById("lang-toggle");
+      if (root && toggle) {
+        root.setAttribute("data-lang", lang);
+        if (lang === "en") {
+          root.classList.add("is-en");
+          toggle.setAttribute("aria-checked", "false");
+        } else {
+          root.classList.remove("is-en");
+          toggle.setAttribute("aria-checked", "true");
+        }
+      }
+    }
+
+    applyLang(getLang());
+
+    var langToggleBtn = document.getElementById("lang-toggle");
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener("click", function () {
+        applyLang(getLang() === "en" ? "vi" : "en");
+      });
+    }
   </script>
 </body>
 </html>
