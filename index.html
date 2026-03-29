@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="brand_assets/logo/mark.svg" type="image/svg+xml" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -291,8 +292,19 @@
   </section>
 
   <footer class="border-t border-aa-border bg-aa-surface px-5 py-10 text-center text-sm text-aa-muted">
-    <p class="font-display text-aa-primary">© <span id="y"></span> Adapt Agency</p>
-    <p class="mt-1">adaptagency.com.au</p>
+    <div class="mb-3 flex items-center justify-center gap-2 text-aa-primary">
+      <svg class="h-7 w-6 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="footer-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1a6b64" />
+            <stop offset="100%" stop-color="#0f3d3a" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#footer-bolt-grad)" d="M16 0 5 22h8L8 40l19-26h-9l8-14H16Z" />
+      </svg>
+      <span class="font-display text-lg font-semibold tracking-tight">Adapt Agency</span>
+    </div>
+    <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
   </footer>
 
   <script>
