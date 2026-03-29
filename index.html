@@ -296,18 +296,19 @@
     }
     .lang-switch-thumb {
       position: absolute;
-      top: 2px;
+      top: 50%;
       left: 2px;
       width: 1.125rem;
       height: 1.125rem;
       border-radius: 9999px;
       background: #34d399;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transform: translateY(calc(-50% + 1px));
       transition: transform 0.22s ease-out;
       pointer-events: none;
     }
     .lang-switch-wrap.is-en .lang-switch-thumb {
-      transform: translateX(calc(2.875rem - 1.125rem - 8px));
+      transform: translateX(calc(2.875rem - 1.125rem - 8px)) translateY(calc(-50% + 1px));
     }
   </style>
 </head>
