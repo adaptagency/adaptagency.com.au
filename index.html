@@ -263,17 +263,13 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
-    /* Language toggle (VN ↔ EN), Adapt accent + emerald thumb */
+    /* Language toggle (VN ↔ EN): shell matches CTA pill; emerald thumb */
     .lang-switch-wrap {
       display: flex;
       align-items: center;
       gap: 0.35rem;
       min-height: 44px;
-      border-radius: 9999px;
-      border: 1px solid rgba(196, 92, 66, 0.55);
-      background: rgba(0, 0, 0, 0.3);
       padding: 0.25rem 0.5rem;
-      backdrop-filter: blur(8px);
     }
     .lang-switch-wrap .lang-flag {
       font-size: 1.125rem;
@@ -287,15 +283,16 @@
       min-width: 2.875rem;
       height: 1.75rem;
       border-radius: 9999px;
-      border: 1px solid rgba(196, 92, 66, 0.45);
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgb(255 255 255 / 0.25);
+      background: rgb(255 255 255 / 0.05);
       padding: 2px;
       flex-shrink: 0;
       cursor: pointer;
-      transition: background 0.15s ease;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
     .lang-switch-track:hover {
-      background: rgba(255, 255, 255, 0.1);
+      border-color: rgb(255 255 255 / 0.4);
+      background: rgb(255 255 255 / 0.1);
     }
     .lang-switch-thumb {
       position: absolute;
@@ -344,14 +341,14 @@
           </span>
         </a>
         <div class="order-2 flex items-center gap-2 sm:gap-3 md:order-3">
-          <div id="lang-switch-root" class="lang-switch-wrap is-en" data-lang="en">
+          <a href="#lead" class="touch-target rounded-full border border-white/25 bg-white/5 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 sm:px-4 sm:text-sm md:px-5" data-i18n="cta_start">Start a project</a>
+          <div id="lang-switch-root" class="lang-switch-wrap is-en rounded-full border border-white/25 bg-white/5 backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10" data-lang="en">
             <span class="lang-flag" aria-hidden="true">🇻🇳</span>
             <button type="button" id="lang-toggle" class="lang-switch-track" role="switch" aria-checked="false" data-i18n-aria="lang_toggle_aria">
               <span class="lang-switch-thumb" aria-hidden="true"></span>
             </button>
             <span class="lang-flag" aria-hidden="true">🇦🇺</span>
           </div>
-          <a href="#lead" class="touch-target rounded-full border border-white/25 bg-white/5 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 sm:px-4 sm:text-sm md:px-5" data-i18n="cta_start">Start a project</a>
         </div>
         <nav class="order-3 flex w-full basis-full items-center justify-center gap-1 border-t border-white/[0.06] pt-2 text-xs font-medium text-white/65 sm:gap-6 sm:pt-3 sm:text-sm md:order-2 md:w-auto md:basis-auto md:border-t-0 md:pt-0 md:text-sm md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
           <a href="#services" class="nav-link touch-target rounded-md px-2.5 sm:px-3" data-i18n="nav_services">Services</a>
