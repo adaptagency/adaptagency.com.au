@@ -56,6 +56,11 @@
       .aurora-blob {
         animation: none !important;
       }
+      .hero-card-enter {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+      }
     }
 
     body {
@@ -109,6 +114,35 @@
       }
       50% {
         transform: translateY(-8px);
+      }
+    }
+
+    /* Hero proof cards: enter from left, staggered top → bottom (left-to-right stack feel) */
+    .hero-card-enter {
+      opacity: 0;
+      animation: hero-card-slide-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-card-enter:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .hero-card-enter:nth-child(2) {
+      animation-delay: 0.28s;
+    }
+
+    .hero-card-enter:nth-child(3) {
+      animation-delay: 0.46s;
+    }
+
+    @keyframes hero-card-slide-in {
+      from {
+        opacity: 0;
+        transform: translateX(calc(-100% - 3rem));
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
 
@@ -185,22 +219,28 @@
     <div id="main" class="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-28 pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-6 lg:pt-10">
       <!-- Floating proof cards (left stack) -->
       <div class="relative hidden min-h-[320px] md:block" aria-hidden="false">
-        <div class="float-card absolute left-0 top-0 w-[min(100%,280px)] -rotate-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/12 to-white/[0.04] p-5 shadow-card backdrop-blur-xl">
-          <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Delivery</p>
-          <p class="mt-2 font-display text-2xl font-semibold text-white">Weeks to first release</p>
-          <p class="mt-2 text-sm leading-relaxed text-white/55">Structured phases, clear handover—no endless “discovery.”</p>
-        </div>
-        <div class="float-card absolute left-8 top-32 w-[min(100%,260px)] rotate-3 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-white/[0.05] p-5 shadow-card backdrop-blur-xl">
-          <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Reach</p>
-          <p class="mt-2 font-display text-2xl font-semibold text-white">Multilingual &amp; global</p>
-          <p class="mt-2 text-sm text-white/55">Multilingual sites and apps, locale-aware UX, and collaboration across time zones.</p>
-        </div>
-        <div class="float-card absolute left-4 top-[19rem] w-[min(100%,270px)] -rotate-2 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-emerald-500/10 p-5 shadow-card backdrop-blur-xl">
-          <div class="flex items-center gap-2 text-amber-200/90">
-            <span class="text-lg leading-none">★★★★★</span>
+        <div class="hero-card-enter absolute left-0 top-0 w-[min(100%,280px)]">
+          <div class="float-card -rotate-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/12 to-white/[0.04] p-5 shadow-card backdrop-blur-xl">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Delivery</p>
+            <p class="mt-2 font-display text-2xl font-semibold text-white">Weeks to first release</p>
+            <p class="mt-2 text-sm leading-relaxed text-white/55">Structured phases, clear handover—no endless “discovery.”</p>
           </div>
-          <p class="mt-2 font-display text-lg font-medium text-white">Human-led AI delivery</p>
-          <p class="mt-1 text-sm text-white/55">Models and automation where they help—judgement where it matters.</p>
+        </div>
+        <div class="hero-card-enter absolute left-8 top-32 w-[min(100%,260px)]">
+          <div class="float-card rotate-3 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-white/[0.05] p-5 shadow-card backdrop-blur-xl">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">Reach</p>
+            <p class="mt-2 font-display text-2xl font-semibold text-white">Multilingual &amp; global</p>
+            <p class="mt-2 text-sm text-white/55">Multilingual sites and apps, locale-aware UX, and collaboration across time zones.</p>
+          </div>
+        </div>
+        <div class="hero-card-enter absolute left-4 top-[19rem] w-[min(100%,270px)]">
+          <div class="float-card -rotate-2 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-emerald-500/10 p-5 shadow-card backdrop-blur-xl">
+            <div class="flex items-center gap-2 text-amber-200/90">
+              <span class="text-lg leading-none">★★★★★</span>
+            </div>
+            <p class="mt-2 font-display text-lg font-medium text-white">Human-led AI delivery</p>
+            <p class="mt-1 text-sm text-white/55">Models and automation where they help—judgement where it matters.</p>
+          </div>
         </div>
       </div>
 
