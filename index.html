@@ -46,6 +46,8 @@
 
     html {
       scroll-behavior: smooth;
+      /* Hard refresh bypasses cache → late CSS/fonts reflow; scroll anchoring can yank the viewport */
+      overflow-anchor: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
