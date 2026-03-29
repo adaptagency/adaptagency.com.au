@@ -20,8 +20,8 @@ Canonical reference for visual identity, voice, and implementation. **Update thi
 | Asset | Location | Notes |
 |-------|----------|--------|
 | **Source mark** | `brand_assets/logo/adapt-agency-logo.png` | Original horizontal lockup (icon + wordmark + tagline). |
-| **Web badge** | `brand_assets/logo/adapt-agency-logo-web.png` | Same mark on a **white rounded rectangle** with a **thick blue border** (`#0B7DD8`, 18px stroke at export size). Use this in headers, OG images, and marketing blocks. |
-| **Web badge (SVG)** | `brand_assets/logo/adapt-agency-logo-web.svg` | Vector frame + embedded PNG reference; **deploy next to** `adapt-agency-logo.png` so the `<image href>` resolves. |
+| **Web badge** | `brand_assets/logo/adapt-agency-logo-web.png` | Same mark on a **white rounded rectangle** with a **thin darker blue border** (`#084B96`, 6px stroke at **991×400** export). **RGBA:** pixels outside the rounded badge are **transparent** (safe on coloured headers). |
+| **Web badge (SVG)** | `brand_assets/logo/adapt-agency-logo-web.svg` | Same layout; SVG canvas is transparent outside the plate. **Deploy next to** `adapt-agency-logo.png` so the `<image href>` resolves. |
 | Alternates | TBD | Light-on-dark variant if needed later. |
 
 **Clear space:** keep padding at least equal to the height of the cap “A” in *Adapt* between the blue frame and any neighbouring text or UI.
@@ -139,4 +139,4 @@ Pair a **display** face for headings with a **neutral sans** for UI and body (pe
 | Date | Change |
 |------|--------|
 | 2026-03-29 | Initial brand sheet and tokens for web use. |
-| 2026-03-30 | Added web badge logo (rounded white background, thick blue frame) from master PNG. |
+| 2026-03-30 | Web badge from master PNG: rounded white plate, thin darker border `#084B96`, transparent outside the plate (PNG/SVG). |
