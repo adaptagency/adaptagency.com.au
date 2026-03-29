@@ -39,9 +39,27 @@
   </script>
 </head>
 <body class="bg-aa-surface font-sans text-aa-text antialiased">
+  <div class="border-b border-aa-border bg-white">
+    <div class="mx-auto max-w-3xl px-4 py-2.5 sm:px-6">
+      <a href="index.html" class="text-sm font-medium text-aa-primary-mid underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary">&lt;---- Back to home page</a>
+    </div>
+  </div>
   <header class="border-b border-aa-border bg-white">
     <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
-      <a href="index.html" class="font-display text-lg font-semibold text-aa-primary">Adapt Agency</a>
+      <a href="index.html" class="flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3" aria-label="Adapt Agency home">
+        <svg class="h-7 w-6 shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
+          <defs>
+            <linearGradient id="terms-header-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#1a6b64" />
+              <stop offset="100%" stop-color="#0f3d3a" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#terms-header-bolt-grad)" d="M16 40 27 16h-7L25 0l-20 24h8l-5 16H16z" />
+        </svg>
+        <span class="text-xs font-semibold leading-none tracking-tight text-aa-primary sm:text-sm">
+          Adapt <span class="text-aa-primary-mid">Agency</span>
+        </span>
+      </a>
       <nav class="flex gap-4 text-sm font-medium text-aa-muted">
         <a href="index.html#lead" class="text-aa-primary-mid hover:text-aa-primary">Contact</a>
         <a href="privacy.html" class="hover:text-aa-primary">Privacy Policy</a>
