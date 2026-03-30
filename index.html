@@ -377,7 +377,7 @@
             Adapt <span class="text-white/88">Agency</span>
           </span>
         </a>
-        <nav class="flex min-w-0 flex-1 items-center justify-center gap-0.5 text-[11px] font-medium text-white/65 sm:gap-6 sm:text-sm md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
+        <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-[11px] font-medium text-white/65 sm:gap-6 sm:text-sm md:flex md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
           <a href="#services" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_services">Services</a>
           <a href="#capabilities" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_capabilities">Capabilities</a>
           <a href="#lead" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_contact">Contact</a>
@@ -400,7 +400,12 @@
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" aria-hidden="true"></div>
 
-    <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-8 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-6 lg:pt-10">
+    <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-6 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-6 lg:pt-10">
+      <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
+        <a href="#services" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_services">Services</a>
+        <a href="#capabilities" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_capabilities">Capabilities</a>
+        <a href="#lead" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_contact">Contact</a>
+      </nav>
       <!-- Floating proof cards (left stack) -->
       <div class="relative hidden min-h-[320px] md:block" aria-hidden="false">
         <div class="hero-card-enter absolute left-0 top-0 w-[min(100%,280px)]">
