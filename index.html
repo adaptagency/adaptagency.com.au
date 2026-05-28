@@ -217,6 +217,32 @@
       background-color: #030706;
     }
 
+    .site-header-home {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      overflow: visible;
+      padding-bottom: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
+      .site-header-home {
+        padding-bottom: 1rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header-home {
+        padding-bottom: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-header-home {
+        padding-bottom: 1.5rem;
+      }
+    }
+
     .starfield {
       background-image:
         radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
@@ -304,11 +330,11 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
-    /* Home header logo: larger mark that hangs into the hero */
+    /* Home header logo: hangs into the hero; sized ~30% smaller than prior pass */
     .site-logo-slot {
       position: relative;
       flex-shrink: 0;
-      width: 9.5rem;
+      width: 6.65rem;
       height: 0;
     }
 
@@ -330,38 +356,38 @@
 
     .site-logo-overhang {
       display: block;
-      height: 5.25rem;
+      height: 3.675rem;
       width: auto;
       max-width: none;
     }
 
     @media (min-width: 640px) {
       .site-logo-slot {
-        width: 11.5rem;
+        width: 8.05rem;
       }
 
       .site-logo-overhang {
-        height: 6.5rem;
+        height: 4.55rem;
       }
     }
 
     @media (min-width: 768px) {
       .site-logo-slot {
-        width: 13.5rem;
+        width: 9.45rem;
       }
 
       .site-logo-overhang {
-        height: 7.75rem;
+        height: 5.425rem;
       }
     }
 
     @media (min-width: 1024px) {
       .site-logo-slot {
-        width: 15rem;
+        width: 10.5rem;
       }
 
       .site-logo-overhang {
-        height: 8.75rem;
+        height: 6.125rem;
       }
     }
 
@@ -417,7 +443,7 @@
 <body class="bg-aa-surface text-aa-text antialiased">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
-  <header class="site-header-home relative z-20 overflow-visible">
+  <header class="site-header-home">
     <div class="mx-auto flex max-w-7xl flex-nowrap items-center justify-between gap-1.5 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-4 md:gap-4 md:px-8">
         <div class="site-logo-slot">
           <a href="https://adaptagency.com.au" class="site-logo-link" data-i18n-aria="logo_aria">
