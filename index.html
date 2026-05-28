@@ -304,6 +304,67 @@
       color: rgba(255, 255, 255, 0.95);
     }
 
+    /* Home header logo: larger mark that hangs into the hero */
+    .site-logo-slot {
+      position: relative;
+      flex-shrink: 0;
+      width: 9.5rem;
+      height: 0;
+    }
+
+    .site-logo-link {
+      position: absolute;
+      left: 0;
+      top: 0.125rem;
+      z-index: 30;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .site-logo-link:hover {
+      opacity: 0.92;
+    }
+
+    .site-logo-link:active {
+      transform: scale(0.985);
+    }
+
+    .site-logo-overhang {
+      display: block;
+      height: 5.25rem;
+      width: auto;
+      max-width: none;
+    }
+
+    @media (min-width: 640px) {
+      .site-logo-slot {
+        width: 11.5rem;
+      }
+
+      .site-logo-overhang {
+        height: 6.5rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-logo-slot {
+        width: 13.5rem;
+      }
+
+      .site-logo-overhang {
+        height: 7.75rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-logo-slot {
+        width: 15rem;
+      }
+
+      .site-logo-overhang {
+        height: 8.75rem;
+      }
+    }
+
     /* Language toggle (VN ↔ EN): shell matches CTA pill; emerald thumb */
     .lang-switch-wrap {
       display: flex;
@@ -356,18 +417,20 @@
 <body class="bg-aa-surface text-aa-text antialiased">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
-  <header class="site-header-home relative z-10">
+  <header class="site-header-home relative z-20 overflow-visible">
     <div class="mx-auto flex max-w-7xl flex-nowrap items-center justify-between gap-1.5 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-4 md:gap-4 md:px-8">
-        <a href="index.html" class="flex shrink-0 items-center transition-opacity hover:opacity-90" data-i18n-aria="logo_aria">
-          <img
-            src="brand_assets/logo/adapt-agency-header.png"
-            alt="Adapt Agency"
-            width="209"
-            height="80"
-            class="h-7 w-auto max-w-[9.5rem] sm:h-9 sm:max-w-none"
-            decoding="async"
-          />
-        </a>
+        <div class="site-logo-slot">
+          <a href="https://adaptagency.com.au" class="site-logo-link" data-i18n-aria="logo_aria">
+            <img
+              src="brand_assets/logo/adapt-agency.png"
+              alt="Adapt Agency"
+              width="768"
+              height="294"
+              class="site-logo-overhang"
+              decoding="async"
+            />
+          </a>
+        </div>
         <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-[11px] font-medium text-white/65 sm:gap-6 sm:text-sm md:flex md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
           <a href="#services" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_services">Services</a>
           <a href="#capabilities" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_capabilities">Capabilities</a>
@@ -391,7 +454,7 @@
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" aria-hidden="true"></div>
 
-    <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-6 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-6 lg:pt-10">
+    <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-12 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-16 lg:pt-20">
       <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
         <a href="#services" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_services">Services</a>
         <a href="#capabilities" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_capabilities">Capabilities</a>
