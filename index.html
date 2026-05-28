@@ -358,24 +358,15 @@
 
   <header class="site-header-home relative z-10">
     <div class="mx-auto flex max-w-7xl flex-nowrap items-center justify-between gap-1.5 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-4 md:gap-4 md:px-8">
-        <a href="index.html" class="flex shrink-0 items-center gap-1.5 transition-opacity hover:opacity-90 sm:gap-3" data-i18n-aria="logo_aria">
-          <svg class="h-6 w-[1.05rem] shrink-0 sm:h-8 sm:w-[1.4rem]" viewBox="0 0 32 40" aria-hidden="true">
-            <defs>
-              <linearGradient id="logo-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#99f6e4" />
-                <stop offset="55%" stop-color="#5eead4" />
-                <stop offset="100%" stop-color="#34d399" />
-              </linearGradient>
-            </defs>
-            <!-- Tip up; mirrored L–R (x=16) from prior bolt -->
-            <path
-              fill="url(#logo-bolt-grad)"
-              d="M16 40 27 16h-7L25 0l-20 24h8l-5 16H16z"
-            />
-          </svg>
-          <span class="whitespace-nowrap text-[11px] font-semibold leading-none tracking-tight text-white sm:text-sm">
-            Adapt <span class="text-white/88">Agency</span>
-          </span>
+        <a href="index.html" class="flex shrink-0 items-center transition-opacity hover:opacity-90" data-i18n-aria="logo_aria">
+          <img
+            src="brand_assets/logo/adapt-agency-header.png"
+            alt="Adapt Agency"
+            width="209"
+            height="80"
+            class="h-7 w-auto max-w-[9.5rem] sm:h-9 sm:max-w-none"
+            decoding="async"
+          />
         </a>
         <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-[11px] font-medium text-white/65 sm:gap-6 sm:text-sm md:flex md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
           <a href="#services" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_services">Services</a>
@@ -598,12 +589,27 @@
     <div class="mb-3 flex items-center justify-center gap-1.5 text-aa-primary">
       <svg class="h-5 w-4 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
         <defs>
-          <linearGradient id="footer-bolt-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <linearGradient id="footer-bolt-grad" x1="8" y1="40" x2="26" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stop-color="#1a6b64" />
             <stop offset="100%" stop-color="#0f3d3a" />
           </linearGradient>
+          <linearGradient id="footer-synapse-grad" x1="6" y1="38" x2="26" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0f3d3a" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#1a6b64" stop-opacity="0.9" />
+          </linearGradient>
         </defs>
-        <path fill="url(#footer-bolt-grad)" d="M16 40 27 16h-7L25 0l-20 24h8l-5 16H16z" />
+        <g stroke="url(#footer-synapse-grad)" stroke-width="1.2" stroke-linecap="round" fill="none">
+          <path d="M7 36.5 16 32.5 25 36.5" />
+          <path d="M7 36.5 16 24" />
+          <path d="M25 36.5 16 24" />
+        </g>
+        <circle cx="7" cy="36.5" r="2" fill="#0f3d3a" />
+        <circle cx="25" cy="36.5" r="2" fill="#0f3d3a" />
+        <circle cx="16" cy="32.5" r="2.4" fill="#1a6b64" />
+        <circle cx="16" cy="32.5" r="0.95" fill="#5eead4" />
+        <path fill="url(#footer-bolt-grad)" d="M16 24 26.5 11.5H20.5L24.5 1.5 10.5 16.5H17.5L13.5 24H16z" />
+        <circle cx="24.5" cy="1.5" r="1.55" fill="#99f6e4" />
+        <circle cx="24.5" cy="1.5" r="0.55" fill="#fff" />
       </svg>
       <span class="text-sm font-semibold tracking-tight">Adapt Agency</span>
     </div>

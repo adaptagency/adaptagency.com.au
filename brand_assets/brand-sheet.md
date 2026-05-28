@@ -19,10 +19,13 @@ Canonical reference for visual identity, voice, and implementation. **Update thi
 
 | Asset | Location | Notes |
 |-------|----------|--------|
-| **Primary (live site)** | Inline in `index.html` + `brand_assets/logo/mark.svg` | **Wordmark:** “Adapt Agency” in **DM Sans** (same family as nav / primary UI buttons), with an **upward** lightning SVG (apex at top of mark). **Dark UI:** bolt uses emerald gradient (`#99f6e4` → `#34d399`). **Light/footer:** bolt uses brand teal gradient (`#1a6b64` → `#0f3d3a`). **Favicon:** `mark.svg`. |
-| **Legacy raster** | `adapt-agency-logo.png`, `adapt-agency-logo-web.png` / `.svg` | Earlier lockups; **not used** on the current marketing page—keep for reference or print if needed. |
+| **Primary (live site)** | Inline in `index.html` + `brand_assets/logo/mark.svg` | **Wordmark:** “Adapt Agency” in **DM Sans** with the **Adaptive Nexus** symbol: a synaptic node network at the base (AI connection) converging into an **upward** lightning bolt (adaptation and momentum). **Dark UI:** emerald gradients on bolt and nodes (`#99f6e4` → `#34d399`). **Light/footer:** brand teal (`#1a6b64` → `#0f3d3a`) with mint apex highlight. **Favicon:** `mark.svg`. |
+| **Social / OG lockup** | `brand_assets/logo/adapt-agency-logo-web.svg` | Horizontal lockup on deep teal plate for Open Graph and Twitter cards. |
+| **Legacy raster** | `adapt-agency-logo.png`, `adapt-agency-logo-web.png` | Earlier lockups; **not used** on the current marketing page—keep for reference or print if needed. |
 
-**Clear space:** treat the lightning + wordmark as one lockup—keep clear space ≥ cap height of “A” on all sides.
+**Clear space:** treat the symbol + wordmark as one lockup—keep clear space ≥ cap height of “A” on all sides.
+
+**Symbol meaning:** three connected nodes (input / intelligence layer) feed a central hub, which rises through the lightning bolt to a bright apex node (output / adapted result).
 
 **Do not** stretch the mark disproportionally; scale the SVG and text together.
 
@@ -139,3 +142,4 @@ Pair a **display** face for headings with a **neutral sans** for UI and body (pe
 | 2026-03-29 | Initial brand sheet and tokens for web use. |
 | 2026-03-30 | Web badge from master PNG: rounded white plate, thin darker border `#084B96`, transparent outside the plate (PNG/SVG). |
 | 2026-03-30 | Site wordmark: Fraunces “Adapt Agency” + upward emerald lightning; legacy raster lockups retired from the live page. |
+| 2026-05-28 | Adaptive Nexus symbol: synaptic node network + upward lightning; updated mark, OG lockup, and inline site logos. |

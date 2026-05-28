@@ -1,4 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 991 400" role="img" aria-label="Adapt Agency">
-  <rect x="3" y="3" width="985" height="394" rx="32" ry="32" fill="#ffffff" stroke="#084B96" stroke-width="6"/>
-  <image xlink:href="adapt-agency-logo.png" href="adapt-agency-logo.png" x="46" y="46" width="899" height="308" preserveAspectRatio="xMidYMid meet"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" fill="none" role="img" aria-label="Adapt Agency">
+  <defs>
+    <linearGradient id="lockup-bolt-grad" x1="12" y1="88" x2="52" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a6b64"/>
+      <stop offset="50%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#6ee7b7"/>
+    </linearGradient>
+    <linearGradient id="lockup-synapse-grad" x1="10" y1="82" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f3d3a" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="96" rx="16" fill="#0f3d3a"/>
+  <g transform="translate(18 8) scale(2)">
+    <g stroke="url(#lockup-synapse-grad)" stroke-width="1.2" stroke-linecap="round" fill="none">
+      <path d="M7 36.5 16 32.5 25 36.5"/>
+      <path d="M7 36.5 16 24"/>
+      <path d="M25 36.5 16 24"/>
+    </g>
+    <circle cx="7" cy="36.5" r="2" fill="#99f6e4"/>
+    <circle cx="25" cy="36.5" r="2" fill="#99f6e4"/>
+    <circle cx="16" cy="32.5" r="2.4" fill="#5eead4"/>
+    <circle cx="16" cy="32.5" r="0.95" fill="#ecfdf5"/>
+    <path fill="url(#lockup-bolt-grad)" d="M16 24 26.5 11.5H20.5L24.5 1.5 10.5 16.5H17.5L13.5 24H16z"/>
+    <circle cx="24.5" cy="1.5" r="1.55" fill="#ecfdf5"/>
+    <circle cx="24.5" cy="1.5" r="0.55" fill="#0f3d3a"/>
+  </g>
+  <text x="108" y="58" fill="#ffffff" font-family="DM Sans, system-ui, sans-serif" font-size="34" font-weight="600" letter-spacing="-0.02em">Adapt Agency</text>
 </svg>
