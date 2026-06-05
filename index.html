@@ -556,10 +556,12 @@
 
     <!-- Soft glow handoff (organic, not a hard horizontal band) -->
     <div class="aurora-blob pointer-events-none absolute bottom-0 left-1/2 h-48 w-[140%] max-w-none -translate-x-1/2 translate-y-1/2 rounded-[50%] bg-gradient-to-t from-emerald-400/35 via-teal-500/25 to-transparent blur-3xl" aria-hidden="true"></div>
+    <!-- Hero → light green transition -->
+    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#e8f3f2] to-transparent" aria-hidden="true"></div>
   </div>
 
   <!-- Services: what you can buy -->
-  <section id="services" class="relative z-10 scroll-mt-6 bg-aa-surface px-4 pb-20 pt-16 sm:px-5 sm:pb-24 sm:pt-20 md:px-8 md:pb-28 md:pt-28" aria-labelledby="services-heading">
+  <section id="services" class="relative z-10 scroll-mt-6 bg-[#e8f3f2] px-4 pb-20 pt-16 sm:px-5 sm:pb-24 sm:pt-20 md:px-8 md:pb-28 md:pt-28" aria-labelledby="services-heading">
     <div class="mx-auto max-w-6xl">
       <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_services_l">Services</p>
       <h2 id="services-heading" class="section-heading font-display mx-auto mt-4 max-w-3xl text-center font-semibold leading-tight text-aa-primary md:mx-0 md:text-left" data-i18n="sec_services_h">
@@ -587,7 +589,7 @@
   </section>
 
   <!-- Capabilities: how we work (separate anchor for nav) -->
-  <section id="capabilities" class="scroll-mt-6 border-t border-aa-border bg-white px-4 py-16 sm:px-5 sm:py-24 md:px-8 md:py-32" aria-labelledby="capabilities-heading">
+  <section id="capabilities" class="scroll-mt-6 bg-[#e8f3f2] px-4 py-16 sm:px-5 sm:py-24 md:px-8 md:py-32" aria-labelledby="capabilities-heading">
     <div class="mx-auto max-w-6xl">
       <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_cap_l">Capabilities</p>
       <h2 id="capabilities-heading" class="section-heading font-display mx-auto mt-4 max-w-3xl text-center font-semibold leading-tight text-aa-primary md:mx-0 md:text-left" data-i18n="sec_cap_h">
@@ -627,7 +629,7 @@
   </section>
 
   <!-- Lead -->
-  <section id="lead" class="scroll-mt-6 border-t border-aa-border bg-white px-4 py-16 sm:px-5 sm:py-20 md:px-8 md:py-24">
+  <section id="lead" class="scroll-mt-6 bg-[#e8f3f2] px-4 py-16 sm:px-5 sm:py-20 md:px-8 md:py-24">
     <div class="mx-auto max-w-lg">
       <h2 class="section-heading font-display text-center font-semibold text-aa-primary" data-i18n="lead_h">Start with a short brief</h2>
       <p class="mt-3 text-center text-aa-muted"><span data-i18n="lead_intro">We will reply with next steps—or just email</span> <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au?subject=Enquiry%20from%20adaptagency.com.au">steve@adaptagency.com.au</a>.</p>
@@ -674,17 +676,20 @@
     </div>
   </section>
 
-  <footer class="border-t border-aa-border bg-aa-surface px-4 py-8 text-center text-sm text-aa-muted sm:px-5 sm:py-10">
-    <div class="mb-3 flex items-center justify-center gap-1.5 text-aa-primary">
+  <!-- Light green → dark green transition -->
+  <div class="h-24 bg-gradient-to-b from-[#e8f3f2] to-[#0f3d3a]" aria-hidden="true"></div>
+
+  <footer class="bg-[#0f3d3a] px-4 py-8 text-center text-sm text-white/60 sm:px-5 sm:py-10">
+    <div class="mb-3 flex items-center justify-center gap-1.5 text-white/80">
       <svg class="h-5 w-4 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
         <defs>
           <linearGradient id="footer-bolt-grad" x1="8" y1="40" x2="26" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#1a6b64" />
-            <stop offset="100%" stop-color="#0f3d3a" />
+            <stop offset="0%" stop-color="#5eead4" />
+            <stop offset="100%" stop-color="#99f6e4" />
           </linearGradient>
           <linearGradient id="footer-synapse-grad" x1="6" y1="38" x2="26" y2="28" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#0f3d3a" stop-opacity="0.55" />
-            <stop offset="100%" stop-color="#1a6b64" stop-opacity="0.9" />
+            <stop offset="0%" stop-color="#5eead4" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#99f6e4" stop-opacity="0.9" />
           </linearGradient>
         </defs>
         <g stroke="url(#footer-synapse-grad)" stroke-width="1.2" stroke-linecap="round" fill="none">
@@ -692,9 +697,9 @@
           <path d="M7 36.5 16 24" />
           <path d="M25 36.5 16 24" />
         </g>
-        <circle cx="7" cy="36.5" r="2" fill="#0f3d3a" />
-        <circle cx="25" cy="36.5" r="2" fill="#0f3d3a" />
-        <circle cx="16" cy="32.5" r="2.4" fill="#1a6b64" />
+        <circle cx="7" cy="36.5" r="2" fill="#5eead4" />
+        <circle cx="25" cy="36.5" r="2" fill="#5eead4" />
+        <circle cx="16" cy="32.5" r="2.4" fill="#99f6e4" />
         <circle cx="16" cy="32.5" r="0.95" fill="#5eead4" />
         <path fill="url(#footer-bolt-grad)" d="M16 24 26.5 11.5H20.5L24.5 1.5 10.5 16.5H17.5L13.5 24H16z" />
         <circle cx="24.5" cy="1.5" r="1.55" fill="#99f6e4" />
@@ -704,8 +709,8 @@
     </div>
     <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
     <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
-      <a href="privacy.html" class="text-aa-muted underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="footer_privacy">Privacy Policy</a>
-      <a href="terms.html" class="text-aa-muted underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="footer_terms">Terms of Use</a>
+      <a href="privacy.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terms.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_terms">Terms of Use</a>
     </div>
     <div class="mt-6 flex justify-center">
       <a
