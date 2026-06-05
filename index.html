@@ -554,10 +554,14 @@
       </div>
     </main>
 
-    <!-- Soft glow handoff (organic, not a hard horizontal band) -->
+    <!-- Soft glow handoff -->
     <div class="aurora-blob pointer-events-none absolute bottom-0 left-1/2 h-48 w-[140%] max-w-none -translate-x-1/2 translate-y-1/2 rounded-[50%] bg-gradient-to-t from-emerald-400/35 via-teal-500/25 to-transparent blur-3xl" aria-hidden="true"></div>
-    <!-- Hero → light green transition -->
-    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#e8f3f2] to-transparent" aria-hidden="true"></div>
+    <!-- Organic curve: hero → light green -->
+    <div class="pointer-events-none absolute bottom-0 left-0 right-0 overflow-hidden" style="height:80px" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="h-full w-full">
+        <path d="M0,40 C240,80 480,10 720,35 C960,60 1200,5 1440,30 L1440,80 L0,80 Z" fill="#e8f3f2" />
+      </svg>
+    </div>
   </div>
 
   <!-- Services: what you can buy -->
@@ -676,8 +680,12 @@
     </div>
   </section>
 
-  <!-- Light green → dark green transition -->
-  <div class="h-24 bg-gradient-to-b from-[#e8f3f2] to-[#0f3d3a]" aria-hidden="true"></div>
+  <!-- Organic curve: light green → dark green footer -->
+  <div class="overflow-hidden bg-[#e8f3f2]" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="block h-[100px] w-full">
+      <path d="M0,80 C240,20 480,90 720,60 C960,30 1200,85 1440,50 L1440,100 L0,100 Z" fill="#0f3d3a" />
+    </svg>
+  </div>
 
   <footer class="bg-[#0f3d3a] px-4 py-8 text-center text-sm text-white/60 sm:px-5 sm:py-10">
     <div class="mb-3 flex items-center justify-center gap-1.5 text-white/80">
