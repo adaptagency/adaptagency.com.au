@@ -209,12 +209,7 @@
     /* Shared hero + home header fill (no seam between header and hero) */
     .hero-atmos,
     .site-header-home {
-      background:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(45, 212, 191, 0.18), transparent 55%),
-        radial-gradient(ellipse 90% 60% at 10% 60%, rgba(16, 185, 129, 0.12), transparent 50%),
-        radial-gradient(ellipse 70% 50% at 90% 40%, rgba(6, 78, 59, 0.5), transparent 45%),
-        radial-gradient(ellipse 100% 100% at 50% 100%, #0a1816 0%, #030706 65%);
-      background-color: #030706;
+      background: transparent;
     }
 
     .site-header-home {
@@ -223,6 +218,9 @@
       z-index: 20;
       overflow: visible;
       padding-bottom: 0.75rem;
+      background: rgba(3, 7, 6, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     @media (min-width: 640px) {
@@ -478,7 +476,10 @@
   <!-- Dark hero (layout inspired by brand_assets reference) -->
   <div class="hero-atmos relative min-h-[100dvh] overflow-hidden text-white">
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" aria-hidden="true"></div>
+    <!-- Subtle teal/emerald atmospheric glow behind the dark overlay -->
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(45, 212, 191, 0.15), transparent 55%), radial-gradient(ellipse 90% 60% at 10% 60%, rgba(16, 185, 129, 0.1), transparent 50%);"></div>
+    <!-- Dark-to-transparent gradient creates darkness at top, fades to let body gradient show -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#030706] via-[#0a1816] to-transparent" aria-hidden="true"></div>
 
     <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-12 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-16 lg:pt-20">
       <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
@@ -554,8 +555,6 @@
       </div>
     </main>
 
-    <!-- Blend hero bg into body gradient -->
-    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#e8f3f2] to-transparent" aria-hidden="true" style="z-index:1;"></div>
     <!-- Soft glow handoff -->
     <div class="aurora-blob pointer-events-none absolute bottom-0 left-1/2 h-48 w-[140%] max-w-none -translate-x-1/2 translate-y-1/2 rounded-[50%] bg-gradient-to-t from-emerald-400/35 via-teal-500/25 to-transparent blur-3xl" aria-hidden="true"></div>
   </div>
