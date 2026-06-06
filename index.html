@@ -440,7 +440,7 @@
     }
   </style>
 </head>
-<body class="bg-aa-surface text-aa-text antialiased">
+<body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #030706 0%, #0f3d3a 18%, #dceeeb 38%, #e8f3f2 48%, #e8f3f2 68%, #dceeeb 78%, #0f3d3a 90%, #030706 100%); min-height: 100vh;">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
   <header class="site-header-home">
@@ -478,7 +478,7 @@
   <!-- Dark hero (layout inspired by brand_assets reference) -->
   <div class="hero-atmos relative min-h-[100dvh] overflow-hidden text-white">
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" aria-hidden="true"></div>
 
     <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-12 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-16 lg:pt-20">
       <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
@@ -556,16 +556,10 @@
 
     <!-- Soft glow handoff -->
     <div class="aurora-blob pointer-events-none absolute bottom-0 left-1/2 h-48 w-[140%] max-w-none -translate-x-1/2 translate-y-1/2 rounded-[50%] bg-gradient-to-t from-emerald-400/35 via-teal-500/25 to-transparent blur-3xl" aria-hidden="true"></div>
-    <!-- Organic curve: hero → light green -->
-    <div class="pointer-events-none absolute bottom-0 left-0 right-0 overflow-hidden" style="height:80px" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="h-full w-full">
-        <path d="M0,40 C240,80 480,10 720,35 C960,60 1200,5 1440,30 L1440,80 L0,80 Z" fill="#e8f3f2" />
-      </svg>
-    </div>
   </div>
 
   <!-- Services: what you can buy -->
-  <section id="services" class="relative z-10 scroll-mt-6 bg-[#e8f3f2] px-4 pb-20 pt-16 sm:px-5 sm:pb-24 sm:pt-20 md:px-8 md:pb-28 md:pt-28" aria-labelledby="services-heading">
+  <section id="services" class="relative z-10 scroll-mt-6 px-4 pb-20 pt-16 sm:px-5 sm:pb-24 sm:pt-20 md:px-8 md:pb-28 md:pt-28" aria-labelledby="services-heading">
     <div class="mx-auto max-w-6xl">
       <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_services_l">Services</p>
       <h2 id="services-heading" class="section-heading font-display mx-auto mt-4 max-w-3xl text-center font-semibold leading-tight text-aa-primary md:mx-0 md:text-left" data-i18n="sec_services_h">
@@ -593,7 +587,7 @@
   </section>
 
   <!-- Capabilities: how we work (separate anchor for nav) -->
-  <section id="capabilities" class="scroll-mt-6 bg-[#e8f3f2] px-4 py-16 sm:px-5 sm:py-24 md:px-8 md:py-32" aria-labelledby="capabilities-heading">
+  <section id="capabilities" class="scroll-mt-6 px-4 py-16 sm:px-5 sm:py-24 md:px-8 md:py-32" aria-labelledby="capabilities-heading">
     <div class="mx-auto max-w-6xl">
       <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-aa-primary-mid md:text-left" data-i18n="sec_cap_l">Capabilities</p>
       <h2 id="capabilities-heading" class="section-heading font-display mx-auto mt-4 max-w-3xl text-center font-semibold leading-tight text-aa-primary md:mx-0 md:text-left" data-i18n="sec_cap_h">
@@ -633,7 +627,7 @@
   </section>
 
   <!-- Lead -->
-  <section id="lead" class="scroll-mt-6 bg-[#e8f3f2] px-4 py-16 sm:px-5 sm:py-20 md:px-8 md:py-24">
+  <section id="lead" class="scroll-mt-6 px-4 py-16 sm:px-5 sm:py-20 md:px-8 md:py-24">
     <div class="mx-auto max-w-lg">
       <h2 class="section-heading font-display text-center font-semibold text-aa-primary" data-i18n="lead_h">Start with a short brief</h2>
       <p class="mt-3 text-center text-aa-muted"><span data-i18n="lead_intro">We will reply with next steps—or just email</span> <a class="font-semibold text-aa-accent underline decoration-aa-accent/30 underline-offset-4 hover:decoration-aa-accent" href="mailto:steve@adaptagency.com.au?subject=Enquiry%20from%20adaptagency.com.au">steve@adaptagency.com.au</a>.</p>
@@ -680,14 +674,7 @@
     </div>
   </section>
 
-  <!-- Organic curve: light green → dark green footer -->
-  <div class="overflow-hidden bg-[#e8f3f2]" aria-hidden="true">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="block h-[100px] w-full">
-      <path d="M0,80 C240,20 480,90 720,60 C960,30 1200,85 1440,50 L1440,100 L0,100 Z" fill="#0f3d3a" />
-    </svg>
-  </div>
-
-  <footer class="bg-[#0f3d3a] px-4 py-8 text-center text-sm text-white/60 sm:px-5 sm:py-10">
+  <footer class="px-4 py-8 text-center text-sm sm:px-5 sm:py-10" style="color: rgba(255,255,255,0.6);">
     <div class="mb-3 flex items-center justify-center gap-1.5 text-white/80">
       <svg class="h-5 w-4 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
         <defs>
