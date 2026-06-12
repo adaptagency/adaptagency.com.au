@@ -130,7 +130,7 @@ Pair a **display** face for headings with a **neutral sans** for UI and body (pe
 |------|---------|
 | `brand-sheet.md` | This document — strategy and tokens in prose. |
 | `tokens.css` | `:root` CSS custom properties for implementation. |
-| `logo/mark.svg` | Primary mark (lightning); favicon. |
+| `logo/adapt-agency.png` | Primary logo lockup (mark + wordmark). |
 | `logo/adapt-agency-logo*.png` / `.svg` | Legacy lockups (optional archive). |
 
 ---
