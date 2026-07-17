@@ -3,3 +3,5 @@ screenshots/
 dist/
 .env
 .env.*
+docs/
+scripts/
