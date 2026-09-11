@@ -173,22 +173,7 @@
       font-family: "DM Sans", system-ui, sans-serif;
       overflow-x: clip;
       overflow-wrap: break-word;
-      background: transparent;
-    }
-
-    /* Fixed full-viewport gradient — dark green at top AND bottom of the visible
-       screen, light in the middle, at ANY scroll position. Content scrolls over
-       it; no page-height coupling (the body min-height would stretch a body
-       background far past the visible viewport). */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(to bottom,
-        #0f3d3a 0%, #14473e 16%, #2a6458 32%, #6b9c8e 46%,
-        #c9dbd3 54%, #e8f3f2 60%, #d9e9e3 66%, #8eb9ab 78%,
-        #4a8379 88%, #1f5149 95%, #0f3d3a 100%);
+      background: #0f3d3a;
     }
 
     html:lang(vi) body {
@@ -255,16 +240,7 @@
     }
 
     .starfield {
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
-        radial-gradient(1px 1px at 60% 70%, rgba(255, 255, 255, 0.2), transparent),
-        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.25), transparent),
-        radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 90% 60%, rgba(255, 255, 255, 0.15), transparent),
-        radial-gradient(1px 1px at 33% 80%, rgba(255, 255, 255, 0.2), transparent),
-        radial-gradient(1px 1px at 15% 55%, rgba(255, 255, 255, 0.18), transparent);
-      background-size: 100% 100%;
-      opacity: 0.5;
+      display: none;
     }
 
     .float-card {
@@ -490,7 +466,7 @@
   <div class="hero-atmos relative min-h-[100dvh] overflow-hidden text-white">
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
     <!-- Subtle teal/emerald atmospheric glow behind the dark overlay -->
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(45, 212, 191, 0.15), transparent 55%), radial-gradient(ellipse 90% 60% at 10% 60%, rgba(16, 185, 129, 0.1), transparent 50%);"></div>
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: transparent;"></div>
 
     <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-12 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-16 lg:pt-20">
       <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
@@ -501,21 +477,21 @@
       <!-- Floating proof cards (left stack) -->
       <div class="relative hidden min-h-[320px] md:block" aria-hidden="false">
         <div class="hero-card-enter absolute left-0 top-0 w-[min(100%,280px)]">
-          <div class="float-card -rotate-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/12 to-white/[0.04] p-5 shadow-card backdrop-blur-xl">
+          <div class="float-card -rotate-6 rounded-2xl border border-white/15 bg-[#0f3d3a] p-5 shadow-card">
             <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90" data-i18n="card_delivery_l">Delivery</p>
             <p class="mt-2 font-display text-2xl font-semibold text-white" data-i18n="card_delivery_t">Weeks to first release</p>
             <p class="mt-2 text-sm leading-relaxed text-white/55" data-i18n="card_delivery_d">Structured phases, clear handover—no endless “discovery.”</p>
           </div>
         </div>
         <div class="hero-card-enter absolute left-8 top-32 w-[min(100%,260px)]">
-          <div class="float-card rotate-3 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-white/[0.05] p-5 shadow-card backdrop-blur-xl">
+          <div class="float-card rotate-3 rounded-2xl border border-white/15 bg-[#0f3d3a] p-5 shadow-card">
             <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90" data-i18n="card_reach_l">Reach</p>
             <p class="mt-2 font-display text-2xl font-semibold text-white" data-i18n="card_reach_t">Multilingual &amp; global</p>
             <p class="mt-2 text-sm text-white/55" data-i18n="card_reach_d">Multilingual sites and apps, locale-aware UX, and collaboration across time zones.</p>
           </div>
         </div>
         <div class="hero-card-enter absolute left-4 top-[19rem] w-[min(100%,270px)]">
-          <div class="float-card -rotate-2 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-emerald-500/10 p-5 shadow-card backdrop-blur-xl">
+          <div class="float-card -rotate-2 rounded-2xl border border-white/15 bg-[#0f3d3a] p-5 shadow-card">
             <div class="flex items-center gap-2 text-amber-200/90">
               <span class="text-lg leading-none">★★★★★</span>
             </div>
@@ -537,7 +513,7 @@
 
         <form id="hero-prompt" class="mx-auto mt-10 max-w-2xl md:mx-0" action="#lead" data-scroll>
           <label class="sr-only" for="prompt-input" data-i18n="hero_prompt_label">Describe your project</label>
-          <div class="flex flex-col gap-3 rounded-2xl border border-white/15 bg-black/40 p-2 shadow-prompt backdrop-blur-xl sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:pl-5 sm:pr-2 sm:py-2">
+          <div class="flex flex-col gap-3 rounded-2xl border border-white/20 bg-[#0a1816] p-2 shadow-prompt sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:pl-5 sm:pr-2 sm:py-2">
             <span class="hidden pl-1 text-emerald-300/80 sm:inline" aria-hidden="true">✦</span>
             <input
               id="prompt-input"
