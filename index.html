@@ -215,14 +215,9 @@
     }
 
     .site-header-home {
-      position: sticky;
-      top: 0;
-      z-index: 20;
       overflow: visible;
       padding-bottom: 0.75rem;
       background: transparent;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
 
     @media (min-width: 640px) {
@@ -440,7 +435,7 @@
     }
   </style>
 </head>
-<body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #030706 0%, #0f3d3a 25%, #3c8f86 50%, #e8f3f2 75%, #0f3d3a 100%); min-height: 100vh;">
+<body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #0f3d3a 0%, #14473e 16%, #1e5549 24%, #2a6458 30%, #6b9c8e 42%, #c9dbd3 52%, #e8f3f2 60%, #d9e9e3 68%, #8eb9ab 80%, #4a8379 88%, #1f5149 94%, #0f3d3a 100%); min-height: 100vh;">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
   <header class="site-header-home">
@@ -480,8 +475,6 @@
     <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
     <!-- Subtle teal/emerald atmospheric glow behind the dark overlay -->
     <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(45, 212, 191, 0.15), transparent 55%), radial-gradient(ellipse 90% 60% at 10% 60%, rgba(16, 185, 129, 0.1), transparent 50%);"></div>
-    <!-- Dark-to-transparent gradient creates darkness at top, fades to let body gradient show -->
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#030706] via-[#0a1816] to-transparent" aria-hidden="true"></div>
 
     <main id="main" class="relative z-10 mx-auto grid max-w-7xl scroll-mt-6 gap-8 px-4 pb-24 pt-12 sm:gap-10 sm:px-5 sm:pb-28 sm:pt-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] md:items-center md:gap-8 md:px-8 md:pb-36 md:pt-16 lg:pt-20">
       <nav class="col-span-full flex items-center justify-center gap-4 border-b border-white/[0.08] pb-4 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
