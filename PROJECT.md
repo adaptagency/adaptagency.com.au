@@ -45,5 +45,5 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 
 ## Next Actions
 
-- Gallery live in production: https://adaptagency.com.au/gallery.html (staging worker adaptagency-staging.steve-2ff.workers.dev retained for future changes)
+- Gallery live in production: https://adaptagency.com.au/gallery.html
 - Monitor production site
