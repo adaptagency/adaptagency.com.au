@@ -1,0 +1,41 @@
+# Adapt Agency
+> AI-powered websites, apps, and tailored AI services — including multilingual sites and apps and international delivery — with clear scope and human judgment.
+
+## About
+Adapt Agency is an Australia-based digital agency that helps businesses ship AI-powered websites, apps, and AI services. We use AI across discovery, implementation, and quality — always with human judgment on architecture, security, and what ships to production. We focus on real-world usefulness and clear scope over corporate theatre.
+
+## What we build
+- **Websites & content** — Fast, accessible marketing and content sites, including multilingual and localised experiences, with AI speed in production and human polish in brand and UX.
+- **Apps & integrations** — Internal tools and customer apps wired to your data, including multilingual interfaces and locale-aware flows, with maintainable code and clear ownership.
+- **AI services** — Workflow automation, assistants, and content pipelines, including multilingual content and review workflows, implemented with guardrails you can defend.
+
+## How we deliver
+- **Scoping & phases** — Written assumptions, milestones, and change control, so "done" stays definable.
+- **AI in the loop** — Models and agents for faster drafting, refactors, and iteration; human review on architecture, security, and anything customer-facing.
+- **Performance & accessibility** — Baseline checks for speed, semantics, and keyboard use, so launches are not a surprise for real users.
+- **Stacks that last** — Plain HTML where it fits; APIs and integrations where they earn their keep; documented for the next person who touches the code.
+- **International context & multilingual** — Copy, UX, and technical i18n as part of the product, not an afterthought; we collaborate across time zones.
+- **Handover you can use** — Repos, deploy notes, and walkthroughs, so you are not locked in when the project ends.
+
+## Who we work with
+Local businesses, trades, professional services, schools and community groups, and regional teams — shops and operators who need websites and software that work in the real world.
+
+## Selected work
+- N Pub — customer website
+- RökTips — customer website
+- Silverdale Mechanical — customer website
+- Chanh Ventures — customer website
+- Words for Kids — app build
+- Custom Directories — platform build
+- LeadResponse — AI missed-call response service (https://mcr.adaptagency.com.au)
+
+## Key Details
+- **Website:** https://adaptagency.com.au
+- **Gallery:** https://adaptagency.com.au/gallery.html
+- **Service area:** Australia; Vietnamese-language and international projects
+- **Languages delivered:** English (en-AU) and Vietnamese (vi)
+- **Contact:** steve@adaptagency.com.au / the contact form on the homepage
+
+## Privacy & Legal
+- Privacy policy: https://adaptagency.com.au/privacy.html
+- Terms of use: https://adaptagency.com.au/terms.html
