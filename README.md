@@ -33,6 +33,7 @@ The site is **static**: HTML, [Tailwind CSS](https://tailwindcss.com/) (via CDN)
 │   ├── adaptagency-lang.js     # Shared i18n: session preference, home toggle, [data-i18n] apply
 │   └── adaptagency-header.js   # Transparent sticky header: flips text to dark #030706 over the page's light gradient zone
 ├── sitemap.xml         # URL list for crawlers (update lastmod when content changes)
+├── llms.txt            # AI-search support file (llms.txt standard) — about, services, links
 ├── robots.txt          # Crawl rules + sitemap URL
 ├── brand_assets/       # Logo, tokens, brand notes
 └── README.md

@@ -33,8 +33,9 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 
 - [ ] Ongoing content updates as needed
 - [x] Add Gallery page — Customer Projects (N Pub, RökTips, Silverdale Mechanical, Chanh Ventures) + Adapt Agency Projects (Words for Kids, Custom Directories, LeadResponse); masonry + lightbox; deployed to production 2026-09-13 (main @ 432951a)
-- [x] Fix transparent sticky header contrast — header text now flips to dark green-black (#030706) over the light gradient zone on all pages (js/adaptagency-header.js; verified locally)
-- [ ] Add `/llms.txt` (AI search readiness — Adapt Agency standard; missing from repo and live site, verified 2026-09-13)
+- [x] Fix transparent sticky header contrast — header text now flips to dark green-black (#030706) over the light gradient zone on all pages (js/adaptagency-header.js; verified locally and live)
+- [x] Bold menu item text — all header + mobile nav links font-bold (live 2026-09-13)
+- [x] Add `/llms.txt` (AI search readiness — Adapt Agency standard); live at https://adaptagency.com.au/llms.txt with text/plain content type (2026-09-13)
 
 ## Decisions Log
 
