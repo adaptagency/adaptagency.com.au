@@ -44,7 +44,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="doc-title">Gallery — Adapt Agency</title>
-  <meta id="doc-desc" name="description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse." />
+  <meta id="doc-desc" name="description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Chanh Ventures, Words for Kids, Custom Directories, and LeadResponse." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0f3d3a" />
   <meta name="color-scheme" content="light" />
@@ -58,7 +58,7 @@
   <meta property="og:locale" content="en_AU" />
   <meta property="og:locale:alternate" content="vi_VN" />
   <meta id="og-title" property="og:title" content="Gallery — Adapt Agency" />
-  <meta id="og-desc" property="og:description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse." />
+  <meta id="og-desc" property="og:description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Chanh Ventures, Words for Kids, Custom Directories, and LeadResponse." />
   <meta property="og:image" content="https://adaptagency.com.au/brand_assets/logo/adapt-agency-logo-web.svg" />
   <meta property="og:image:alt" content="Adapt Agency" />
   <meta name="twitter:card" content="summary" />
@@ -111,6 +111,9 @@
             display: ['"Fraunces"', "Georgia", "serif"],
             sans: ['"DM Sans"', "system-ui", "sans-serif"],
           },
+          boxShadow: {
+            card: "0 18px 50px -12px rgba(0, 0, 0, 0.35)",
+          },
         },
       },
     };
@@ -123,7 +126,188 @@
       word-break: break-word;
     }
 
-    /* ── Masonry (CSS columns) ─────────────────────────── */
+    /* ── Home header (shared with home page) ───────────── */
+    .touch-target {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Shared hero + home header fill (no seam between header and hero) */
+    .hero-atmos,
+    .site-header-home {
+      background: transparent;
+    }
+
+    .site-header-home {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      overflow: visible;
+      padding-bottom: 0.75rem;
+      background: rgba(3, 7, 6, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 640px) {
+      .site-header-home {
+        padding-bottom: 1rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header-home {
+        padding-bottom: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-header-home {
+        padding-bottom: 1.5rem;
+      }
+    }
+
+    .nav-link {
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-link:hover {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Home header logo: hangs into the hero */
+    .site-logo-slot {
+      position: relative;
+      flex-shrink: 0;
+      width: 6.65rem;
+      height: 0;
+    }
+
+    .site-logo-link {
+      position: absolute;
+      left: 0;
+      top: 0.125rem;
+      z-index: 30;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .site-logo-link:hover {
+      opacity: 0.92;
+    }
+
+    .site-logo-link:active {
+      transform: scale(0.985);
+    }
+
+    .site-logo-overhang {
+      display: block;
+      height: 3.675rem;
+      width: auto;
+      max-width: none;
+    }
+
+    @media (min-width: 640px) {
+      .site-logo-slot {
+        width: 8.05rem;
+      }
+
+      .site-logo-overhang {
+        height: 4.55rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-logo-slot {
+        width: 9.45rem;
+      }
+
+      .site-logo-overhang {
+        height: 5.425rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .site-logo-slot {
+        width: 10.5rem;
+      }
+
+      .site-logo-overhang {
+        height: 6.125rem;
+      }
+    }
+
+    /* Starfield texture (same layer as the home hero) */
+    .starfield {
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.25), transparent),
+        radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 90% 60%, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(1px 1px at 33% 80%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 15% 55%, rgba(255, 255, 255, 0.18), transparent);
+      background-size: 100% 100%;
+      opacity: 0.5;
+    }
+
+    /* Language toggle (VN ↔ EN): shell matches CTA pill; emerald thumb */
+    .lang-switch-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 44px;
+      padding: 0.25rem 0.5rem;
+    }
+    .lang-switch-wrap .lang-flag {
+      font-size: 1.125rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .lang-switch-track {
+      display: block;
+      position: relative;
+      width: 2.875rem;
+      min-width: 2.875rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      border: 1px solid rgb(255 255 255 / 0.25);
+      background: rgb(255 255 255 / 0.05);
+      padding: 2px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .lang-switch-track:hover {
+      border-color: rgb(255 255 255 / 0.4);
+      background: rgb(255 255 255 / 0.1);
+    }
+    .lang-switch-thumb {
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      width: 1.125rem;
+      height: 1.125rem;
+      border-radius: 9999px;
+      background: #34d399;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transform: translateY(calc(-50% + 1px));
+      transition: transform 0.22s ease-out;
+      pointer-events: none;
+    }
+    html[data-aa-lang="en"] .lang-switch-wrap .lang-switch-thumb {
+      transform: translateX(calc(2.875rem - 1.125rem - 8px)) translateY(calc(-50% + 1px));
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--aa-accent);
+      outline-offset: 3px;
+    }
+
+    /* ── Gallery: masonry (CSS columns) ────────────────── */
     .masonry {
       columns: 3;
       column-gap: 1rem;
@@ -145,7 +329,7 @@
       border-radius: 0.75rem;
     }
 
-    /* ── Lightbox ──────────────────────────────────────── */
+    /* ── Gallery: lightbox ─────────────────────────────── */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -246,97 +430,154 @@
     }
   </style>
 </head>
-<body class="bg-aa-surface font-sans text-aa-text antialiased">
-  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="legal_skip">Skip to content</a>
+<body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #030706 0%, #0f3d3a 18%, #dceeeb 38%, #e8f3f2 48%, #e8f3f2 68%, #dceeeb 78%, #0f3d3a 90%, #030706 100%); min-height: 100vh;">
+  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
 
-  <div class="sticky top-0 z-20 border-b border-aa-border bg-white shadow-[0_4px_24px_-12px_rgba(15,61,58,0.1)]">
-    <div class="border-b border-aa-border">
-      <div class="mx-auto max-w-6xl px-4 py-2.5 sm:px-6">
-        <a href="index.html" class="text-sm font-medium text-aa-primary-mid underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="legal_back_bar">&lt;---- Back to home page</a>
-      </div>
-    </div>
-    <header>
-    <div class="mx-auto flex max-w-6xl items-center justify-start gap-3 px-4 py-4 sm:px-6">
-      <a href="https://adaptagency.com.au" class="flex shrink-0 items-center transition-opacity hover:opacity-90" data-i18n-aria="logo_aria">
-        <img
-          src="brand_assets/logo/adapt-agency-logo.png"
-          alt="Adapt Agency"
-          width="899"
-          height="308"
-          class="h-[1.575rem] w-auto sm:h-7"
-          decoding="async"
-        />
-      </a>
+  <header class="site-header-home">
+    <div class="mx-auto flex max-w-7xl flex-nowrap items-center justify-between gap-1.5 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-4 md:gap-4 md:px-8">
+        <div class="site-logo-slot">
+          <a href="https://adaptagency.com.au" class="site-logo-link" data-i18n-aria="logo_aria">
+            <img
+              src="brand_assets/logo/adapt-agency.png"
+              alt="Adapt Agency"
+              width="768"
+              height="294"
+              class="site-logo-overhang"
+              decoding="async"
+            />
+          </a>
+        </div>
+        <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-[11px] font-medium text-white/65 sm:gap-6 sm:text-sm md:flex md:gap-7" data-i18n-aria="nav_aria" aria-label="Primary">
+          <a href="index.html#services" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_services">Services</a>
+          <a href="index.html#capabilities" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_capabilities">Capabilities</a>
+          <a href="index.html#lead" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3" data-i18n="nav_contact">Contact</a>
+          <a href="gallery.html" class="nav-link touch-target shrink-0 rounded-md px-1.5 sm:px-3 opacity-90" data-i18n="nav_gallery">Gallery</a>
+        </nav>
+        <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
+          <a href="index.html#lead" class="touch-target whitespace-nowrap rounded-full border border-white/25 bg-white/5 px-2 py-1.5 text-[11px] font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 sm:px-4 sm:text-sm md:px-5" data-i18n="cta_start">Start a project</a>
+          <div id="lang-switch-root" class="lang-switch-wrap is-en shrink-0 rounded-full border border-white/25 bg-white/5 backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10" data-lang="en">
+            <span class="lang-flag" aria-hidden="true">🇻🇳</span>
+            <button type="button" id="lang-toggle" class="lang-switch-track" role="switch" aria-checked="false" data-i18n-aria="lang_toggle_aria">
+              <span class="lang-switch-thumb" aria-hidden="true"></span>
+            </button>
+            <span class="lang-flag" aria-hidden="true">🇦🇺</span>
+          </div>
+        </div>
     </div>
   </header>
-  </div>
 
-  <main id="main" class="mx-auto max-w-6xl scroll-mt-6 px-4 py-12 sm:px-6 sm:py-16">
-    <h1 class="font-display text-3xl font-semibold text-aa-primary sm:text-4xl" data-i18n="gallery_h1">Gallery</h1>
-    <p class="mt-2 max-w-2xl text-sm text-aa-muted sm:text-base" data-i18n="gallery_intro">
-      Selected work across customer projects and Adapt Agency builds. Click any image to enlarge.
-    </p>
+  <main id="main" class="relative">
+    <!-- Dark header zone (starfield + glow layers, same as the home hero) -->
+    <div class="hero-atmos relative overflow-hidden text-white">
+      <div class="starfield pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(45, 212, 191, 0.15), transparent 55%), radial-gradient(ellipse 90% 60% at 10% 60%, rgba(16, 185, 129, 0.1), transparent 50%);"></div>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#030706] via-[#0a1816] to-transparent" aria-hidden="true"></div>
 
-    <section aria-labelledby="customer-heading" class="mt-12">
-      <h2 id="customer-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="cust_h2">Customer Projects</h2>
-      <div class="masonry mt-8">
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/npub.jpg" width="1000" height="562" alt="N Pub — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_npub" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">N Pub</figcaption>
-        </figure>
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/roktips.jpg" width="1000" height="562" alt="RökTips — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_roktips" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">RökTips</figcaption>
-        </figure>
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/silverdalemechanical.jpg" width="1000" height="562" alt="Silverdale Mechanical — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_silverdale" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Silverdale Mechanical</figcaption>
-        </figure>
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/chanhventures.jpg" width="1000" height="562" alt="Chanh Ventures — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_chanhventures" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Chanh Ventures</figcaption>
-        </figure>
+      <nav class="relative z-10 mx-auto flex max-w-7xl items-center justify-center gap-4 border-b border-white/[0.08] px-4 pb-4 pt-6 text-sm font-medium text-white/70 md:hidden" data-i18n-aria="nav_aria" aria-label="Primary">
+        <a href="index.html#services" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_services">Services</a>
+        <a href="index.html#capabilities" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_capabilities">Capabilities</a>
+        <a href="index.html#lead" class="nav-link touch-target rounded-md px-2 py-1" data-i18n="nav_contact">Contact</a>
+        <a href="gallery.html" class="nav-link touch-target rounded-md px-2 py-1 opacity-90" data-i18n="nav_gallery">Gallery</a>
+      </nav>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-5 sm:pb-14 sm:pt-14 md:px-8">
+        <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl" data-i18n="gallery_h1">Gallery</h1>
+        <p class="mt-3 max-w-2xl text-sm text-white/70 sm:text-base" data-i18n="gallery_intro">
+          Selected work across customer projects and Adapt Agency builds. Click any image to enlarge.
+        </p>
       </div>
-    </section>
+    </div>
 
-    <section aria-labelledby="agency-heading" class="mt-16">
-      <h2 id="agency-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="agency_h2">Adapt Agency Projects</h2>
-      <div class="masonry mt-8">
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/wordsforkids.jpg" width="1000" height="546" alt="Words for Kids — app home" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_wordsforkids" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Words for Kids</figcaption>
-        </figure>
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/customdirectories.jpg" width="1000" height="562" alt="Custom Directories — Expats in Da Nang Services" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_customdirectories" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Custom Directories</figcaption>
-        </figure>
-        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
-          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
-            <img src="gallery/img/leadresponse.jpg" width="1000" height="562" alt="LeadResponse — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_leadresponse" />
-          </button>
-          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">LeadResponse</figcaption>
-        </figure>
-      </div>
-    </section>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-5 sm:py-16 md:px-8">
+      <section aria-labelledby="customer-heading" class="mt-2">
+        <h2 id="customer-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="cust_h2">Customer Projects</h2>
+        <div class="masonry mt-8">
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/npub.jpg" width="1000" height="562" alt="N Pub — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_npub" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">N Pub</figcaption>
+          </figure>
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/roktips.jpg" width="1000" height="562" alt="RökTips — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_roktips" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">RökTips</figcaption>
+          </figure>
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/silverdalemechanical.jpg" width="1000" height="562" alt="Silverdale Mechanical — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_silverdale" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Silverdale Mechanical</figcaption>
+          </figure>
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/chanhventures.jpg" width="1000" height="562" alt="Chanh Ventures — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_chanhventures" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Chanh Ventures</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="agency-heading" class="mt-16">
+        <h2 id="agency-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="agency_h2">Adapt Agency Projects</h2>
+        <div class="masonry mt-8">
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/wordsforkids.jpg" width="1000" height="546" alt="Words for Kids — app home" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_wordsforkids" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Words for Kids</figcaption>
+          </figure>
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/customdirectories.jpg" width="1000" height="562" alt="Custom Directories — Expats in Da Nang Services" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_customdirectories" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Custom Directories</figcaption>
+          </figure>
+          <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+            <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+              <img src="gallery/img/leadresponse.jpg" width="1000" height="562" alt="LeadResponse — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_leadresponse" />
+            </button>
+            <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">LeadResponse</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <footer class="border-t border-aa-border bg-white px-4 py-8 text-center text-sm text-aa-muted sm:px-6">
-    <p><a class="text-aa-primary-mid underline underline-offset-2 hover:text-aa-primary" href="index.html" data-i18n="legal_footer_home">← Back to home</a></p>
-    <p class="mt-3">
-      <span data-i18n="legal_footer_copy">© </span><span id="y"></span><span data-i18n="legal_footer_agency"> Adapt Agency · </span><a class="underline underline-offset-2 hover:text-aa-primary" href="terms.html" data-i18n="footer_terms">Terms of Use</a>
-    </p>
+  <footer class="px-4 py-8 text-center text-sm sm:px-5 sm:py-10" style="color: rgba(255,255,255,0.6);">
+    <div class="mb-3 flex items-center justify-center gap-1.5 text-white/80">
+      <svg class="h-5 w-4 shrink-0" viewBox="0 0 32 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="footer-bolt-grad" x1="8" y1="40" x2="26" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#5eead4" />
+            <stop offset="100%" stop-color="#99f6e4" />
+          </linearGradient>
+          <linearGradient id="footer-synapse-grad" x1="6" y1="38" x2="26" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#5eead4" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#99f6e4" stop-opacity="0.9" />
+          </linearGradient>
+        </defs>
+        <g stroke="url(#footer-synapse-grad)" stroke-width="1.2" stroke-linecap="round" fill="none">
+          <path d="M7 36.5 16 32.5 25 36.5" />
+          <path d="M7 36.5 16 24" />
+          <path d="M25 36.5 16 24" />
+        </g>
+        <circle cx="7" cy="36.5" r="2" fill="#5eead4" />
+        <circle cx="25" cy="36.5" r="2" fill="#5eead4" />
+        <circle cx="16" cy="32.5" r="2.4" fill="#99f6e4" />
+        <circle cx="16" cy="32.5" r="0.95" fill="#5eead4" />
+        <path fill="url(#footer-bolt-grad)" d="M16 24 26.5 11.5H20.5L24.5 1.5 10.5 16.5H17.5L13.5 24H16z" />
+        <circle cx="24.5" cy="1.5" r="1.55" fill="#99f6e4" />
+        <circle cx="24.5" cy="1.5" r="0.55" fill="#fff" />
+      </svg>
+      <span class="text-sm font-semibold tracking-tight">Adapt Agency</span>
+    </div>
+    <p>© <span id="y"></span> Adapt Agency · adaptagency.com.au</p>
+    <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
+      <a href="privacy.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terms.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_terms">Terms of Use</a>
+    </div>
     <div class="mt-6 flex justify-center">
       <a
         href="#top"
@@ -366,17 +607,21 @@
 
     var I18N = {
       en: {
-        legal_skip: "Skip to content",
-        legal_back_bar: "<---- Back to home page",
+        skip: "Skip to content",
         logo_aria: "Adapt Agency home",
-        footer_top_aria: "Back to top",
+        lang_toggle_aria: "Switch language: Australian English or Vietnamese",
+        nav_aria: "Primary",
+        cta_start: "Start a project",
+        nav_services: "Services",
+        nav_capabilities: "Capabilities",
+        nav_contact: "Contact",
+        nav_gallery: "Gallery",
+        footer_privacy: "Privacy Policy",
         footer_terms: "Terms of Use",
+        footer_top_aria: "Back to top",
         doc_title: "Gallery — Adapt Agency",
         doc_desc:
-          "Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse.",
-        legal_footer_home: "← Back to home",
-        legal_footer_copy: "© ",
-        legal_footer_agency: " Adapt Agency · ",
+          "Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Chanh Ventures, Words for Kids, Custom Directories, and LeadResponse.",
         gallery_h1: "Gallery",
         gallery_intro: "Selected work across customer projects and Adapt Agency builds. Click any image to enlarge.",
         cust_h2: "Customer Projects",
@@ -395,17 +640,21 @@
         lb_counter: "{n} of {m}",
       },
       vi: {
-        legal_skip: "Bỏ qua đến nội dung",
-        legal_back_bar: "<---- Về trang chủ",
+        skip: "Bỏ qua đến nội dung",
         logo_aria: "Trang chủ Adapt Agency",
-        footer_top_aria: "Lên đầu trang",
+        lang_toggle_aria: "Chuyển ngôn ngữ: Tiếng Việt hoặc tiếng Anh Úc",
+        nav_aria: "Điều hướng chính",
+        cta_start: "Bắt đầu dự án",
+        nav_services: "Dịch vụ",
+        nav_capabilities: "Năng lực",
+        nav_contact: "Liên hệ",
+        nav_gallery: "Thư viện",
+        footer_privacy: "Chính sách quyền riêng tư",
         footer_terms: "Điều khoản sử dụng",
+        footer_top_aria: "Lên đầu trang",
         doc_title: "Thư viện — Adapt Agency",
         doc_desc:
-          "Thư viện dự án của Adapt Agency: dự án khách hàng và dự án nội bộ — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories và LeadResponse.",
-        legal_footer_home: "← Về trang chủ",
-        legal_footer_copy: "© ",
-        legal_footer_agency: " Adapt Agency · ",
+          "Thư viện dự án của Adapt Agency: dự án khách hàng và dự án nội bộ — N Pub, RökTips, Silverdale Mechanical, Chanh Ventures, Words for Kids, Custom Directories và LeadResponse.",
         gallery_h1: "Thư viện",
         gallery_intro: "Các dự án tiêu biểu của khách hàng và Adapt Agency. Nhấp vào ảnh để xem lớn hơn.",
         cust_h2: "Dự án khách hàng",
