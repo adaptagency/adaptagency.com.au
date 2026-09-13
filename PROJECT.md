@@ -32,7 +32,7 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 ## Task List
 
 - [ ] Ongoing content updates as needed
-- [x] Add Gallery page — Customer Projects (N Pub, RökTips, Silverdale Mechanical, Chanh Ventures) + Adapt Agency Projects (Words for Kids, Custom Directories, LeadResponse); masonry + lightbox; staged 2026-09-13, pending Steve's review
+- [x] Add Gallery page — Customer Projects (N Pub, RökTips, Silverdale Mechanical, Chanh Ventures) + Adapt Agency Projects (Words for Kids, Custom Directories, LeadResponse); masonry + lightbox; deployed to production 2026-09-13 (main @ 432951a)
 - [ ] Add `/llms.txt` (AI search readiness — Adapt Agency standard; missing from repo and live site, verified 2026-09-13)
 
 ## Decisions Log
@@ -45,5 +45,5 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 
 ## Next Actions
 
-- Review Gallery on staging: https://adaptagency-staging.steve-2ff.workers.dev/gallery.html → merge `gallery-staging` to main for production deploy
+- Gallery live in production: https://adaptagency.com.au/gallery.html (staging worker adaptagency-staging.steve-2ff.workers.dev retained for future changes)
 - Monitor production site
