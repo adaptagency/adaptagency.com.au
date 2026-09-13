@@ -56,7 +56,7 @@ If a static site generator or bundler is added later, update this section with `
 
 **Internationalisation (English / Vietnamese):** Implemented in `js/adaptagency-lang.js` and loaded on every page. Each page passes its string table into `AdaptAgencyLang.init(I18N)`; the home page also passes `onAfterApply` to keep the contact form in sync.
 
-- **Home** has the language switch (`#lang-switch-root` / `#lang-toggle`). **Privacy** and **Terms** do not; they follow the same language as the home page for the current browser session.
+- **Every page** has the language switch (`#lang-switch-root` / `#lang-toggle`) in the shared header; pages follow the same language as the home page for the current browser session.
 - **Preference is session-scoped:** `sessionStorage` key `adaptagency-lang`, plus a session cookie `aa_lang_sess` (`path=/`, no `Max-Age`). A **new browser session defaults to English** until the user switches again.
 - **Resolution order** when applying language: URL query `?aa_lang=en|vi` (then stripped with `history.replaceState` for a clean address bar), then `sessionStorage`, then `aa_lang_sess`. Internal links among `index.html`, `privacy.html`, `terms.html`, and `gallery.html` are rewritten to include `?aa_lang=…` so navigation stays consistent (needed because `file://` treats each HTML file as a separate origin and does not share `sessionStorage` between them).
 - **Legacy cleanup:** On init, any old persistent `adaptagency-lang` cookie from earlier deploys is cleared (`max-age=0`), and a stale `localStorage` entry with the same name is removed.
