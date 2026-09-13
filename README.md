@@ -24,8 +24,11 @@ The site is **static**: HTML, [Tailwind CSS](https://tailwindcss.com/) (via CDN)
 
 ```
 ├── index.html          # Home (marketing, contact form, hero)
+├── gallery.html        # Project gallery: masonry + lightbox, images in gallery/img/
 ├── privacy.html        # Privacy policy
 ├── terms.html          # Terms of use
+├── gallery/
+│   └── img/            # Optimised project screenshots (cards + lightbox source)
 ├── js/
 │   └── adaptagency-lang.js   # Shared i18n: session preference, home toggle, [data-i18n] apply
 ├── sitemap.xml         # URL list for crawlers (update lastmod when content changes)
@@ -55,7 +58,7 @@ If a static site generator or bundler is added later, update this section with `
 
 - **Home** has the language switch (`#lang-switch-root` / `#lang-toggle`). **Privacy** and **Terms** do not; they follow the same language as the home page for the current browser session.
 - **Preference is session-scoped:** `sessionStorage` key `adaptagency-lang`, plus a session cookie `aa_lang_sess` (`path=/`, no `Max-Age`). A **new browser session defaults to English** until the user switches again.
-- **Resolution order** when applying language: URL query `?aa_lang=en|vi` (then stripped with `history.replaceState` for a clean address bar), then `sessionStorage`, then `aa_lang_sess`. Internal links among `index.html`, `privacy.html`, and `terms.html` are rewritten to include `?aa_lang=…` so navigation stays consistent (needed because `file://` treats each HTML file as a separate origin and does not share `sessionStorage` between them).
+- **Resolution order** when applying language: URL query `?aa_lang=en|vi` (then stripped with `history.replaceState` for a clean address bar), then `sessionStorage`, then `aa_lang_sess`. Internal links among `index.html`, `privacy.html`, `terms.html`, and `gallery.html` are rewritten to include `?aa_lang=…` so navigation stays consistent (needed because `file://` treats each HTML file as a separate origin and does not share `sessionStorage` between them).
 - **Legacy cleanup:** On init, any old persistent `adaptagency-lang` cookie from earlier deploys is cleared (`max-age=0`), and a stale `localStorage` entry with the same name is removed.
 - **`pageshow` and `visibilitychange`** re-read storage so returning via the back-forward cache or refocusing the tab reapplies the correct language.
 

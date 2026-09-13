@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-AU" id="top" data-aa-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    (function () {
+      var k = "adaptagency-lang";
+      var ck = "aa_lang_sess";
+      var Q = "aa_lang";
+      var lang = "en";
+      function fromCookie() {
+        var prefix = ck + "=";
+        var parts = document.cookie.split(";");
+        for (var i = 0; i < parts.length; i++) {
+          var p = parts[i].trim();
+          if (p.indexOf(prefix) !== 0) continue;
+          try {
+            var v = decodeURIComponent(p.slice(prefix.length));
+            if (v === "vi" || v === "en") return v;
+          } catch (e) {}
+        }
+        return null;
+      }
+      try {
+        var sec0 = location.protocol === "https:" ? ";Secure" : "";
+        document.cookie = "adaptagency-lang=;path=/;max-age=0;SameSite=Lax" + sec0;
+      } catch (e) {}
+      try {
+        var params = new URLSearchParams(window.location.search.slice(1));
+        var q = params.get(Q);
+        if (q === "vi" || q === "en") lang = q;
+        else {
+          var s = sessionStorage.getItem(k);
+          if (s === "vi" || s === "en") lang = s;
+          else {
+            var c = fromCookie();
+            if (c) lang = c;
+          }
+        }
+      } catch (e) {}
+      document.documentElement.setAttribute("data-aa-lang", lang);
+      document.documentElement.lang = lang === "vi" ? "vi" : "en-AU";
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="doc-title">Gallery — Adapt Agency</title>
+  <meta id="doc-desc" name="description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0f3d3a" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href="https://adaptagency.com.au/gallery.html" />
+  <link rel="alternate" hreflang="en-AU" href="https://adaptagency.com.au/gallery.html" />
+  <link rel="alternate" hreflang="vi" href="https://adaptagency.com.au/gallery.html" />
+  <link rel="alternate" hreflang="x-default" href="https://adaptagency.com.au/gallery.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adaptagency.com.au/gallery.html" />
+  <meta property="og:site_name" content="Adapt Agency" />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:locale:alternate" content="vi_VN" />
+  <meta id="og-title" property="og:title" content="Gallery — Adapt Agency" />
+  <meta id="og-desc" property="og:description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse." />
+  <meta property="og:image" content="https://adaptagency.com.au/brand_assets/logo/adapt-agency-logo-web.svg" />
+  <meta property="og:image:alt" content="Adapt Agency" />
+  <meta name="twitter:card" content="summary" />
+  <meta id="tw-title" name="twitter:title" content="Gallery — Adapt Agency" />
+  <meta id="tw-desc" name="twitter:description" content="Project gallery for Adapt Agency: customer projects and Adapt Agency builds." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://adaptagency.com.au/#website",
+        "url": "https://adaptagency.com.au/",
+        "name": "Adapt Agency"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://adaptagency.com.au/gallery.html#webpage",
+        "url": "https://adaptagency.com.au/gallery.html",
+        "name": "Gallery — Adapt Agency",
+        "description": "Project gallery: customer projects and Adapt Agency builds.",
+        "isPartOf": { "@id": "https://adaptagency.com.au/#website" },
+        "inLanguage": ["en-AU", "vi"]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="brand_assets/logo/mark.svg" type="image/svg+xml" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aa: {
+              primary: "#0f3d3a",
+              "primary-mid": "#1a6b64",
+              "primary-tint": "#e8f3f2",
+              accent: "#c45c42",
+              text: "#141816",
+              muted: "#5a6562",
+              surface: "#fafaf8",
+              border: "#d5e0dd",
+            },
+          },
+          fontFamily: {
+            display: ['"Fraunces"', "Georgia", "serif"],
+            sans: ['"DM Sans"', "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --aa-accent: #c45c42;
+    }
+    html:lang(vi) body {
+      word-break: break-word;
+    }
+
+    /* ── Masonry (CSS columns) ─────────────────────────── */
+    .masonry {
+      columns: 3;
+      column-gap: 1rem;
+    }
+    .masonry > .gallery-card {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 1023px) {
+      .masonry { columns: 2; }
+    }
+    @media (max-width: 639px) {
+      .masonry { columns: 1; }
+    }
+
+    .gallery-trigger:focus-visible {
+      outline: 2px solid var(--aa-accent);
+      outline-offset: 2px;
+      border-radius: 0.75rem;
+    }
+
+    /* ── Lightbox ──────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(5, 15, 14, 0.92);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-inner img {
+      max-width: 92vw;
+      max-height: 84vh;
+      width: auto;
+      height: auto;
+      border-radius: 0.5rem;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+    }
+    .lightbox-caption {
+      position: absolute;
+      left: 50%;
+      top: calc(84vh + 0.75rem);
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+      max-width: 80vw;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lightbox-counter {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 9999px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.24); }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-close:focus-visible,
+    .lightbox-nav:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+    @media (max-width: 639px) {
+      .lightbox-nav { width: 40px; height: 40px; font-size: 1.2rem; }
+      .lightbox-prev { left: 0.5rem; }
+      .lightbox-next { right: 0.5rem; }
+      .lightbox-caption { top: auto; bottom: 3.5rem; white-space: normal; }
+    }
+  </style>
+</head>
+<body class="bg-aa-surface font-sans text-aa-text antialiased">
+  <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="legal_skip">Skip to content</a>
+
+  <div class="sticky top-0 z-20 border-b border-aa-border bg-white shadow-[0_4px_24px_-12px_rgba(15,61,58,0.1)]">
+    <div class="border-b border-aa-border">
+      <div class="mx-auto max-w-6xl px-4 py-2.5 sm:px-6">
+        <a href="index.html" class="text-sm font-medium text-aa-primary-mid underline decoration-aa-primary/25 underline-offset-2 transition-colors hover:text-aa-primary hover:decoration-aa-primary" data-i18n="legal_back_bar">&lt;---- Back to home page</a>
+      </div>
+    </div>
+    <header>
+    <div class="mx-auto flex max-w-6xl items-center justify-start gap-3 px-4 py-4 sm:px-6">
+      <a href="https://adaptagency.com.au" class="flex shrink-0 items-center transition-opacity hover:opacity-90" data-i18n-aria="logo_aria">
+        <img
+          src="brand_assets/logo/adapt-agency-logo.png"
+          alt="Adapt Agency"
+          width="899"
+          height="308"
+          class="h-[1.575rem] w-auto sm:h-7"
+          decoding="async"
+        />
+      </a>
+    </div>
+  </header>
+  </div>
+
+  <main id="main" class="mx-auto max-w-6xl scroll-mt-6 px-4 py-12 sm:px-6 sm:py-16">
+    <h1 class="font-display text-3xl font-semibold text-aa-primary sm:text-4xl" data-i18n="gallery_h1">Gallery</h1>
+    <p class="mt-2 max-w-2xl text-sm text-aa-muted sm:text-base" data-i18n="gallery_intro">
+      Selected work across customer projects and Adapt Agency builds. Click any image to enlarge.
+    </p>
+
+    <section aria-labelledby="customer-heading" class="mt-12">
+      <h2 id="customer-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="cust_h2">Customer Projects</h2>
+      <div class="masonry mt-8">
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/npub.jpg" width="1000" height="1406" alt="N Pub — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_npub" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">N Pub</figcaption>
+        </figure>
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/roktips.jpg" width="1000" height="1406" alt="RökTips — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_roktips" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">RökTips</figcaption>
+        </figure>
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/silverdalemechanical.jpg" width="1000" height="1406" alt="Silverdale Mechanical — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_silverdale" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Silverdale Mechanical</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="agency-heading" class="mt-16">
+      <h2 id="agency-heading" class="font-display text-2xl font-semibold text-aa-primary sm:text-3xl" data-i18n="agency_h2">Adapt Agency Projects</h2>
+      <div class="masonry mt-8">
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/wordsforkids.jpg" width="1000" height="546" alt="Words for Kids — app home" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_wordsforkids" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Words for Kids</figcaption>
+        </figure>
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/customdirectories.jpg" width="1000" height="1406" alt="Custom Directories — Expats in Da Nang Services" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_customdirectories" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">Custom Directories</figcaption>
+        </figure>
+        <figure class="gallery-card break-inside-avoid overflow-hidden rounded-xl border border-aa-border bg-white shadow-sm transition-shadow hover:shadow-md">
+          <button type="button" class="gallery-trigger block w-full cursor-zoom-in text-left" data-i18n-aria="lb_enlarge">
+            <img src="gallery/img/leadresponse.jpg" width="1000" height="1406" alt="LeadResponse — homepage" loading="lazy" decoding="async" class="h-auto w-full" data-i18n-alt="alt_leadresponse" />
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-medium text-aa-text">LeadResponse</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-aa-border bg-white px-4 py-8 text-center text-sm text-aa-muted sm:px-6">
+    <p><a class="text-aa-primary-mid underline underline-offset-2 hover:text-aa-primary" href="index.html" data-i18n="legal_footer_home">← Back to home</a></p>
+    <p class="mt-3">
+      <span data-i18n="legal_footer_copy">© </span><span id="y"></span><span data-i18n="legal_footer_agency"> Adapt Agency · </span><a class="underline underline-offset-2 hover:text-aa-primary" href="terms.html" data-i18n="footer_terms">Terms of Use</a>
+    </p>
+    <div class="mt-6 flex justify-center">
+      <a
+        href="#top"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-emerald-500/45 bg-emerald-500/[0.12] text-emerald-600 transition-colors hover:border-emerald-500 hover:bg-emerald-500/[0.18] hover:text-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-aa-accent focus-visible:ring-offset-2"
+        data-i18n-aria="footer_top_aria"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button type="button" class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous image">‹</button>
+    <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next image">›</button>
+    <div class="lightbox-inner">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <div class="lightbox-caption" id="lbCap"></div>
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    var I18N = {
+      en: {
+        legal_skip: "Skip to content",
+        legal_back_bar: "<---- Back to home page",
+        logo_aria: "Adapt Agency home",
+        footer_top_aria: "Back to top",
+        footer_terms: "Terms of Use",
+        doc_title: "Gallery — Adapt Agency",
+        doc_desc:
+          "Project gallery for Adapt Agency: customer projects and Adapt Agency builds — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories, and LeadResponse.",
+        legal_footer_home: "← Back to home",
+        legal_footer_copy: "© ",
+        legal_footer_agency: " Adapt Agency · ",
+        gallery_h1: "Gallery",
+        gallery_intro: "Selected work across customer projects and Adapt Agency builds. Click any image to enlarge.",
+        cust_h2: "Customer Projects",
+        agency_h2: "Adapt Agency Projects",
+        alt_npub: "N Pub — homepage screenshot",
+        alt_roktips: "RökTips — homepage screenshot",
+        alt_silverdale: "Silverdale Mechanical — homepage screenshot",
+        alt_wordsforkids: "Words for Kids — app home screen",
+        alt_customdirectories: "Expats in Da Nang Services — Custom Directories demo",
+        alt_leadresponse: "LeadResponse — homepage screenshot",
+        lb_enlarge: "Enlarge image",
+        lb_close: "Close",
+        lb_prev: "Previous image",
+        lb_next: "Next image",
+        lb_counter: "{n} of {m}",
+      },
+      vi: {
+        legal_skip: "Bỏ qua đến nội dung",
+        legal_back_bar: "<---- Về trang chủ",
+        logo_aria: "Trang chủ Adapt Agency",
+        footer_top_aria: "Lên đầu trang",
+        footer_terms: "Điều khoản sử dụng",
+        doc_title: "Thư viện — Adapt Agency",
+        doc_desc:
+          "Thư viện dự án của Adapt Agency: dự án khách hàng và dự án nội bộ — N Pub, RökTips, Silverdale Mechanical, Words for Kids, Custom Directories và LeadResponse.",
+        legal_footer_home: "← Về trang chủ",
+        legal_footer_copy: "© ",
+        legal_footer_agency: " Adapt Agency · ",
+        gallery_h1: "Thư viện",
+        gallery_intro: "Các dự án tiêu biểu của khách hàng và Adapt Agency. Nhấp vào ảnh để xem lớn hơn.",
+        cust_h2: "Dự án khách hàng",
+        agency_h2: "Dự án của Adapt Agency",
+        alt_npub: "N Pub — ảnh trang chủ",
+        alt_roktips: "RökTips — ảnh trang chủ",
+        alt_silverdale: "Silverdale Mechanical — ảnh trang chủ",
+        alt_wordsforkids: "Words for Kids — màn hình chính của ứng dụng",
+        alt_customdirectories: "Expats in Da Nang Services — bản demo Custom Directories",
+        alt_leadresponse: "LeadResponse — ảnh trang chủ",
+        lb_enlarge: "Xem ảnh lớn",
+        lb_close: "Đóng",
+        lb_prev: "Ảnh trước",
+        lb_next: "Ảnh tiếp theo",
+        lb_counter: "{n} trên {m}",
+      },
+    };
+  </script>
+  <script src="js/adaptagency-lang.js"></script>
+  <script>
+    AdaptAgencyLang.init(I18N);
+  </script>
+  <script>
+    (function () {
+      "use strict";
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".gallery-card"));
+      var lb = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lbImg");
+      var lbCap = document.getElementById("lbCap");
+      var lbCounter = document.getElementById("lbCounter");
+      var lbClose = document.getElementById("lbClose");
+      var lbPrev = document.getElementById("lbPrev");
+      var lbNext = document.getElementById("lbNext");
+      var idx = 0;
+      var lastFocus = null;
+
+      function counterText(n, m) {
+        var fmt = AdaptAgencyLang.t("lb_counter");
+        return String(fmt).replace("{n}", n).replace("{m}", m);
+      }
+
+      function show(i) {
+        idx = (i + cards.length) % cards.length;
+        var card = cards[idx];
+        var img = card.querySelector("img");
+        var cap = card.querySelector("figcaption");
+        lbImg.setAttribute("src", img.getAttribute("src"));
+        lbImg.setAttribute("alt", img.getAttribute("alt"));
+        lbCap.textContent = cap ? cap.textContent : "";
+        lbCounter.textContent = counterText(idx + 1, cards.length);
+        lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        lb.classList.add("open");
+        lbClose.focus();
+      }
+
+      function close() {
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocus) lastFocus.focus();
+      }
+
+      cards.forEach(function (card, i) {
+        var trigger = card.querySelector(".gallery-trigger");
+        if (!trigger) return;
+        var cap = card.querySelector("figcaption");
+        if (cap) {
+          trigger.setAttribute("aria-label", AdaptAgencyLang.t("lb_enlarge") + ": " + cap.textContent.trim());
+        }
+        trigger.addEventListener("click", function () {
+          lastFocus = trigger;
+          show(i);
+        });
+      });
+
+      lbClose.addEventListener("click", close);
+      lbPrev.addEventListener("click", function (e) { e.stopPropagation(); show(idx - 1); });
+      lbNext.addEventListener("click", function (e) { e.stopPropagation(); show(idx + 1); });
+      lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+
+      document.addEventListener("keydown", function (e) {
+        if (!lb.classList.contains("open")) return;
+        if (e.key === "Escape") { close(); return; }
+        if (e.key === "ArrowLeft") { show(idx - 1); return; }
+        if (e.key === "ArrowRight") { show(idx + 1); return; }
+      });
+    })();
+  </script>
+</body>
+</html>

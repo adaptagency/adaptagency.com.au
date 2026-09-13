@@ -21,6 +21,7 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 ## Sections
 
 - Home page (hero, services, contact form)
+- Gallery (project showcase — masonry + lightbox)
 - Privacy policy
 - Terms of use
 
@@ -31,6 +32,7 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 ## Task List
 
 - [ ] Ongoing content updates as needed
+- [x] Add Gallery page — Customer Projects (N Pub, RökTips, Silverdale Mechanical) + Adapt Agency Projects (Words for Kids, Custom Directories, LeadResponse); masonry + lightbox; staged 2026-09-13, pending Steve's review
 - [ ] Add `/llms.txt` (AI search readiness — Adapt Agency standard; missing from repo and live site, verified 2026-09-13)
 
 ## Decisions Log
@@ -43,4 +45,5 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 
 ## Next Actions
 
+- Review Gallery on staging → merge to main for production deploy
 - Monitor production site

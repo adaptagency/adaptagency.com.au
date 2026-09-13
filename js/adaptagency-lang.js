@@ -84,7 +84,7 @@
       var qIx = pathQuery.indexOf("?");
       var pathOnly = qIx >= 0 ? pathQuery.slice(0, qIx) : pathQuery;
       var file = pathOnly.replace(/^\.\//, "");
-      if (file !== "index.html" && file !== "privacy.html" && file !== "terms.html") return;
+      if (file !== "index.html" && file !== "privacy.html" && file !== "terms.html" && file !== "gallery.html") return;
       a.setAttribute("href", file + "?" + LANG_QUERY + "=" + lang + hash);
     });
   }
