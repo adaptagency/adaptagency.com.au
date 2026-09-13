@@ -1,20 +1,21 @@
 # Adapt Agency
 
 **Status:** Active
-**Last synced:** 2026-06-04
+**Last synced:** 2026-09-13
 **Production:** https://adaptagency.com.au
-**Repo:** Local — deployed to Namecheap via Cloudflare
+**Repo:** GitHub (`adaptagency/adaptagency.com.au`) — deployed to GitHub Pages via push to main; DNS on Cloudflare
 
 ## Overview
 
-Static marketing and information site for Adapt Agency — "AI-native delivery for websites, systems, and applications." Bilingual (English/Vietnamese) with i18n via session storage. Hosted on Namecheap, proxied through Cloudflare.
+Static marketing and information site for Adapt Agency — "AI-native delivery for websites, systems, and applications." Bilingual (English/Vietnamese) with i18n via session storage. Hosted on GitHub Pages; DNS on Cloudflare; email on Namecheap.
 
 ## Stack
 
 - Static HTML, Tailwind CSS (CDN), inline scripts
 - No build step — pure HTML/CSS/JS
-- Cloudflare (DNS + CDN proxy)
-- Namecheap (hosting + email)
+- GitHub Pages (hosting — deploys on push to main)
+- Cloudflare (DNS only)
+- Namecheap (email)
 - GoDaddy (domain registration)
 
 ## Sections
@@ -30,6 +31,7 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 ## Task List
 
 - [ ] Ongoing content updates as needed
+- [ ] Add `/llms.txt` (AI search readiness — Adapt Agency standard; missing from repo and live site, verified 2026-09-13)
 
 ## Decisions Log
 

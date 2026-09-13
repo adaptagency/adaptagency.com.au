@@ -89,23 +89,23 @@ Use **`npx serve .`** for local multi-page testing over one HTTP origin; `file:/
 |--------|----------|------|
 | **Domain registration** | GoDaddy | Owns `adaptagency.com.au`; renewal and registrar settings live here. |
 | **DNS** | Cloudflare | Authoritative DNS for the zone. All records (web, mail, verification) are defined here. |
-| **Website hosting** | Namecheap | Static site files are uploaded or synced to Namecheap hosting; the origin that Cloudflare proxies to. |
-| **CDN / proxy** | Cloudflare | Sits in front of Namecheap for caching, SSL/TLS, and performance (typically “proxied” / orange-cloud on the web record). |
-| **Email** | Namecheap | Mailbox hosting; **MX** (and related mail records such as SPF/DKIM per Namecheap’s docs) are added in **Cloudflare**, not at GoDaddy. |
+| **Website hosting** | GitHub Pages | Static site served from this repo (`adaptagency/adaptagency.com.au`), `main` branch; `CNAME` (custom domain) + `.nojekyll` at the repo root. Deploy = `git push`. |
+| **DNS** | Cloudflare | Authoritative DNS for the zone. The web record is currently DNS-only (grey cloud): `A` records point straight at GitHub Pages IPs (`185.199.108.153`, `.109`, `.110`, `.111`), so Cloudflare is not caching/proxying the site at present. |
+| **Email** | Namecheap | Mailbox hosting; **MX** (`premium142.web-hosting.com`) and related mail records (SPF/DKIM per Namecheap’s docs) are added in **Cloudflare**, not at GoDaddy. |
 
 **GoDaddy setup:** Point the domain’s **nameservers** to the pair Cloudflare gives you when you add the site to Cloudflare. DNS is then no longer edited at GoDaddy for day-to-day use.
 
-**Cloudflare setup:** Create DNS records that point web traffic to your Namecheap hosting (A/AAAA to the IP Namecheap provides, or CNAME if they specify a hostname). Enable proxying on that record if you want Cloudflare’s CDN and edge TLS. Add **MX** (and any mail CNAME/TXT records) exactly as Namecheap’s email setup instructions specify, so mail routes to Namecheap while DNS stays on Cloudflare.
+**Cloudflare setup:** Create DNS records that point web traffic to GitHub Pages: an `A` record set to the GitHub Pages IPs (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) for the apex (as configured now), and/or a `CNAME` for `www`. Keep the record grey-cloud (DNS-only) unless you want Cloudflare’s CDN and edge TLS — GitHub Pages already issues HTTPS for the custom domain. Add **MX** (and any mail CNAME/TXT records) exactly as Namecheap’s email setup instructions specify, so mail routes to Namecheap while DNS stays on Cloudflare.
 
 ---
 
 ## Deployment
 
-1. **Build or prepare** the static output (root of this repo or a `dist/` folder if you add a build step).
-2. **Publish** to Namecheap hosting (FTP/SFTP, File Manager, or any workflow Namecheap supports for your plan).
-3. **Verify** the site loads over HTTPS once Cloudflare SSL mode matches your setup (often *Full* or *Full (strict)* when the origin supports HTTPS).
+1. **Push to `main`** — GitHub Pages serves the repo root automatically (no build step, no manual upload).
+2. **Custom domain** is wired via the `CNAME` file at the repo root and the DNS `A` records listed above.
+3. **Verify** the site loads over HTTPS after the deploy — GitHub Pages issues and renews the TLS certificate for the custom domain automatically.
 
-This repository is not tied to Namecheap’s UI; keep deploy steps in your own checklist or CI if you automate uploads later.
+No CI or FTP needed; the repository **is** the deploy artifact.
 
 ---
 
