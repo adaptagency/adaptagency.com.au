@@ -307,20 +307,31 @@
       outline-offset: 3px;
     }
 
-    /* ── Gallery: masonry (CSS columns) ────────────────── */
+    /* ── Gallery: brick masonry (rows of 3; next course offset half a card) ── */
     .masonry {
-      columns: 3;
-      column-gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .masonry > .gallery-card {
-      break-inside: avoid;
-      margin-bottom: 1rem;
+      width: calc(33.333% - 0.667rem);
+    }
+    /* Second course (items 4-5 of each 6-cycle) sits half a card right */
+    .masonry > .gallery-card:nth-child(6n+4) {
+      margin-left: 16.6667%;
     }
     @media (max-width: 1023px) {
-      .masonry { columns: 2; }
+      .masonry > .gallery-card {
+        width: calc(50% - 0.5rem);
+      }
+      .masonry > .gallery-card:nth-child(6n+4) {
+        margin-left: 0;
+      }
     }
     @media (max-width: 639px) {
-      .masonry { columns: 1; }
+      .masonry > .gallery-card {
+        width: 100%;
+      }
     }
 
     .gallery-trigger:focus-visible {
