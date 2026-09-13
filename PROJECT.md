@@ -45,5 +45,5 @@ Static marketing and information site for Adapt Agency — "AI-native delivery f
 
 ## Next Actions
 
-- Review Gallery on staging → merge to main for production deploy
+- Review Gallery on staging: https://adaptagency-staging.steve-2ff.workers.dev/gallery.html → merge `gallery-staging` to main for production deploy
 - Monitor production site
