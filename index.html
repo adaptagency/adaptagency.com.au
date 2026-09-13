@@ -436,6 +436,37 @@
     html[data-aa-lang="en"] .lang-switch-wrap .lang-switch-thumb {
       transform: translateX(calc(2.875rem - 1.125rem - 8px)) translateY(calc(-50% + 1px));
     }
+  /* Transparent sticky header over LIGHT page zones: flip text/pills to the
+       site's dark green-black (#030706) so the header stays readable mid-scroll.
+       JS (js/adaptagency-header.js) sets data-contrast="light" on the header. */
+    .site-header-home[data-contrast="light"] nav {
+      color: rgba(3, 7, 6, 0.65);
+    }
+
+    .site-header-home[data-contrast="light"] .nav-link:hover {
+      color: rgba(3, 7, 6, 0.95);
+    }
+
+    .site-header-home[data-contrast="light"] a.rounded-full {
+      border-color: rgba(3, 7, 6, 0.25);
+      background-color: rgba(3, 7, 6, 0.05);
+      color: #030706;
+    }
+
+    .site-header-home[data-contrast="light"] a.rounded-full:hover {
+      border-color: rgba(3, 7, 6, 0.4);
+      background-color: rgba(3, 7, 6, 0.1);
+    }
+
+    .site-header-home[data-contrast="light"] .lang-switch-wrap {
+      border-color: rgba(3, 7, 6, 0.25);
+      background-color: rgba(3, 7, 6, 0.05);
+    }
+
+    .site-header-home[data-contrast="light"] .lang-switch-wrap:hover {
+      border-color: rgba(3, 7, 6, 0.4);
+      background-color: rgba(3, 7, 6, 0.1);
+    }
   </style>
 </head>
 <body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #030706 0%, #0f3d3a 18%, #dceeeb 38%, #e8f3f2 48%, #e8f3f2 68%, #dceeeb 78%, #0f3d3a 90%, #030706 100%); min-height: 100vh;">
@@ -922,6 +953,7 @@
     };
   </script>
   <script src="js/adaptagency-lang.js"></script>
+  <script src="js/adaptagency-header.js"></script>
   <script>
     function updateLeadSubmitState() {
       var btn = document.getElementById("lead-submit");

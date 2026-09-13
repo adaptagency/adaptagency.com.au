@@ -30,7 +30,8 @@ The site is **static**: HTML, [Tailwind CSS](https://tailwindcss.com/) (via CDN)
 ├── gallery/
 │   └── img/            # Optimised project screenshots (cards + lightbox source)
 ├── js/
-│   └── adaptagency-lang.js   # Shared i18n: session preference, home toggle, [data-i18n] apply
+│   ├── adaptagency-lang.js     # Shared i18n: session preference, home toggle, [data-i18n] apply
+│   └── adaptagency-header.js   # Transparent sticky header: flips text to dark #030706 over the page's light gradient zone
 ├── sitemap.xml         # URL list for crawlers (update lastmod when content changes)
 ├── robots.txt          # Crawl rules + sitemap URL
 ├── brand_assets/       # Logo, tokens, brand notes
