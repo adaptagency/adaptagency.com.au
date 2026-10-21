@@ -124,6 +124,12 @@ Internal or contractor changes: use feature branches, open pull requests for non
 
 © Adapt Agency. All rights reserved unless otherwise noted in this repository.
 
+## Recent changes
+
+- **2026-10-21:** Added **SmartNail** to the Projects gallery (`gallery.html`, Adapt Agency Projects section) — card (1000×562) + full-page lightbox image (`gallery/img/full/smartnail.jpg`, 1280×3293), bilingual `alt_smartnail` i18n keys. Deploy = git push.
+
+---
+
 **Web:** [adaptagency.com.au](https://adaptagency.com.au)
 
 For project enquiries, use the contact channels published on the live site.
