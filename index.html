@@ -469,6 +469,7 @@
     }
   </style>
 <script async src="https://vb.adaptagency.com.au/voicebot.js?v=6" data-voicebot='{"site":"adaptagency","greetingText":"Hi, I\u2019m Adapt Agency\u2019s AI assistant \u2014 tap anywhere to talk.","calcSelectors":{}}'></script>
+<script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_V3_SITE_KEY" async defer></script>
 </head>
 <body class="text-aa-text antialiased" style="background: linear-gradient(to bottom, #030706 0%, #0f3d3a 18%, #dceeeb 38%, #e8f3f2 48%, #e8f3f2 68%, #dceeeb 78%, #0f3d3a 90%, #030706 100%); min-height: 100vh;">
   <a href="#main" class="absolute left-[-9999px] top-4 z-[100] bg-white px-4 py-2 text-sm font-medium text-aa-primary shadow-md focus:left-4 focus:outline-none" data-i18n="skip">Skip to content</a>
@@ -741,7 +742,72 @@
     <div class="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs sm:text-sm">
       <a href="privacy.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_privacy">Privacy Policy</a>
       <a href="terms.html" class="text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_terms">Terms of Use</a>
+      <button type="button" id="footer-contact-toggle" class="touch-target text-white/50 underline decoration-white/15 underline-offset-2 transition-colors hover:text-emerald-300 hover:decoration-emerald-300" data-i18n="footer_contact" aria-expanded="false" aria-controls="footer-contact-form">Contact</button>
     </div>
+
+    <!-- Contact form (collapsible) -->
+    <div id="footer-contact-form" class="mt-6 w-full max-w-md mx-auto hidden" aria-hidden="true">
+      <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 sm:p-8">
+        <h3 class="font-display text-lg font-semibold text-white text-center" data-i18n="contact_form_title">Send a message</h3>
+        <p class="mt-2 text-center text-sm text-white/60" data-i18n="contact_form_subtitle">We'll reply within one business day.</p>
+
+        <form id="contact-form" class="mt-6 space-y-4" novalidate>
+          <input type="hidden" name="site_key" value="adaptagency" />
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-name" data-i18n="contact_name">Name <span class="text-white/40">(optional)</span></label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" class="min-h-[48px] w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base placeholder:text-white/40 transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent" />
+          </div>
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-email" data-i18n="contact_email">Email <span class="text-red-400" aria-hidden="true">*</span></label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required class="min-h-[48px] w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base placeholder:text-white/40 transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent" aria-required="true" aria-describedby="contact-email-error" />
+            <p id="contact-email-error" class="mt-1.5 text-sm text-red-400 hidden" role="alert" aria-live="polite" data-i18n="contact_email_error">Please enter a valid email address.</p>
+          </div>
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-phone" data-i18n="contact_phone">Phone <span class="text-white/40">(optional)</span></label>
+            <input id="contact-phone" name="phone" type="tel" autocomplete="tel" class="min-h-[48px] w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base placeholder:text-white/40 transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent" />
+          </div>
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-whatsapp" data-i18n="contact_whatsapp">WhatsApp <span class="text-white/40">(optional)</span></label>
+            <input id="contact-whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+61 4xx xxx xxx" class="min-h-[48px] w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base placeholder:text-white/40 transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent" />
+          </div>
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-subject" data-i18n="contact_subject">Subject</label>
+            <select id="contact-subject" name="subject" class="min-h-[48px] w-full rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23ffffff\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 9l6 6 6-6\"/></svg>')] bg-[right_1rem_center] bg-no-repeat pr-10">
+              <option value="general" data-i18n="contact_subject_general">General enquiry</option>
+              <option value="voicebot" data-i18n="contact_subject_voicebot">Voicebot service</option>
+              <option value="leadresponse" data-i18n="contact_subject_leadresponse">LeadResponse</option>
+              <option value="other" data-i18n="contact_subject_other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="mb-1 block text-sm font-medium text-white/80" for="contact-message" data-i18n="contact_message">Message <span class="text-red-400" aria-hidden="true">*</span></label>
+            <textarea id="contact-message" name="message" rows="4" required class="min-h-[120px] w-full resize-y rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-3 text-white text-base placeholder:text-white/40 transition-shadow focus:shadow-[0_0_0_3px_rgba(196,92,66,0.15)] focus:border-aa-accent" aria-required="true" aria-describedby="contact-message-error"></textarea>
+            <p id="contact-message-error" class="mt-1.5 text-sm text-red-400 hidden" role="alert" aria-live="polite" data-i18n="contact_message_error">Please enter your message.</p>
+          </div>
+
+          <button
+            type="submit"
+            id="contact-submit"
+            class="min-h-[48px] w-full rounded-full bg-aa-primary py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_rgba(15,61,58,0.45)] transition-transform duration-200 enabled:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+          >
+            <span class="btn-text" data-i18n="contact_submit">Send message</span>
+            <svg class="btn-spinner h-5 w-5 animate-spin hidden" viewBox="0 0 24 24" aria-hidden="true">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+          </button>
+
+          <p id="contact-form-hint" class="text-center text-xs text-white/50" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
     <div class="mt-6 flex justify-center">
       <a
         href="#top"
@@ -840,6 +906,7 @@
         form_consent_3: ".",
         footer_privacy: "Privacy Policy",
         footer_terms: "Terms of Use",
+        footer_contact: "Contact",
         footer_top_aria: "Back to top",
         form_error_consent: "Please accept the Privacy Policy and Terms of Use to continue.",
         mail_consent: "Consent: Privacy Policy and Terms of Use accepted.",
@@ -853,6 +920,24 @@
         mail_company: "Company: ",
         mail_details: "Project details:",
         mail_footer: "—\nSent via adaptagency.com.au contact form",
+        contact_form_title: "Send a message",
+        contact_form_subtitle: "We'll reply within one business day.",
+        contact_name: "Name",
+        contact_email: "Email",
+        contact_email_error: "Please enter a valid email address.",
+        contact_phone: "Phone",
+        contact_whatsapp: "WhatsApp",
+        contact_subject: "Subject",
+        contact_subject_general: "General enquiry",
+        contact_subject_voicebot: "Voicebot service",
+        contact_subject_leadresponse: "LeadResponse",
+        contact_subject_other: "Other",
+        contact_message: "Message",
+        contact_message_error: "Please enter your message.",
+        contact_submit: "Send message",
+        contact_success: "Message sent! We'll be in touch soon.",
+        contact_error: "Something went wrong. Please try again or email us directly.",
+        contact_recaptcha_error: "Security check failed. Please try again.",
       },
       vi: {
         skip: "Bỏ qua đến nội dung",
@@ -937,6 +1022,7 @@
         form_consent_3: ".",
         footer_privacy: "Chính sách quyền riêng tư",
         footer_terms: "Điều khoản sử dụng",
+        footer_contact: "Liên hệ",
         footer_top_aria: "Lên đầu trang",
         form_error_consent: "Vui lòng đồng ý Chính sách quyền riêng tư và Điều khoản sử dụng để tiếp tục.",
         mail_consent: "Đồng ý: đã chấp nhận Chính sách quyền riêng tư và Điều khoản sử dụng.",
@@ -950,6 +1036,24 @@
         mail_company: "Công ty: ",
         mail_details: "Chi tiết dự án:",
         mail_footer: "—\nGửi qua biểu mẫu adaptagency.com.au",
+        contact_form_title: "Gửi tin nhắn",
+        contact_form_subtitle: "Chúng tôi sẽ phản hồi trong một ngày làm việc.",
+        contact_name: "Họ tên",
+        contact_email: "Email",
+        contact_email_error: "Vui lòng nhập địa chỉ email hợp lệ.",
+        contact_phone: "Điện thoại",
+        contact_whatsapp: "WhatsApp",
+        contact_subject: "Chủ đề",
+        contact_subject_general: "Thắc mắc chung",
+        contact_subject_voicebot: "Dịch vụ Voicebot",
+        contact_subject_leadresponse: "LeadResponse",
+        contact_subject_other: "Khác",
+        contact_message: "Tin nhắn",
+        contact_message_error: "Vui lòng nhập tin nhắn của bạn.",
+        contact_submit: "Gửi tin nhắn",
+        contact_success: "Đã gửi! Chúng tôi sẽ liên hệ sớm.",
+        contact_error: "Có lỗi xảy ra. Vui lòng thử lại hoặc gửi email trực tiếp.",
+        contact_recaptcha_error: "Kiểm tra bảo mật thất bại. Vui lòng thử lại.",
       },
     };
   </script>
@@ -1087,6 +1191,215 @@
         "&body=" +
         encodeURIComponent(body);
     });
+  </script>
+
+  <!-- Contact form functionality -->
+  <script>
+    (function () {
+      "use strict";
+
+      var toggleBtn = document.getElementById("footer-contact-toggle");
+      var formWrapper = document.getElementById("footer-contact-form");
+      var form = document.getElementById("contact-form");
+      var submitBtn = document.getElementById("contact-submit");
+      var btnText = submitBtn ? submitBtn.querySelector(".btn-text") : null;
+      var btnSpinner = submitBtn ? submitBtn.querySelector(".btn-spinner") : null;
+      var hintEl = document.getElementById("contact-form-hint");
+      var emailInput = document.getElementById("contact-email");
+      var messageInput = document.getElementById("contact-message");
+      var emailError = document.getElementById("contact-email-error");
+      var messageError = document.getElementById("contact-message-error");
+
+      // reCAPTCHA v3 site key - replace with actual key
+      var RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_V3_SITE_KEY";
+
+      function t(key) {
+        return (window.AdaptAgencyLang && window.AdaptAgencyLang.t(key)) || key;
+      }
+
+      function showError(input, errorEl, message) {
+        input.setAttribute("aria-invalid", "true");
+        errorEl.textContent = message;
+        errorEl.classList.remove("hidden");
+      }
+
+      function clearError(input, errorEl) {
+        input.setAttribute("aria-invalid", "false");
+        errorEl.classList.add("hidden");
+      }
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function validateForm() {
+        var isValid = true;
+        var email = (emailInput.value || "").trim();
+        var message = (messageInput.value || "").trim();
+
+        if (!email || !validateEmail(email)) {
+          showError(emailInput, emailError, t("contact_email_error"));
+          isValid = false;
+        } else {
+          clearError(emailInput, emailError);
+        }
+
+        if (!message) {
+          showError(messageInput, messageError, t("contact_message_error"));
+          isValid = false;
+        } else {
+          clearError(messageInput, messageError);
+        }
+
+        return isValid;
+      }
+
+      function setLoading(loading) {
+        submitBtn.disabled = loading;
+        if (btnText) btnText.classList.toggle("hidden", loading);
+        if (btnSpinner) btnSpinner.classList.toggle("hidden", !loading);
+      }
+
+      function showHint(message, isError) {
+        hintEl.textContent = message;
+        hintEl.style.color = isError ? "rgb(248 113 113)" : "rgb(16 185 129)";
+      }
+
+      function resetForm() {
+        form.reset();
+        clearError(emailInput, emailError);
+        clearError(messageInput, messageError);
+        hintEl.textContent = "";
+      }
+
+      // Toggle form visibility
+      if (toggleBtn && formWrapper) {
+        toggleBtn.addEventListener("click", function () {
+          var isHidden = formWrapper.classList.toggle("hidden");
+          formWrapper.setAttribute("aria-hidden", isHidden);
+          toggleBtn.setAttribute("aria-expanded", !isHidden);
+          if (!isHidden) {
+            // Focus first input when opened
+            setTimeout(function () {
+              emailInput.focus();
+            }, 100);
+          }
+        });
+      }
+
+      // Real-time validation
+      if (emailInput) {
+        emailInput.addEventListener("blur", function () {
+          var email = (emailInput.value || "").trim();
+          if (email && !validateEmail(email)) {
+            showError(emailInput, emailError, t("contact_email_error"));
+          } else {
+            clearError(emailInput, emailError);
+          }
+        });
+        emailInput.addEventListener("input", function () {
+          if (emailInput.getAttribute("aria-invalid") === "true") {
+            var email = (emailInput.value || "").trim();
+            if (email && validateEmail(email)) {
+              clearError(emailInput, emailError);
+            }
+          }
+        });
+      }
+
+      if (messageInput) {
+        messageInput.addEventListener("blur", function () {
+          var message = (messageInput.value || "").trim();
+          if (!message) {
+            showError(messageInput, messageError, t("contact_message_error"));
+          } else {
+            clearError(messageInput, messageError);
+          }
+        });
+        messageInput.addEventListener("input", function () {
+          if (messageInput.getAttribute("aria-invalid") === "true") {
+            var message = (messageInput.value || "").trim();
+            if (message) {
+              clearError(messageInput, messageError);
+            }
+          }
+        });
+      }
+
+      // Form submission
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          if (!validateForm()) {
+            // Focus first invalid field
+            var firstInvalid = form.querySelector('[aria-invalid="true"]');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+          }
+
+          setLoading(true);
+          showHint("", false);
+
+          // Execute reCAPTCHA v3
+          if (typeof grecaptcha !== "undefined" && RECAPTCHA_SITE_KEY !== "YOUR_RECAPTCHA_V3_SITE_KEY") {
+            grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact_form" }).then(function (token) {
+              submitForm(token);
+            }).catch(function () {
+              setLoading(false);
+              showHint(t("contact_recaptcha_error"), true);
+            });
+          } else {
+            // No reCAPTCHA or placeholder key - submit without token
+            submitForm("");
+          }
+        });
+      }
+
+      function submitForm(recaptchaToken) {
+        var fd = new FormData(form);
+        var data = {};
+        fd.forEach(function (value, key) {
+          data[key] = value;
+        });
+        if (recaptchaToken) {
+          data.recaptcha_token = recaptchaToken;
+        }
+        // Ensure site_key is included
+        data.site_key = 'adaptagency';
+
+        fetch("https://vb.adaptagency.com.au/api/contact-form", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              return response.json().then(function (err) {
+                throw new Error(err.error || "Server error");
+              });
+            }
+            return response.json();
+          })
+          .then(function () {
+            setLoading(false);
+            showHint(t("contact_success"), false);
+            resetForm();
+            // Close form after delay
+            setTimeout(function () {
+              if (formWrapper && toggleBtn) {
+                formWrapper.classList.add("hidden");
+                formWrapper.setAttribute("aria-hidden", "true");
+                toggleBtn.setAttribute("aria-expanded", "false");
+              }
+            }, 3000);
+          })
+          .catch(function (err) {
+            setLoading(false);
+            showHint(err.message || t("contact_error"), true);
+          });
+      }
+    })();
   </script>
 </body>
 </html>
